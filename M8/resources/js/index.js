@@ -1,11 +1,15 @@
 import Example from './components/Example'
+import Navbar from './components/Navbar'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
 const root = document.getElementById('root')
 if(root) {
     ReactDOM.render(
-    <Example />, 
+    <>
+        <Navbar />
+        <Example />
+    </>, 
     
     root)
 }
