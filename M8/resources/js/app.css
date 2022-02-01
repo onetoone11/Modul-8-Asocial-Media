@@ -1,0 +1,49 @@
+body{
+    height: 200vh;
+}
+
+/* Colors */
+.bg--light{
+    background-color: #DFDEDC;
+    color: #333;
+}
+
+/* Navbar */
+nav{
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    box-shadow: 0px 4px 10px #888888;
+}
+
+.nav--logo{
+    position: absolute;
+    left: 20px;
+    top: 22px;
+}
+
+.nav--account{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.btn-login{
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border-color: #333;
+    cursor: pointer;
+}
+
+.btn-register{
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border-color: #333;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
