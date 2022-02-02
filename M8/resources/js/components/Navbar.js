@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function Navbar(){
 
-    const [loggedIn, setLoggedIn] = React.useState(true);
+    const [loggedIn, setLoggedIn] = React.useState(false);
 
     return(
         <nav className="d-flex justify-content-between align-items-center p-0">
@@ -19,10 +19,17 @@ export default function Navbar(){
             </div>
             
 
-            {loggedIn ? <div className="nav--account">
+            {loggedIn ? 
+            
+            <div className="nav--account">
                 <button className="mr-3 btn-login bg--light">Log In</button>
                 <button className="btn-register">Register</button>
-            </div> : <h1>Hello</h1>}
+            </div> 
+            : 
+            <div className="nav--account mr-3">
+                <h3 className="nav--account-name">Name</h3>
+                <div className="nav--account-img"></div>
+            </div>}
         </nav>
     )
 }

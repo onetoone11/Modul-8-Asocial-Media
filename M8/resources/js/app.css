@@ -9,8 +9,17 @@ body{
     color: #333;
 }
 
+.bg--white{
+    background-color: #fff;
+    color: #333;
+}
+
 .bg--light-bright{
     background-color: rgba(223, 222, 220, 0.7);
+}
+
+.c-gray{
+    color: #707070;
 }
 
 /* Navbar */
@@ -50,6 +59,21 @@ input[type=search]:focus {
 .nav--logo{
     height: 100%;
     width: auto;
+}
+
+.nav--account-img{
+    height: 40px;
+    width: 40px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.nav--account-name{
+    display: inline-block;
+    margin-right: 20px;
+    padding: 0;
+    margin-bottom: 0;
 }
 
 .logo--image {
@@ -132,8 +156,22 @@ input[type=search]:focus {
 }
 
 .profile--create-post{
-    height: 20px;
-    background-color: aqua;
+    height: 60px;
+    border: 1px solid #707070;
+}
+
+.profile--settings{
+    height: 60px;
+    border: 1px solid #707070;
+}
+
+.profile--create-post-text{
+    margin-top: 10px;
+}
+
+.settings--i{
+    text-align: center;
+    margin-top: 8px;
 }
 
 /* Login */
