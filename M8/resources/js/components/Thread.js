@@ -23,7 +23,9 @@ export default function Thread(){
 
                 <Comment test={<Comment test={<Comment />} />} />
                 <Comment />
-                {/* <Comment /> */}
+                <Comment />
+                <p>hhhhhhhhh</p>
+                <Comment />
                 
 
             </div>
