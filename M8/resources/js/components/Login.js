@@ -9,6 +9,7 @@ export default function Login(){
             
             <div className="card">
                 <div className={`card-body bg--light`}>
+                {/* <div className="card-body"> */}
                     <h2 className="card-title">Log in</h2>
                     <hr/>
 
@@ -31,6 +32,7 @@ export default function Login(){
                     </form>
                 </div>
             </div>
+
         </div>
     )
 }
