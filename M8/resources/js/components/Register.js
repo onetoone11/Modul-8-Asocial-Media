@@ -2,7 +2,7 @@ export default function Register(){
     return(
         <div className="container login-body register-body">
             
-                <div className="card-body">
+                <div className={`card-body bg--light`}>
                     <h2 className="card-title">Register</h2>
                     <hr/>
 
@@ -25,7 +25,7 @@ export default function Register(){
                         </div>
 
                         <div className="form-group">
-                            <input type="submit" value="Register" className="btn btn-outline-dark login-btn"/>
+                            <input type="submit" value="Register" className="btn btn-outline-dark login-btn bg--white"/>
                         </div>
 
                     </form>
