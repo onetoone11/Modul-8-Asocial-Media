@@ -40,15 +40,15 @@ ReactDOM.render(
     test)
 }
 
-// const loginroot = document.getElementById('loginroot')
+const loginroot = document.getElementById('loginroot')
 
-// if(loginroot) {
+if(loginroot) {
     
-// ReactDOM.render(
-//     <> 
-//         <Navbar />
-//         <Login />
-//     </>
-//     , 
-//     loginroot)
-// }
+ReactDOM.render(
+    <> 
+        <Navbar />
+        <Login />
+    </>
+    , 
+    loginroot)
+}

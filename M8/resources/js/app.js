@@ -6,7 +6,7 @@ require('./index')
 import Navbar from './components/Navbar'
 import Thread from './components/Thread'
 import Profile from './components/Profile'
-// import Start from './components/Start'
+import Start from './components/Start'
 
 export default function App(){
     return(
@@ -15,6 +15,7 @@ export default function App(){
             {/* <Start /> */}
             {/* <Thread /> */}
             <Profile />
+            <Start />
         </>
     )
 }
