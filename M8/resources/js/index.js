@@ -1,12 +1,9 @@
 import Example from './components/Example'
-<<<<<<< HEAD
 import Navbar from './components/Navbar'
 import Start from './components/Start'
 import Login from './components/Login'
-=======
 
 import App from './app'
->>>>>>> 857b2a5796b868dfec17b7b74eb90855b54b055c
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '../css/bootstrap.css'
