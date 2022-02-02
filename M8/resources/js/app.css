@@ -56,11 +56,11 @@ input[type=search]:focus {
     height: 100%;
 }
 
-.nav--account{
+/* .nav--account{ */
     /* position: absolute;
     right: 20px;
     top: 15px; */
-}
+/* } */
 
 .btn-login{
     height: 40px;
@@ -121,6 +121,21 @@ input[type=search]:focus {
 }
 
 /* Profile */
+
+.profile--img{
+    width: 400px;
+    height: 400px;
+    border: 1px solid #333;
+    border-radius: 200px;
+    margin: auto;
+    /* background-image: url('../components/findus.png'); */
+}
+
+.profile--create-post{
+    height: 20px;
+    background-color: aqua;
+}
+
 /* Login */
 .login-body {
     width: 25%;

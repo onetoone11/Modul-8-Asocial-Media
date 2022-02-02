@@ -2083,7 +2083,7 @@ __webpack_require__(/*! ./index */ "./resources/js/index.js");
 
 function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Thread__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Profile__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
   });
 }
 
@@ -2301,42 +2301,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button */ "./resources/js/components/Button.js");
 /* harmony import */ var _logoBlack_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logoBlack.png */ "./resources/js/components/logoBlack.png");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
 
 function Navbar() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("nav", {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_2__.useState(true),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      loggedIn = _React$useState2[0],
+      setLoggedIn = _React$useState2[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("nav", {
     className: "d-flex justify-content-between align-items-center p-0",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "d-flex w-50 ",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "nav--logo mr-5",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
           className: "logo--image",
           src: _logoBlack_png__WEBPACK_IMPORTED_MODULE_1__["default"]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
         className: "d-flex justify-content-center align-items-center position-relative w-100",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
           type: "search"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           className: "search-icon",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fa fa-search fa-lg"
           })
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    }), loggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "nav--account",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "mr-3 btn-login bg--light",
         children: "Log In"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "btn-register",
         children: "Register"
       })]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+      children: "Hello"
     })]
   });
 }
@@ -2354,14 +2375,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Profile)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _findus_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./findus.png */ "./resources/js/components/findus.png");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 function Profile() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "profile--img"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "row",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "col-lg-3"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "col-lg-6",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "profile--img"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "col-lg-10 profile--create-post"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "col-lg-2 profile--settings"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "col-lg-3"
+        })]
       })
     })
   });
@@ -2666,7 +2708,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding-top: 100px;\r\n    height: 200vh;\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #333;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    background-color: #fff;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n}\r\n\r\n.nav--account{\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n}\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    color: #333;\r\n    background-color: #fff;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    background-color: #fff;\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid #333;\r\n    /* display: inline-block; */\r\n}\r\n\r\n.comment--profile{\r\n    background-color: #fff;\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n}\r\n\r\n.login-body .card-body {\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n}\r\n\r\n.login-body .card-body form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.5rem;\r\n    background-color: #FFF;\r\n    color: #707070;\r\n    border-color: #707070;\r\n}\r\n\r\n.login-btn:hover {\r\n    color: #FFF;\r\n    background-color: #707070;\r\n    border-color: #707070;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding-top: 100px;\r\n    height: 200vh;\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #333;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    background-color: #fff;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    color: #333;\r\n    background-color: #fff;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    background-color: #fff;\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid #333;\r\n    /* display: inline-block; */\r\n}\r\n\r\n.comment--profile{\r\n    background-color: #fff;\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--create-post{\r\n    height: 20px;\r\n    background-color: aqua;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n}\r\n\r\n.login-body .card-body {\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n}\r\n\r\n.login-body .card-body form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.5rem;\r\n    background-color: #FFF;\r\n    color: #707070;\r\n    border-color: #707070;\r\n}\r\n\r\n.login-btn:hover {\r\n    color: #FFF;\r\n    background-color: #707070;\r\n    border-color: #707070;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2746,6 +2788,21 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+
+/***/ "./resources/js/components/findus.png":
+/*!********************************************!*\
+  !*** ./resources/js/components/findus.png ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/findus.png?301ee92d0908ac6f0d917b8a121bffb7");
 
 /***/ }),
 
