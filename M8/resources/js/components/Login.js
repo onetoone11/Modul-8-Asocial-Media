@@ -1,9 +1,14 @@
+import React from 'react'
+
 export default function Login(){
+
+    const [darkMode, setDarkMode] = React.useState(true)
+
     return(
         <div className="container login-body">
             
             <div className="card">
-                <div className="card-body">
+                <div className={`card-body bg--light`}>
                     <h2 className="card-title">Log in</h2>
                     <hr/>
 
@@ -20,16 +25,12 @@ export default function Login(){
                         </div>
 
                         <div className="form-group">
-                            <input type="submit" value="Log in" className="btn btn-outline-dark login-btn"/>
+                            <input type="submit" value="Log in" className="btn btn-outline-dark login-btn bg--white"/>
                         </div>
 
                     </form>
                 </div>
             </div>
-
-            
-            
-
         </div>
     )
 }
