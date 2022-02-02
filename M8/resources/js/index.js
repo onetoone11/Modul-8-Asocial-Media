@@ -75,8 +75,20 @@ if(create) {
 ReactDOM.render(
     <> 
         <Navbar />
-        <PostForm />
+        <PostForm mode="create" />
     </>
     , 
     create)
+}
+const edit = document.getElementById('edit')
+
+if(edit) {
+    
+ReactDOM.render(
+    <> 
+        <Navbar />
+        <PostForm mode="edit" />
+    </>
+    , 
+    edit)
 }

@@ -29,6 +29,10 @@ Route::get('/create', function () {
     return view('create');
 });
 
+Route::get('/edit', function () {
+    return view('edit');
+});
+
 Route::get('/register', function () {
     return view('register');
 });

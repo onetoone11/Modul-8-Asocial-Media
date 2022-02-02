@@ -243,21 +243,14 @@ input[type=search]:focus {
     border-color: #707070;
 }
 
-<<<<<<< HEAD
 /* Create and Edit forms */
 
 .post-create-body {
     width: 50%;
 }
 
-.post-create-body .card .card-body {
-    background-color: #DFDEDC;
-}
-
-=======
 /* Register */
 
 .register-body {
     padding-top: 10vh;
 }
->>>>>>> e08ffd8704f33554c7b9d67bce6e332f5936a187

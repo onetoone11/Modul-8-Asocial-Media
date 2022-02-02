@@ -2429,57 +2429,77 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 
 var PostForm = function PostForm(_ref) {
   var mode = _ref.mode;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      darkMode = _React$useState2[0],
+      setDarkMode = _React$useState2[1];
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "container post-create-body c-gray",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "card bg--light",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "card-body bg--light",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-          className: "card-title",
-          children: "Create Post"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "text",
-              placeholder: "Header",
-              className: "form-control"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "textarea",
-              style: {
-                height: '100%'
-              },
-              placeholder: "Body text",
-              rows: "3",
-              className: "form-control"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "form-group",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "file",
-              id: "image-input",
-              className: "form-control"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "form-group w-100 d-flex justify-content-center",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "submit",
-              value: "Create Post",
-              className: "btn btn-outline-dark login-btn"
-            })
-          })]
+    className: "container post-create-body ".concat(darkMode ? "c-white" : "c-gray"),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "card-body ".concat(darkMode ? "bg--dark" : "bg--light"),
+      style: {
+        borderRadius: "20px"
+      },
+      children: [mode === "edit" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+        className: "card-title",
+        children: "Edit Post"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+        className: "card-title",
+        children: "Create Post"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "form-group",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "text",
+            placeholder: "Header",
+            className: "form-control"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "form-group",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
+            style: {
+              height: '100%'
+            },
+            placeholder: "Body text",
+            rows: "5",
+            className: "form-control"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "form-group",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "file",
+            id: "image-input",
+            className: "form-control"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "form-group w-100 d-flex justify-content-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "submit",
+            value: mode === "edit" ? "Save" : "Post",
+            className: "btn btn-outline-dark login-btn bg--white"
+          })
         })]
-      })
+      })]
     })
   });
 };
@@ -2910,8 +2930,20 @@ var create = document.getElementById('create');
 
 if (create) {
   react_dom__WEBPACK_IMPORTED_MODULE_8__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_PostForm__WEBPACK_IMPORTED_MODULE_4__["default"], {})]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_PostForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      mode: "create"
+    })]
   }), create);
+}
+
+var edit = document.getElementById('edit');
+
+if (edit) {
+  react_dom__WEBPACK_IMPORTED_MODULE_8__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_PostForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      mode: "edit"
+    })]
+  }), edit);
 }
 
 /***/ }),
@@ -2944,9 +2976,23 @@ ___CSS_LOADER_EXPORT___.push([module.id, "/*!\r\n * Bootstrap v4.0.0 (https://ge
 /*!****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/app.css ***!
   \****************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nSyntaxError\n\n(263:1) C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\resources\\js\\app.css Unknown word\n\n \u001b[90m 261 | \u001b[39m    padding-top\u001b[33m:\u001b[39m 10vh\u001b[33m;\u001b[39m\n \u001b[90m 262 | \u001b[39m\u001b[33m}\u001b[39m\n\u001b[1m\u001b[31m>\u001b[39m\u001b[22m\u001b[90m 263 | \u001b[39m>>>>>>> e08ffd8704f33554c7b9d67bce6e332f5936a187\n \u001b[90m     | \u001b[39m\u001b[1m\u001b[31m^\u001b[39m\u001b[22m\n \u001b[90m 264 | \u001b[39m\n");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding-top: 100px;\r\n    height: 200vh;\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D;\r\n    color: #fff;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070;\r\n}\r\n\r\n.c-white{\r\n    color: #fff;\r\n}\r\n\r\n.border-w{\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border-color: #333;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    border: 1px solid #333;\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    border: 1px solid #707070;\r\n    border-radius: 25px;\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.5rem;\r\n    /* background-color: #FFF; -----------------------------------------------------------------------------------------\r\n    color: #707070; */\r\n    border-color: #707070;\r\n}\r\n\r\n.login-btn:hover {\r\n    color: #FFF;\r\n    /* background-color: #707070; ----------------------------------------------------------------------------------------- */\r\n    border-color: #707070;\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
 
 /***/ }),
 
