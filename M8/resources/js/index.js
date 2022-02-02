@@ -1,6 +1,7 @@
 import Example from './components/Example'
 import Navbar from './components/Navbar'
 import Start from './components/Start'
+import Login from './components/Login'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '../css/bootstrap.css'
@@ -25,4 +26,17 @@ ReactDOM.render(
     <Navbar />
     , 
     test)
+}
+
+const loginroot = document.getElementById('loginroot')
+
+if(loginroot) {
+    
+ReactDOM.render(
+    <> 
+        <Navbar />
+        <Login />
+    </>
+    , 
+    loginroot)
 }

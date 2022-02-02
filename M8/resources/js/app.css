@@ -1,6 +1,6 @@
 body{
     padding-top: 100px;
-    height: 200vh;
+    /* height: 200vh; */
 }
 
 /* Colors */
@@ -48,4 +48,43 @@ nav{
     cursor: pointer;
 }
 
+/* Login */
 
+.login-body {
+    width: 25%;
+    padding-top: 20vh;
+}
+
+.login-body .card-body {
+    background-color: #DFDEDC;
+    color: #707070;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.login-body .card-body form {
+    padding-top: 2%;
+}
+
+.form-group {
+    padding: 1% 0;
+}
+
+.login-inputs {
+    padding: 3% 0;
+}
+
+.login-btn {
+    padding: 0.8% 7%;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    background-color: #FFF;
+    color: #707070;
+    border-color: #707070;
+}
+
+.login-btn:hover {
+    color: #FFF;
+    background-color: #707070;
+    border-color: #707070;
+}
