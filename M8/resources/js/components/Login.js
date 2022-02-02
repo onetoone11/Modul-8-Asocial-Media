@@ -28,8 +28,8 @@ export default function Login(props){
 
                     </form>
                 </div>
-            </div>
 
+            </div>
         </div>
     )
 }
