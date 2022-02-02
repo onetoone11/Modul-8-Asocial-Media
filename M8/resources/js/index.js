@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Start from './components/Start'
 import Login from './components/Login'
 import PostForm from './components/PostForm'
+import Register from './components/Register'
 
 import App from './app'
 import React from 'react'
@@ -52,6 +53,19 @@ ReactDOM.render(
     </>
     , 
     loginroot)
+}
+
+const registerroot = document.getElementById('registerroot')
+
+if(registerroot) {
+    
+ReactDOM.render(
+    <> 
+        <Navbar />
+        <Register />
+    </>
+    , 
+    registerroot)
 }
 
 const create = document.getElementById('create')
