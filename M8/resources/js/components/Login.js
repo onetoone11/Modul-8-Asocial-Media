@@ -1,25 +1,24 @@
 import React from 'react'
 
-export default function Login(){
-
-    const [darkMode, setDarkMode] = React.useState(true)
+export default function Login(props){
 
     return(
         <div className="container login-body">
             
-                <div className={`card-body bg--light`}>
+            <div className="card">
+                <div className={`card-body ${props.darkMode ? 'bg--dark' : 'bg--light'}`}>
                     <h2 className="card-title">Log in</h2>
                     <hr/>
 
                     <form action="">
 
-                        <div className="login-inputs">
+                        <div className={`login-inputs`}>
                         <div className="form-group">
-                            <input type="text" placeholder="Username" className="form-control"/>
+                            <input type="text" placeholder="Username" className={`${props.darkMode && 'bg--darkgray'} form-control`} />
                         </div>
 
                         <div className="form-group">
-                            <input type="password" placeholder="Password" className="form-control"/>
+                            <input type="password" placeholder="Password" className={`${props.darkMode && 'bg--darkgray'} form-control`} />
                         </div>
                         </div>
 
@@ -30,6 +29,7 @@ export default function Login(){
                     </form>
                 </div>
 
+            </div>
         </div>
     )
 }

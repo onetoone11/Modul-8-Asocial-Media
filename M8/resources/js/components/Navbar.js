@@ -5,14 +5,12 @@ import React from 'react'
 
 
 
-export default function Navbar(){
+export default function Navbar(props){
 
     const [loggedIn, setLoggedIn] = React.useState(true);
 
-    const [darkMode, setDarkMode] = React.useState(true)
-
     return(
-        <nav className={`d-flex justify-content-between align-items-center p-0 ${darkMode ? 'bg--darkgray' : 'bg--white'}`}>
+        <nav className={`d-flex justify-content-between align-items-center p-0 ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`}>
             <div className="d-flex w-50 ">
                 <div className="nav--logo mr-5"><img className="logo--image" src={Logo}></img></div>
 
@@ -26,8 +24,8 @@ export default function Navbar(){
             {loggedIn ? 
             
             <div className="nav--account">
-                <button className={`mr-3 btn-login ${darkMode ? 'bg--white' : 'bg--light'}`}>Log In</button>
-                <button className={`btn-register ${darkMode ? 'bg--darkgray border-w' : 'bg--white border-b'}`} >Register</button>
+                <button className={`mr-3 btn-login ${props.darkMode ? 'bg--white' : 'bg--light'}`}>Log In</button>
+                <button className={`btn-register ${props.darkMode ? 'bg--darkgray border-w' : 'bg--white border-b'}`} >Register</button>
             </div> 
             : 
             <div className="nav--account mr-3">
