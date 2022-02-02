@@ -2,6 +2,7 @@ import Example from './components/Example'
 import Navbar from './components/Navbar'
 import Start from './components/Start'
 import Login from './components/Login'
+import Register from './components/Register'
 
 import App from './app'
 import React from 'react'
@@ -40,15 +41,28 @@ ReactDOM.render(
     test)
 }
 
-// const loginroot = document.getElementById('loginroot')
+const loginroot = document.getElementById('loginroot')
 
-// if(loginroot) {
+if(loginroot) {
     
-// ReactDOM.render(
-//     <> 
-//         <Navbar />
-//         <Login />
-//     </>
-//     , 
-//     loginroot)
-// }
+ReactDOM.render(
+    <> 
+        <Navbar />
+        <Login />
+    </>
+    , 
+    loginroot)
+}
+
+const registerroot = document.getElementById('registerroot')
+
+if(registerroot) {
+    
+ReactDOM.render(
+    <> 
+        <Navbar />
+        <Register />
+    </>
+    , 
+    registerroot)
+}

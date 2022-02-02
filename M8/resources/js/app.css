@@ -125,6 +125,7 @@ input[type=search]:focus {
 .login-body {
     width: 25%;
     padding-top: 20vh;
+    border: none;
 }
 
 .login-body .card-body {
@@ -132,9 +133,11 @@ input[type=search]:focus {
     color: #707070;
     padding-right: 5%;
     padding-left: 5%;
+    border: 1px solid #707070;
+    border-radius: 25px;
 }
 
-.login-body .card-body form {
+.login-body .card form {
     padding-top: 2%;
 }
 
@@ -159,4 +162,10 @@ input[type=search]:focus {
     color: #FFF;
     background-color: #707070;
     border-color: #707070;
+}
+
+/* Register */
+
+.register-body {
+    padding-top: 10vh;
 }

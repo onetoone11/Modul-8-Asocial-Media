@@ -2,6 +2,8 @@ import Button from './Button'
 import Logo from './logoBlack.png'
 
 
+
+
 export default function Navbar(){
     return(
         <nav className="d-flex justify-content-between align-items-center p-0">
