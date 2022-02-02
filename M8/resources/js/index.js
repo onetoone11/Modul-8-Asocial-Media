@@ -2,6 +2,7 @@ import Example from './components/Example'
 import Navbar from './components/Navbar'
 import Start from './components/Start'
 import Login from './components/Login'
+import PostForm from './components/PostForm'
 
 import App from './app'
 import React from 'react'
@@ -60,6 +61,7 @@ if(create) {
 ReactDOM.render(
     <> 
         <Navbar />
+        <PostForm />
     </>
     , 
     create)

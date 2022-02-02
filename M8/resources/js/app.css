@@ -213,3 +213,14 @@ input[type=search]:focus {
     background-color: #707070;
     border-color: #707070;
 }
+
+/* Create and Edit forms */
+
+.post-create-body {
+    width: 50%;
+}
+
+.post-create-body .card .card-body {
+    background-color: #DFDEDC;
+}
+
