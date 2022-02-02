@@ -66,3 +66,15 @@ ReactDOM.render(
     , 
     registerroot)
 }
+
+const create = document.getElementById('create')
+
+if(create) {
+    
+ReactDOM.render(
+    <> 
+        <Navbar />
+    </>
+    , 
+    create)
+}
