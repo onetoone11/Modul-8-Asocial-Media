@@ -21,6 +21,7 @@ export default function Thread(){
 
                 <p className="comments--comment">Comments</p> 
 
+                <Comment test={<Comment test={<Comment />} />} />
                 <Comment />
                 {/* <Comment /> */}
                 
