@@ -9,10 +9,23 @@ import './app.css'
 const root = document.getElementById('root')
 if(root) {
     ReactDOM.render(
-    <Example />, 
+    <>
+        <Navbar />
+        <Example />
+    </>, 
     
     root)
 }
+
+// const test = document.getElementById('test')
+
+// if(test) {
+    
+// ReactDOM.render(
+//     <Navbar />
+//     , 
+//     test)
+// }
 
 const test = document.getElementById('test')
 
@@ -20,6 +33,6 @@ if(test) {
     
 ReactDOM.render(
     <App />, 
-    
+
     test)
 }

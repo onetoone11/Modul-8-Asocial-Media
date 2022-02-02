@@ -1,9 +1,12 @@
+import Button from './Button'
+import Logo from './logoBlack.png'
+
 
 export default function Navbar(){
     return(
         <nav>
-            <div className="nav--logo">Logo</div>
-
+            <div className="nav--logo"><img src={Logo}></img></div>
+            
             {/* <div>
                 <input type="search" />
             </div> */}
