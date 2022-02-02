@@ -7,7 +7,6 @@ export default function Login(){
     return(
         <div className="container login-body">
             
-            <div className="card">
                 <div className={`card-body bg--light`}>
                     <h2 className="card-title">Log in</h2>
                     <hr/>
@@ -30,7 +29,6 @@ export default function Login(){
 
                     </form>
                 </div>
-            </div>
 
         </div>
     )
