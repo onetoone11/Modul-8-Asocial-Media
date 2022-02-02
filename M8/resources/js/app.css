@@ -234,13 +234,8 @@ input[type=search]:focus {
     font-size: 1.5rem;
     /* background-color: #FFF; -----------------------------------------------------------------------------------------
     color: #707070; */
-    border-color: #707070;
-}
-
-.login-btn:hover {
-    color: #FFF;
-    /* background-color: #707070; ----------------------------------------------------------------------------------------- */
-    border-color: #707070;
+    /* border-color: #707070; */
+    border: none;
 }
 
 /* Register */
