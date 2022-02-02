@@ -1,6 +1,6 @@
 import Example from './components/Example'
-import Navbar from './components/Navbar'
-import Start from './components/Start'
+
+import App from './app'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '../css/bootstrap.css'
@@ -17,12 +17,22 @@ if(root) {
     root)
 }
 
+// const test = document.getElementById('test')
+
+// if(test) {
+    
+// ReactDOM.render(
+//     <Navbar />
+//     , 
+//     test)
+// }
+
 const test = document.getElementById('test')
 
 if(test) {
     
 ReactDOM.render(
-    <Navbar />
-    , 
+    <App />, 
+
     test)
 }
