@@ -2083,7 +2083,7 @@ __webpack_require__(/*! ./index */ "./resources/js/index.js");
 
 function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Profile__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Thread__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
   });
 }
 
@@ -2654,16 +2654,23 @@ var test = document.getElementById('test');
 
 if (test) {
   react_dom__WEBPACK_IMPORTED_MODULE_6__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_app__WEBPACK_IMPORTED_MODULE_4__["default"], {}), test);
-} // const loginroot = document.getElementById('loginroot')
-// if(loginroot) {
-// ReactDOM.render(
-//     <> 
-//         <Navbar />
-//         <Login />
-//     </>
-//     , 
-//     loginroot)
-// }
+}
+
+var loginroot = document.getElementById('loginroot');
+
+if (loginroot) {
+  react_dom__WEBPACK_IMPORTED_MODULE_6__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+  }), loginroot);
+}
+
+var create = document.getElementById('create');
+
+if (create) {
+  react_dom__WEBPACK_IMPORTED_MODULE_6__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {})
+  }), create);
+}
 
 /***/ }),
 

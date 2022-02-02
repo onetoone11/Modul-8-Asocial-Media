@@ -13,8 +13,8 @@ export default function App(){
         <>
             <Navbar /> 
             {/* <Start /> */}
-            {/* <Thread /> */}
-            <Profile />
+            <Thread />
+            {/* <Profile /> */}
         </>
     )
 }
