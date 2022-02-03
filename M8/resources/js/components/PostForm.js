@@ -1,7 +1,6 @@
 import React from 'react'
 
-const PostForm = ({ mode }) => {
-    const [darkMode, setDarkMode] = React.useState(true);
+const PostForm = ({ mode, darkMode }) => {
 
     return (
         <div className={`container post-create-body ${darkMode ? "c-white" : "c-gray"}`}>
@@ -18,7 +17,7 @@ const PostForm = ({ mode }) => {
                         </div>
                         
                         <div className="form-group">
-                            <textarea style={{height: '100%'}} placeholder="Body text" rows="5" className="form-control" />
+                            <textarea style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className="form-control" />
                         </div>
                         
                         <div className="form-group">

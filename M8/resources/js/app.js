@@ -11,6 +11,7 @@ import Profile from './components/Profile'
 import Start from './components/Start'
 import Login from './components/Login'
 import Register from './components/Register'
+import PostForm from './components/PostForm'
 
 export default function App(){
 
@@ -26,11 +27,12 @@ export default function App(){
             {/* <Register darkMode={darkMode} /> */}
             {/* <Login darkMode={darkMode} /> */}
             {/* <Start darkMode={darkMode} /> */}
+            <Thread darkMode={darkMode} />
+            {/* <Profile darkMode={darkMode} /> */}
             {/* <Thread darkMode={darkMode} /> */}
-            <Profile darkMode={darkMode} />
-            {/* <Thread darkMode={darkMode} /> */}
-            <Start darkMode={darkMode} />
-            {/* <button onClick={handleClick}>Change Mode</button> */}
+            {/* <Start darkMode={darkMode} /> */}
+            {/* <PostForm darkMode={darkMode}/> */}
+            <button onClick={handleClick}>Change Mode</button>
         </>
     )
 }

@@ -162,6 +162,13 @@ input[type=search]:focus {
     /* float: left; */
 }
 
+.icon-btn {
+    cursor: pointer; 
+    outline: none;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
 .like--i{
     cursor: pointer;
 }
