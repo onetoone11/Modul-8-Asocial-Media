@@ -26,7 +26,8 @@ export default function App(){
             <Navbar darkMode={darkMode} /> 
             {/* <Register darkMode={darkMode} /> */}
             {/* <Login darkMode={darkMode} /> */}
-            <Start darkMode={darkMode} />
+            {/* <Start darkMode={darkMode} />
+            <Start darkMode={darkMode} /> */}
             <Thread darkMode={darkMode} />
             {/* <Profile darkMode={darkMode} /> */}
             {/* <Thread darkMode={darkMode} /> */}

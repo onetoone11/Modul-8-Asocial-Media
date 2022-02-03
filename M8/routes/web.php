@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,16 @@ Route::get('/register', function () {
 
 Route::get('/test', [CommentsController::class, 'index']);
 
+Route::get('/thread', function () {
+    return view('edit');
+});
+
+// Route::get('/test', [CommentsController::class, 'store']);
+
+Route::get('/test2', function () {
+    return view('test2');
+});
+
+Route::get('/comment', [CommentsController::class, 'store']);
+
+// Route::resource('test', PostsController::class);
