@@ -25,7 +25,6 @@ export default function App(props){
         setDarkMode((prevDarkMode) => !prevDarkMode)
     }
 
-<<<<<<< HEAD
     if(props.page === 'test'){
         return(
             <>
@@ -34,9 +33,9 @@ export default function App(props){
                 {/* <Login darkMode={darkMode} /> */}
                 {/* <Start darkMode={darkMode} /> */}
                 {/* <Thread darkMode={darkMode} /> */}
-                <Profile darkMode={darkMode} />
-                {/* <Thread darkMode={darkMode} /> */}
-                <Start darkMode={darkMode} />
+                {/* <Profile darkMode={darkMode} /> */}
+                <Thread darkMode={darkMode} />
+                {/* <Start darkMode={darkMode} /> */}
                 {/* <button onClick={handleClick}>Change Mode</button> */}
             </>
         )
@@ -112,21 +111,5 @@ export default function App(props){
     
 
     
-=======
-    return(
-        <>
-            <Navbar darkMode={darkMode} /> 
-            {/* <Register darkMode={darkMode} /> */}
-            {/* <Login darkMode={darkMode} /> */}
-            {/* <Start darkMode={darkMode} />
-            <Start darkMode={darkMode} /> */}
-            <Thread darkMode={darkMode} />
-            {/* <Profile darkMode={darkMode} /> */}
-            {/* <Thread darkMode={darkMode} /> */}
-            {/* <Start darkMode={darkMode} /> */}
-            {/* <button onClick={handleClick}>Change Mode</button> */}
-        </>
-    )
->>>>>>> 60f374bd04959402124e2a673478ff24d9a3dbf7
 }
 

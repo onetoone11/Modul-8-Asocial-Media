@@ -2,11 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentsController;
-<<<<<<< HEAD
 use App\Http\Controllers\PagesController;
-=======
 use App\Http\Controllers\PostsController;
->>>>>>> 60f374bd04959402124e2a673478ff24d9a3dbf7
 
 /*
 |--------------------------------------------------------------------------
