@@ -1,5 +1,5 @@
 @extends('app')
 
 @section('content')
-    <div id="login"></div>
+    <div id="profile"></div>
 @endsection

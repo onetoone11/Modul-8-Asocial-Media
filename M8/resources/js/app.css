@@ -1,6 +1,6 @@
 body{
-    padding-top: 100px;
-    height: 200vh;
+    padding: 100px 0 100px 0;
+    /* height: 200vh; */
 }
 
 /* Colors */

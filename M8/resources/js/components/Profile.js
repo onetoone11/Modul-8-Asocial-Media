@@ -1,4 +1,4 @@
-import findus from './findus.png'
+// import findus from './findus.png'
 import React from 'react'
 
 export default function Profile(props){

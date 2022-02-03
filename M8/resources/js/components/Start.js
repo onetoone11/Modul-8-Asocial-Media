@@ -7,7 +7,7 @@ export default function Start(props){
     console.log(props.darkMode)
 
     return(
-        <div className="container">
+        <div className="container mt-5">
             <div className="row">
                 <div className="col-lg-3"></div>
                 <div className="col-lg-6">

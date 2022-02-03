@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div id="registerroot"></div>
+    <div id="register"></div>
 
     <script src={{mix('js/app.js')}}></script>
 </body>

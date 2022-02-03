@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,29 +15,21 @@ use App\Http\Controllers\CommentsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PagesController::class, 'index']);
 
-// Route::get('/test', function () {
-//     return view('test');
-// });
+Route::get('/thread', [PagesController::class, 'thread']);
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [PagesController::class, 'login']);
 
-Route::get('/create', function () {
-    return view('create');
-});
+Route::get('/register', [PagesController::class, 'register']);
 
-Route::get('/edit', function () {
-    return view('edit');
-});
+Route::get('/profile', [PagesController::class, 'profile']);
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/create', [PagesController::class, 'create']);
 
-Route::get('/test', [CommentsController::class, 'index']);
+Route::get('/edit', [PagesController::class, 'edit']);
+
+
+
+Route::get('/test', [PagesController::class, 'test']);
 
