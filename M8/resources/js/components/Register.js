@@ -7,7 +7,7 @@ export default function Register(props){
             
                 <div className={`card-body ${props.darkMode ? 'bg--dark' : 'bg--light'}`}>
                     <h2 className="card-title">Register</h2>
-                    <hr/>
+                    <hr className={`${props.darkMode ? 'bg--light' : 'bg--dark'}`}/>
 
                     <form action="">
 

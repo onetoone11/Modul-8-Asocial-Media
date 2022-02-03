@@ -26,13 +26,12 @@ export default function App(){
             <Navbar darkMode={darkMode} /> 
             {/* <Register darkMode={darkMode} /> */}
             {/* <Login darkMode={darkMode} /> */}
-            {/* <Start darkMode={darkMode} /> */}
+            <Start darkMode={darkMode} />
             <Thread darkMode={darkMode} />
             {/* <Profile darkMode={darkMode} /> */}
             {/* <Thread darkMode={darkMode} /> */}
             {/* <Start darkMode={darkMode} /> */}
-            {/* <PostForm darkMode={darkMode}/> */}
-            <button onClick={handleClick}>Change Mode</button>
+            {/* <button onClick={handleClick}>Change Mode</button> */}
         </>
     )
 }
