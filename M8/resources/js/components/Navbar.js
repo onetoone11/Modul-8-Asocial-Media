@@ -16,7 +16,7 @@ export default function Navbar(props){
 
                 <form className="d-flex justify-content-center align-items-center position-relative w-100">
                     <input type="search"/>
-                    <button className="search-icon"><i className="fa fa-search fa-lg"></i></button>
+                    <button className="icon-btn search-icon"><i className="fa fa-search fa-lg"></i></button>
                 </form>
             </div>
             

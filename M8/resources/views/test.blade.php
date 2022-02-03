@@ -12,6 +12,7 @@
 <body>
     {{-- <h1>Hello</h1> --}}
 
+    {!! json_encode($data) !!}
     <div id="test"></div>
 
     <script src={{mix('js/app.js')}}></script>

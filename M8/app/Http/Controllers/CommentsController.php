@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class CommentsController extends Controller
 {
@@ -13,7 +14,9 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::select(DB::raw("SELECT * FROM comments"));
+
+        return view('test')->with('data', $data);
     }
 
     /**

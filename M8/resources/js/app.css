@@ -169,6 +169,10 @@ input[type=search]:focus {
     border: 1px solid transparent;
 }
 
+.icon-btn:focus {
+    outline: none;
+}
+
 .like--i{
     cursor: pointer;
 }
