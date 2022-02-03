@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Comment;
 
 class CommentsController extends Controller
 {
@@ -37,7 +38,15 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment;
+        $comment->post_id = null;
+        $comment->user_id = null;
+        $comment->text = $request->input('text');
+        $comment->likes = "0";
+        $comment->parent_comment_id = $request->input('parent_id');
+        $comment->save();
+
+        return redirect('test');
     }
 
     /**
@@ -48,7 +57,7 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

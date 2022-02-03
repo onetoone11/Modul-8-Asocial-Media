@@ -4,6 +4,7 @@ import Start from './components/Start'
 import Login from './components/Login'
 import PostForm from './components/PostForm'
 import Register from './components/Register'
+import Thread from './components/Thread'
 
 import App from './app'
 import React from 'react'
@@ -92,3 +93,15 @@ ReactDOM.render(
     , 
     edit)
 }
+
+const postroot = document.getElementById('postroot');
+
+if(postroot) {
+    ReactDOM.render(
+        <>
+            <Navbar />
+            <Thread />
+        </>
+    , postroot)    
+}
+
