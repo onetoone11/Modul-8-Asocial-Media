@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentsController;
+<<<<<<< HEAD
 use App\Http\Controllers\PagesController;
+=======
+use App\Http\Controllers\PostsController;
+>>>>>>> 60f374bd04959402124e2a673478ff24d9a3dbf7
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +37,16 @@ Route::get('/edit', [PagesController::class, 'edit']);
 
 Route::get('/test', [PagesController::class, 'test']);
 
+Route::get('/thread', function () {
+    return view('edit');
+});
+
+// Route::get('/test', [CommentsController::class, 'store']);
+
+Route::get('/test2', function () {
+    return view('test2');
+});
+
+Route::get('/comment', [CommentsController::class, 'store']);
+
+// Route::resource('test', PostsController::class);

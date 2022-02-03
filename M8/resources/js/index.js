@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+import Example from './components/Example'
+import Navbar from './components/Navbar'
+import Start from './components/Start'
+import Login from './components/Login'
+import PostForm from './components/PostForm'
+import Register from './components/Register'
+import Thread from './components/Thread'
+
+>>>>>>> 60f374bd04959402124e2a673478ff24d9a3dbf7
 import App from './app'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -128,6 +139,7 @@ ReactDOM.render(
 
 // if(edit) {
     
+<<<<<<< HEAD
 // ReactDOM.render(
 //     <> 
 //         <Navbar />
@@ -136,3 +148,25 @@ ReactDOM.render(
 //     , 
 //     edit)
 // }
+=======
+ReactDOM.render(
+    <> 
+        <Navbar />
+        <PostForm mode="edit" />
+    </>
+    , 
+    edit)
+}
+
+const postroot = document.getElementById('postroot');
+
+if(postroot) {
+    ReactDOM.render(
+        <>
+            <Navbar />
+            <Thread />
+        </>
+    , postroot)    
+}
+
+>>>>>>> 60f374bd04959402124e2a673478ff24d9a3dbf7

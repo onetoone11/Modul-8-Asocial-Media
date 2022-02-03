@@ -22,9 +22,11 @@ export default function Thread(props) {
                 <p className="comments--comment">Comments</p>
 
                 {/* <Comment darkMode={props.darkMode} test={<Comment darkMode={props.darkMode} test={<Comment darkMode={props.darkMode} />} />} /> */}
-                <Comment darkMode={props.darkMode} text="nöanöanöanldksdlkadskdjalksdlalsdjdjakjdlasjdlajsldjlkajdlksjdlkajlskjdlakjdklsdkladjksdjkladlksdjlkajldkjlaksjlkdjalkdsdljdlsldkajdslkjdsadsdadsdasddsadadsdadsddasdasdadsdads"/>
-                <Comment darkMode={props.darkMode} />
-                <Comment darkMode={props.darkMode} />
+                {/* <Comment darkMode={props.darkMode} text="nöanöanöanldksdlkadskdjalksdlalsdjdjakjdlasjdlajsldjlkajdlksjdlkajlskjdlakjdklsdkladjksdjkladlksdjlkajldkjlaksjlkdjalkdsdljdlsldkajdslkjdsadsdadsdasddsadadsdadsddasdasdadsdads"/> */}
+                <Comment darkMode={props.darkMode} id={1} />
+
+
+                {/* <Comment darkMode={props.darkMode} />
                 <Comment darkMode={props.darkMode} test={
                     <>
                         <Comment darkMode={props.darkMode} test={
@@ -65,7 +67,7 @@ export default function Thread(props) {
                         } />
                         <Comment darkMode={props.darkMode} />
                     </>
-                } />
+                } /> */}
 
             </div>
         </div>
