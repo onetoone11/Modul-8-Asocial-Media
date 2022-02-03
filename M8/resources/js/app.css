@@ -236,6 +236,7 @@ input[type=search]:focus {
     color: #707070; */
     /* border-color: #707070; */
     border: none;
+    cursor: pointer;
 }
 
 /* Register */

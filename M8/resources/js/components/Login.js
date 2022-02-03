@@ -5,10 +5,9 @@ export default function Login(props){
     return(
         <div className="container login-body">
             
-            <div className="card">
                 <div className={`card-body ${props.darkMode ? 'bg--dark' : 'bg--light'}`}>
                     <h2 className="card-title">Log in</h2>
-                    <hr/>
+                    <hr className={`${props.darkMode ? 'bg--light' : 'bg--dark'}`}/>
 
                     <form action="">
 
@@ -23,13 +22,12 @@ export default function Login(props){
                         </div>
 
                         <div className="form-group">
-                            <input type="submit" value="Log in" className="btn btn-outline-dark login-btn bg--white"/>
+                            <input type="submit" value="Log in" className={`login-btn ${props.darkMode ? 'border-b' : ''}`}/>
                         </div>
 
                     </form>
                 </div>
 
-            </div>
         </div>
     )
 }
