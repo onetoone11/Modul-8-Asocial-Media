@@ -28,15 +28,11 @@ Route::get('/profile', [PagesController::class, 'profile']);
 
 Route::get('/create', [PagesController::class, 'create']);
 
-Route::get('/edit', [PagesController::class, 'edit']);
+Route::get('/edit/{post_id}', [PagesController::class, 'edit']);
 
 
 
 Route::get('/test', [PagesController::class, 'test']);
-
-Route::get('/thread', function () {
-    return view('edit');
-});
 
 // Route::get('/test', [CommentsController::class, 'store']);
 
@@ -45,5 +41,9 @@ Route::get('/test2', function () {
 });
 
 Route::get('/comment', [CommentsController::class, 'store']);
+
+Route::get('/createPost', [PostsController::class, 'create']);
+
+Route::get('/editPost', [PostsController::class, 'edit']);
 
 // Route::resource('test', PostsController::class);

@@ -3,27 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Models\Post;
 
 class PostsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $post = new Post;
+        $post->user_id = 1;
+        $post->image = $request->input('post_img');
+        $post->title = $request->input('post_header');
+        $post->text = $request->input('post_body');
+        $post->likes = "0";
+        $post->dislikes = "0";
+        $post->save();
+
+        return redirect('thread');
+
+        // $data = [($request->input('post_header')), ($request->input('post_body')), ($request->input('post_img'))];
+
+        // return view('test2')->with('data', $data);
     }
 
     /**
@@ -54,9 +60,21 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $post_id)
     {
-        //
+
+        // $id = 1;
+
+        $post = Post::find($post_id);
+        $post->user_id = 1;
+        $post->image = $request->input('post_img');
+        $post->title = $request->input('post_header');
+        $post->text = $request->input('post_body');
+        $post->likes = "0";
+        $post->dislikes = "0";
+        $post->save();
+
+        return redirect('thread');
     }
 
     /**

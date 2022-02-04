@@ -11,7 +11,8 @@ import Profile from './components/Profile'
 import Start from './components/Start'
 import Login from './components/Login'
 import Register from './components/Register'
-import PostForm from './components/PostForm'
+import EditPost from './components/EditPost'
+import CreatePost from './components/CreatePost'
 
 
 // import test from process.env.REACT_DARK;
@@ -91,7 +92,7 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <PostForm mode="create" />
+                <CreatePost />
             </>
         )
     }
@@ -100,7 +101,7 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <PostForm mode="edit" />
+                <EditPost  />
             </>
         )
     }

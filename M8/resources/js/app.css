@@ -151,7 +151,7 @@ input[type=search]:focus {
     border: 1px solid ;
 }
 
-.comment--profile{
+.comment--profile{ 
     /* background-color: #fff; ----------------------------------------------------------------------------------------- */
     height: 46px;
     width: 50px;
