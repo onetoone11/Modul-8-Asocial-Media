@@ -6,6 +6,8 @@ export default function Comment(props){
 
     const [isReplying, setIsReplying] = React.useState(false);
 
+    // console.log(post_id)
+
     return(
     <div>
         <div className="row w-100">
@@ -23,7 +25,7 @@ export default function Comment(props){
         </div> 
         {isReplying && 
             <div className={`ml-4 pl-4 border`}>
-            <form className="row w-100" action="./comment" method="get">
+            <form className="row w-100" action={`/comment/${post_id}`} method="get">
                 <div className="comment--profile bg--white mr-3 ml-4"></div>
                 <div>
                     <input type="hidden" id="parent_id" name="parent_id" value={props.id} />

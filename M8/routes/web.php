@@ -34,16 +34,15 @@ Route::get('/edit', [PagesController::class, 'edit']);
 
 Route::get('/test', [PagesController::class, 'test']);
 
-Route::get('/thread', function () {
-    return view('edit');
-});
-
 // Route::get('/test', [CommentsController::class, 'store']);
 
 Route::get('/test2', function () {
     return view('test2');
 });
 
-Route::get('/comment', [CommentsController::class, 'store']);
+// Route::get('thread/{post_id}/comment', [CommentsController::class, 'store']);
+Route::get('/comment/{post_id}', [CommentsController::class, 'store']);
+
+Route::get('thread/{post_id}', [PostsController::class, 'show']);
 
 // Route::resource('test', PostsController::class);
