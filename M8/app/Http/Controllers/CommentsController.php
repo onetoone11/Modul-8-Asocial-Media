@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Comment;
+use Redirect;
 
 class CommentsController extends Controller
 {
@@ -36,17 +37,19 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $post_id)
     {
+        // $post_id = 1;
         $comment = new Comment;
-        $comment->post_id = null;
+        $comment->post_id = $post_id;
         $comment->user_id = null;
         $comment->text = $request->input('text');
         $comment->likes = "0";
         $comment->parent_comment_id = $request->input('parent_id');
         $comment->save();
 
-        return redirect('test');
+        return Redirect::to('/thread/'. $post_id);
+        // return view('index');
     }
 
     /**

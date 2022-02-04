@@ -4,6 +4,13 @@ export default function Thread(props) {
 
     const [img, setImg] = React.useState(false)
 
+    console.log(comments);
+    console.log(post);
+
+    const toRecursiveTree = list => {
+
+    }
+
     return (
         <div className="container">
             {img && <div>
@@ -21,53 +28,13 @@ export default function Thread(props) {
 
                 <p className="comments--comment">Comments</p>
 
-                {/* <Comment darkMode={props.darkMode} test={<Comment darkMode={props.darkMode} test={<Comment darkMode={props.darkMode} />} />} /> */}
-                {/* <Comment darkMode={props.darkMode} text="nöanöanöanldksdlkadskdjalksdlalsdjdjakjdlasjdlajsldjlkajdlksjdlkajlskjdlakjdklsdkladjksdjkladlksdjlkajldkjlaksjlkdjalkdsdljdlsldkajdslkjdsadsdadsdasddsadadsdadsddasdasdadsdads"/> */}
+                {/* Need to convert a list of nodes of comments with parent pointers
+                to a recursive tree
+                */}
+                {comments.map((element,i) => {
+                    return <Comment key={i} darkMode={props.darkMode} id={element.id} text={element.text} />
+                })}
                 <Comment darkMode={props.darkMode} id={1} />
-
-
-                {/* <Comment darkMode={props.darkMode} />
-                <Comment darkMode={props.darkMode} test={
-                    <>
-                        <Comment darkMode={props.darkMode} test={
-                            <>
-                                <Comment darkMode={props.darkMode} />
-                                <Comment darkMode={props.darkMode} test={
-                                    <>
-                                        <Comment darkMode={props.darkMode} test={
-                                            <>
-                                                <Comment darkMode={props.darkMode} test={
-                                                    <>
-                                                        <Comment darkMode={props.darkMode} test={
-                                                            <>
-                                                                <Comment darkMode={props.darkMode} />
-                                                                <Comment darkMode={props.darkMode} test={
-                                                                    <>
-                                                                        <Comment darkMode={props.darkMode} test={
-                                                                            <>
-                                                                                <Comment darkMode={props.darkMode} />
-                                                                                <Comment darkMode={props.darkMode} />
-                                                                            </>
-                                                                        } />
-                                                                        <Comment darkMode={props.darkMode} />
-                                                                    </>
-                                                                } />
-                                                            </>
-                                                        } />
-                                                        <Comment darkMode={props.darkMode} />
-                                                    </>
-                                                } />
-                                                <Comment darkMode={props.darkMode} />
-                                            </>
-                                        } />
-                                        <Comment darkMode={props.darkMode} />
-                                    </>
-                                } />
-                            </>
-                        } />
-                        <Comment darkMode={props.darkMode} />
-                    </>
-                } /> */}
 
             </div>
         </div>

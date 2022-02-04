@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Models\Comment;
 use App\Models\Post;
+use DB;
 
 class PostsController extends Controller
 {
@@ -49,9 +50,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($post_id)
     {
-        //
+        $post = Post::find($post_id);
+        $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
+        return view('thread')->with('comments', $comments)->with('post', $post)->with('post_id', $post_id);
     }
 
     /**

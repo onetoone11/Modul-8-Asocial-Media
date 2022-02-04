@@ -175,6 +175,8 @@ input[type=search]:focus {
 
 .like--i{
     cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .post--end{
