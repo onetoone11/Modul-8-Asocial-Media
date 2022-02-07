@@ -37,7 +37,7 @@ export default function Comment(props){
             </div>
         }
 
-        {props.test && showToggle && <div className={`ml-4 pl-4 border`}>
+        {props.test && showToggle && <div className={`ml-4 pl-4`}>
             {props.test}
         </div>  } 
 

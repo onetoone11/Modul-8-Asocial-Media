@@ -50,6 +50,10 @@ body{
     border-color: #333;
 }
 
+.text-border {
+    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
+
 /* Navbar */
 nav{
     height: 70px;
@@ -136,6 +140,11 @@ input[type=search]:focus {
 
 .post--p{
     margin: 0;
+}
+
+.img-text {
+    
+    transform: translateY(-30px);
 }
 
 .comments--comment{
