@@ -2427,9 +2427,9 @@ var CreatePost = function CreatePost(darkMode) {
         children: "Create Post"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
         action: "./createPost",
-        method: "post",
+        method: "get",
         encType: "multipart/form-data",
-        children: ["@csrf", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "post_header",
@@ -2452,7 +2452,8 @@ var CreatePost = function CreatePost(darkMode) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            type: "file",
+            type: "url",
+            placeholder: "https://ImageExample.com",
             name: "post_img",
             id: "image-input",
             className: "form-control"
@@ -2515,7 +2516,7 @@ var EditPost = function EditPost(darkMode) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
     post_header: post.title,
     post_body: post.text,
-    post_img: "hej"
+    post_img: post.image
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       post_data = _React$useState2[0],
@@ -2569,7 +2570,10 @@ var EditPost = function EditPost(darkMode) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            type: "file",
+            type: "url",
+            placeholder: "https://ImageExample.com",
+            onChange: handleInput,
+            value: post_data.post_img,
             name: "post_img",
             id: "image-input",
             className: "form-control"

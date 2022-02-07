@@ -44,6 +44,7 @@ Route::get('/comment/{post_id}', [CommentsController::class, 'store']);
 
 Route::get('thread/{post_id}', [PostsController::class, 'show']);
 
-Route::post('/createPost', [PostsController::class, 'create']);
+Route::get('/createPost', [PostsController::class, 'create']);
+// Route::post('/createPost', [PostsController::class, 'create']);
 
 Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);

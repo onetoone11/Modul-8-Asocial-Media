@@ -24,22 +24,22 @@ class PostsController extends Controller
         // Save Image
 
         // Handle file upload
-        if($request->hasFile('post_img')){
-            // Get filename with the extension
-            // $fileNameWithExt = $request->input('post_img');
-            $fileNameWithExt = $request->file('post_img')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('post_img')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
-            // Upload Image'
-            $path = $request->file('post_img')->storeAs('public/post_images', $fileNameToStore);
-        }
-        else{
-            $fileNameToStore = 'noimage.jpg';
-        }
+        // if($request->hasFile('post_img')){
+        //     // Get filename with the extension
+        //     // $fileNameWithExt = $request->input('post_img');
+        //     $fileNameWithExt = $request->file('post_img')->getClientOriginalName();
+        //     // Get just filename
+        //     $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        //     // Get just ext
+        //     $extension = $request->file('post_img')->getClientOriginalExtension();
+        //     // Filename to store
+        //     $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        //     // Upload Image'
+        //     $path = $request->file('post_img')->storeAs('public/post_images', $fileNameToStore);
+        // }
+        // else{
+        //     $fileNameToStore = 'noimage.jpg';
+        // }
 
 
         $post = new Post;
