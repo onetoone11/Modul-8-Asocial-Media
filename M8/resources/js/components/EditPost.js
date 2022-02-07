@@ -22,7 +22,7 @@ const EditPost = (darkMode) => {
         }
 
     
-
+ 
     return (
         <div className={`container post-create-body ${darkMode ? "c-white" : "c-gray"}`}>
                 <div className={`card-body ${darkMode ? "bg--dark" : "bg--light"}`} style={{borderRadius: "20px"}}>
