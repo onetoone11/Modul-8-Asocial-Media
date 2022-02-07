@@ -2150,22 +2150,18 @@ function App(props) {
   }
 
   if (props.page === 'login') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Login__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        darkMode: darkMode
-      })]
+      })
     });
   }
 
   if (props.page === 'register') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Register__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        darkMode: darkMode
-      })]
+      })
     });
   }
 
@@ -2801,7 +2797,7 @@ function Profile(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Register)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -2826,7 +2822,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Register(props) {
+
+var Register = function Register(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     email: '',
     name: '',
@@ -2836,18 +2833,23 @@ function Register(props) {
       registerInput = _useState2[0],
       setRegister = _useState2[1];
 
-  var handleInput = function handleInput(e) {
-    setRegister(_objectSpread(_objectSpread({}, registerInput), {}, _defineProperty({}, e.target.name, e.target.value)));
-  };
+  console.log(registerInput); // const handleInput = (e) => {
+  //     setRegister({...registerInput, [e.target.name]: e.target.value});
+  // }
 
-  var regiesterSubmit = function regiesterSubmit(e) {
-    e.prevernDefault();
-    var data = {
-      email: registerInput.email,
-      name: registerInput.name,
-      password: registerInput.password
-    };
-  };
+  function handleInput(e) {
+    setRegister(function (registerInput) {
+      return _objectSpread(_objectSpread({}, registerInput), {}, _defineProperty({}, e.target.name, e.target.value));
+    });
+  } // const regiesterSubmit = (e) => {
+  //     e.prevernDefault();
+  //     const data = {
+  //         email: registerInput.email,
+  //         name: registerInput.name,
+  //         password: registerInput.password,
+  //     }
+  // }
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "container login-body register-body",
@@ -2859,8 +2861,13 @@ function Register(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {
         className: "".concat(props.darkMode ? 'bg--light' : 'bg--dark')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-        onSubmit: regiesterSubmit,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        action: "./registerUser",
+        method: "get",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          type: "hidden",
+          name: "_token",
+          value: "{{ csrf_token() }}"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "login-inputs",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "form-group",
@@ -2911,7 +2918,9 @@ function Register(props) {
       })]
     })
   });
-}
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Register);
 
 /***/ }),
 

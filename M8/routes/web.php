@@ -49,4 +49,4 @@ Route::get('/createPost', [PostsController::class, 'create']);
 
 Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);
 
-Route::get('/deletePost/{post_id}', [PostsController::class, 'destroy']);
+Auth::routes();

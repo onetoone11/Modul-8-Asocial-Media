@@ -65,7 +65,7 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <Login darkMode={darkMode} />
+                {/* <Login darkMode={darkMode} /> */}
             </>
         )
     }
@@ -74,7 +74,7 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <Register darkMode={darkMode} />
+                {/* <Register darkMode={darkMode} /> */}
             </>
         )
     }
