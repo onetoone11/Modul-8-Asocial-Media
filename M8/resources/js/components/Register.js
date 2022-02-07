@@ -1,26 +1,35 @@
 import React, { useState } from 'react'
 
-export default function Register(props){
+const Register = (props) => {
 
     const [registerInput, setRegister] = useState({
         email: '',
         name: '',
         password: '',
     });
+    console.log(registerInput);
 
-    const handleInput = (e) => {
-        setRegister({...registerInput, [e.target.name]: e.target.value});
+    // const handleInput = (e) => {
+    //     setRegister({...registerInput, [e.target.name]: e.target.value});
+    // }
+    function handleInput(e){
+        setRegister((registerInput) => {
+            return{
+                ...registerInput,
+                [e.target.name]: e.target.value
+            }
+        })
     }
 
-    const regiesterSubmit = (e) => {
-        e.prevernDefault();
+    // const regiesterSubmit = (e) => {
+    //     e.prevernDefault();
 
-        const data = {
-            email: registerInput.email,
-            name: registerInput.name,
-            password: registerInput.password,
-        }
-    }
+    //     const data = {
+    //         email: registerInput.email,
+    //         name: registerInput.name,
+    //         password: registerInput.password,
+    //     }
+    // }
 
     return(
         <div className="container login-body register-body">
@@ -29,8 +38,8 @@ export default function Register(props){
                     <h2 className="card-title">Register</h2>
                     <hr className={`${props.darkMode ? 'bg--light' : 'bg--dark'}`}/>
 
-                    <form onSubmit={regiesterSubmit}>
-
+                    <form action='./registerUser' method="get">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div className="login-inputs">
                             <div className="form-group">
                                 <input type="email" placeholder="Email" name="email" onChange={handleInput} value={registerInput.email} className={`${props.darkMode && 'bg--darkgray'} form-control`} />
@@ -57,3 +66,5 @@ export default function Register(props){
         </div>
     )
 }
+
+export default Register
