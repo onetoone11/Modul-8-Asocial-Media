@@ -1,5 +1,8 @@
 @extends('app')
 
+
 @section('content')
-    <div id="index"></div>
+aaaaa
+{!! json_encode($posts) !!}
+<div id="index"></div>
 @endsection

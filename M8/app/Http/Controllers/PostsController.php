@@ -13,7 +13,8 @@ class PostsController extends Controller
 
     public function index()
     {
-        //
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+        return view('index')->with('posts', $posts);
     }
 
     public function create(Request $request)
