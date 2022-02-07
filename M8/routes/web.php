@@ -40,13 +40,10 @@ Route::get('/test2', function () {
     return view('test2');
 });
 
-// Route::get('thread/{post_id}/comment', [CommentsController::class, 'store']);
 Route::get('/comment/{post_id}', [CommentsController::class, 'store']);
 
 Route::get('thread/{post_id}', [PostsController::class, 'show']);
 
-Route::get('/createPost', [PostsController::class, 'create']);
+Route::post('/createPost', [PostsController::class, 'create']);
 
-Route::get('/editPost', [PostsController::class, 'edit']);
-
-// Route::resource('test', PostsController::class);
+Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);

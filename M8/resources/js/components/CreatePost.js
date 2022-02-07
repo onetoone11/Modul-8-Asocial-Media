@@ -8,8 +8,8 @@ const CreatePost = (darkMode) => {
                     <h2 className="card-title">Create Post</h2>
                     
                     <hr></hr>
-                    <form action='./createPost' method="get">
-
+                    <form action='./createPost' method="post" encType='multipart/form-data'>
+                        @csrf
                         <div className="form-group">
                             <input name="post_header" type="text" placeholder="Header" className="form-control" />
                         </div>
