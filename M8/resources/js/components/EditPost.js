@@ -7,7 +7,7 @@ const EditPost = (darkMode) => {
         const [post_data, setPostData] = React.useState({
             post_header: post.title,
             post_body: post.text,
-            img: ""
+            post_img: post.image
         })
 
         console.log(post_data)
@@ -31,7 +31,7 @@ const EditPost = (darkMode) => {
                     <hr></hr>
 
                     {/* <form className="d-flex flex-column h-100"> */}
-                    <form action='./createPost' method="get">
+                    <form action={`/editPost/${post.id}`} method="get">
 
                         <div className="form-group">
                             <input value={post_data.post_header} name="post_header" onChange={handleInput} type="text" placeholder="Header" className="form-control" />
@@ -41,11 +41,14 @@ const EditPost = (darkMode) => {
                             <textarea value={post_data.post_body} name="post_body" onChange={handleInput} style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className="form-control" />
                         </div>
                         
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <input type="file" name="post_img" id="image-input" className="form-control"/>
+                        </div> */}
+
+                        <div className="form-group">
+                            <input type="url" placeholder="https://ImageExample.com" onChange={handleInput} value={post_data.post_img} name="post_img" id="image-input" className="form-control"/>
                         </div>
                         
-
                         <div className="form-group w-100 d-flex justify-content-center">
                             <input type="submit" value="Save" className="btn btn-outline-dark login-btn bg--white" />
                         </div>

@@ -8,8 +8,7 @@ const CreatePost = (darkMode) => {
                     <h2 className="card-title">Create Post</h2>
                     
                     <hr></hr>
-                    <form action='./createPost' method="get">
-
+                    <form action='./createPost' method="get" encType='multipart/form-data'>
                         <div className="form-group">
                             <input name="post_header" type="text" placeholder="Header" className="form-control" />
                         </div>
@@ -18,8 +17,12 @@ const CreatePost = (darkMode) => {
                             <textarea name="post_body" style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className="form-control" />
                         </div>
                         
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <input type="file" name="post_img" id="image-input" className="form-control"/>
+                        </div> */}
+
+                        <div className="form-group">
+                            <input type="url" placeholder="https://ImageExample.com" name="post_img" id="image-input" className="form-control"/>
                         </div>
                         
 
