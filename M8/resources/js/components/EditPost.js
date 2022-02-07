@@ -7,7 +7,7 @@ const EditPost = (darkMode) => {
         const [post_data, setPostData] = React.useState({
             post_header: post.title,
             post_body: post.text,
-            post_img: "hej"
+            post_img: post.image
         })
 
         console.log(post_data)
@@ -41,8 +41,12 @@ const EditPost = (darkMode) => {
                             <textarea value={post_data.post_body} name="post_body" onChange={handleInput} style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className="form-control" />
                         </div>
                         
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <input type="file" name="post_img" id="image-input" className="form-control"/>
+                        </div> */}
+
+                        <div className="form-group">
+                            <input type="url" placeholder="https://ImageExample.com" onChange={handleInput} value={post_data.post_img} name="post_img" id="image-input" className="form-control"/>
                         </div>
                         
                         <div className="form-group w-100 d-flex justify-content-center">
