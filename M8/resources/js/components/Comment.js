@@ -12,7 +12,7 @@ export default function Comment(props){
     <div>
         <div className="row w-100">
             <div className="comment--profile bg--white mr-3 ml-4"></div>
-            <div>
+            <div> 
                 <div className={`comment ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`} style={{minWidth:"200px", maxWidth: "500px", overflowWrap: "break-word"}}>{props.text}</div> 
                 <input hidden type="checkbox" name="likes" id="like" value="like" />
                 <label className="like--i ml-3" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-lg"></i></label>

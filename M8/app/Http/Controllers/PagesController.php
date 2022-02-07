@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Post;
 
 class PagesController extends Controller
 {
@@ -28,8 +29,9 @@ class PagesController extends Controller
         return view('create');
     }
 
-    public function edit(){
-        return view('edit');
+    public function edit($post_id){
+        $data = Post::find($post_id);
+        return view('edit')->with('data', $data);
     }
 
     public function register(){

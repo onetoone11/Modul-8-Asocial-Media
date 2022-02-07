@@ -1,1 +1,1 @@
-AAANknknljdnlnflnnldsnfln
+{{JSON_encode($data)}}

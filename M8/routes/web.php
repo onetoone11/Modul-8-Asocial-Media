@@ -28,7 +28,7 @@ Route::get('/profile', [PagesController::class, 'profile']);
 
 Route::get('/create', [PagesController::class, 'create']);
 
-Route::get('/edit', [PagesController::class, 'edit']);
+Route::get('/edit/{post_id}', [PagesController::class, 'edit']);
 
 
 
@@ -40,9 +40,10 @@ Route::get('/test2', function () {
     return view('test2');
 });
 
-// Route::get('thread/{post_id}/comment', [CommentsController::class, 'store']);
 Route::get('/comment/{post_id}', [CommentsController::class, 'store']);
 
 Route::get('thread/{post_id}', [PostsController::class, 'show']);
 
-// Route::resource('test', PostsController::class);
+Route::post('/createPost', [PostsController::class, 'create']);
+
+Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);
