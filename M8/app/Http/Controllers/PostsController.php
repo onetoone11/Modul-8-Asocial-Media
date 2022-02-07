@@ -19,7 +19,8 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         // php artisan storage:link
-        
+        // npm install csrf
+
         // Save Image
 
         // Handle file upload
