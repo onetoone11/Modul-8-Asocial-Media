@@ -16,7 +16,8 @@ export default function Start(props){
                         <img src="" alt="" />
                     </div>}
                     <div className={props.darkMode ? "bg--dark-bright" : "bg--light-bright"}> 
-                        <p className="post--p p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis nostrum labore optio. Nulla unde aliquid sit nobis quas qui.</p>
+                        <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{props.title}</h1>
+                        <p className="post--p p-3">{props.text}</p>
                     </div>
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "bg--light comments-sm p-3 post--end"}>
                         <input hidden type="radio" name="likes" id="like" value="like" />
@@ -24,7 +25,7 @@ export default function Start(props){
                         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
                         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>  
 
-                        <p className="comments--comment">Comments</p> 
+                        <p className="comments--comment"><a href={`./thread/${props.id}`} style={{color: "white", textDecoration: "none"}}>Comments</a></p>
 
                         <div>
                             <div className={props.darkMode ? "comment bg--darkgray" : "comment bg--white"}>Lorem ipsum dolor sit amet.</div>

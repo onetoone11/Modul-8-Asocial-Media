@@ -2,7 +2,8 @@
 
 
 @section('content')
-aaaaa
-{!! json_encode($posts) !!}
+<script>
+    let posts = {!! json_encode($posts) !!};
+</script>
 <div id="index"></div>
 @endsection

@@ -13,6 +13,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import EditPost from './components/EditPost'
 import CreatePost from './components/CreatePost'
+import Timeline from './components/Timeline'
 
 
 // import test from process.env.REACT_DARK;
@@ -46,8 +47,9 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <Start darkMode={darkMode} />
-                <Start darkMode={darkMode} />
+                <Timeline darkMode={darkMode} />
+                
+                 {/* <Start /> */}
             </>
         )
     }
