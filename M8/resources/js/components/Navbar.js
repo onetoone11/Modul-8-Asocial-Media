@@ -3,6 +3,20 @@ import Logo from './logoBlack.png'
 import React from 'react'
 
 export default function Navbar(props){
+    // if(!globalData.user) {
+    //     console.log("test")
+    // } else {
+    //     console.log(globalData.user)
+    // }
+
+    const onLogin = () => {
+        window.location.href = `/login`;
+    }
+
+    const onRegister = () => {
+        window.location.href = `/register`;
+    }
+
 
     const [loggedIn, setLoggedIn] = React.useState(true);
 
@@ -18,11 +32,11 @@ export default function Navbar(props){
             </div>
             
 
-            {loggedIn ? 
+            {!globalData.user ? 
             
             <div className="nav--account">
-                <button className={`mr-3 btn-login ${props.darkMode ? 'bg--white' : 'bg--light'}`}>Log In</button>
-                <button className={`btn-register ${props.darkMode ? 'bg--darkgray border-w' : 'bg--white border-b'}`} >Register</button>
+                <button onClick={onLogin} className={`mr-3 btn-login ${props.darkMode ? 'bg--white' : 'bg--light'}`}>Log In</button>
+                <button onClick={onRegister} className={`btn-register ${props.darkMode ? 'bg--darkgray border-w' : 'bg--white border-b'}`} >Register</button>
             </div> 
             : 
             <div className="nav--account mr-3">
