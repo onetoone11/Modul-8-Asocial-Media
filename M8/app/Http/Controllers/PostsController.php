@@ -19,7 +19,7 @@ class PostsController extends Controller
         foreach($posts as $post) {
             $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
         }
-        return view('index')->with('posts', $posts)->with('comments', $comments);
+        return view('index')->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);;
     }
 
     public function create(Request $request)

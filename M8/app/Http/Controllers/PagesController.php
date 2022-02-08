@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Post;
 use App\Models\User;
+// use App\Http\Controllers\Auth;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
 
     public function index(){
-        return view('index');
+        return view('index')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function thread(){
-        return view('thread');
+        return view('thread')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function login(){
@@ -31,16 +34,16 @@ class PagesController extends Controller
         foreach($posts as $post) {
             $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
         }
-        return view('profile')->with('user', $user)->with('posts', $posts)->with('comments', $comments);
+        return view('profile')->with('user', $user)->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function create(){
-        return view('create');
+        return view('create')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function edit($post_id){
         $data = Post::find($post_id);
-        return view('edit')->with('data', $data);
+        return view('edit')->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function register(){
@@ -48,7 +51,7 @@ class PagesController extends Controller
     }
 
     public function test(){
-        return view('test');
+        return view('test')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
 }
