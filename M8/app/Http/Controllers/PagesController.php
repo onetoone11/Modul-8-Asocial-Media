@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Post;
 // use App\Http\Controllers\Auth;
-use Auth;
+// use Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
