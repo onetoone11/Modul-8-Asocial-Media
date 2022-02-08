@@ -91,6 +91,7 @@ body{
 .btn--profile-settings:hover{
     filter: brightness(105%);
     cursor: pointer;
+    z-index: 1000;
 }
 
 .post--top{
@@ -273,10 +274,14 @@ input[type=search]:focus {
 .profile--settings-dropdown{
     position: absolute;
     width: 200px;
-    top: 60px;
+    top: 70px;
     right: 0px;
     padding: 20px;
     border-radius: 20px;
+}
+
+.profile--settings-dropdown li:hover{
+    filter: brightness(0.8);
 }
 
 .link{

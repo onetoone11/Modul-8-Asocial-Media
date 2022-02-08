@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Post;
+use App\Models\User;
 
 class PagesController extends Controller
 {
@@ -22,7 +23,15 @@ class PagesController extends Controller
     }
 
     public function profile(){
-        return view('profile');
+        // Måste ändras
+        $user_id = 1;
+        $user = User::find(11);
+        $posts = DB::select(DB::raw("SELECT * FROM posts WHERE user_id = $user_id ORDER BY created_at"));
+        $comments = array();
+        foreach($posts as $post) {
+            $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
+        }
+        return view('profile')->with('user', $user)->with('posts', $posts)->with('comments', $comments);
     }
 
     public function create(){
