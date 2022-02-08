@@ -11,6 +11,11 @@
 </head>
 <body>
     @yield('content')
+    
+    <script>
+        let globalData = {!! $globalData->toJson() !!};
+    </script>
+    
     <script src={{mix('js/app.js')}}></script>
 </body>
 </html>
