@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
 
-    <title>Test</title>
+    <title>Interventus</title>
 </head>
 <body>
     @yield('content')

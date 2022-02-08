@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
@@ -114,9 +115,18 @@ class PostsController extends Controller
       
     }
 
-    public function destroy($id)
+    public function destroy($post_id)
     {
-        //
+
+        $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
+
+        foreach($comments as $comment){
+            // $comment->id
+            Comment::find($comment->id)->delete();
+        }
+
+        Post::find($post_id)->delete();
+        return Redirect::to('/');
     }
 
     public function test() {
