@@ -16,7 +16,7 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', [PostsController::class, 'index']);
 
 Route::get('/thread', [PagesController::class, 'thread']);
 

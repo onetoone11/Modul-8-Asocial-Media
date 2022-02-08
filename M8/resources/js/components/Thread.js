@@ -35,7 +35,7 @@ export default function Thread(props) {
 
 
     //this is wrong, the algorithm deletes everything but direct children, leading to a loss of information
-    //only the parents need to be removed
+    //only the parents need to be remove
 
     const removeParents = list => {
         return list.filter(el1 => !list.every(el2 => el1.parent_comment_id != el2.id))

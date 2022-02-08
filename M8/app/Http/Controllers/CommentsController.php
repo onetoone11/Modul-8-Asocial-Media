@@ -81,9 +81,18 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    // public function update(Request $request, $id)
+    // {
+    //     //
+    // }
+
+    // public function like(Request $request, $comment_id) {
+    //     $comment = Comment::find($comment_id);
+    //     if()
+    // }
+
+    public function dislike(Request $request, $comment_id) {
+
     }
 
     /**

@@ -1,10 +1,6 @@
 APP_NAME=Laravel
 APP_ENV=local
-<<<<<<< HEAD
-APP_KEY=base64:7zBwUBqYyek2Q1v41fhf98bYh2BfKWpmLfsFjyTkgdA=
-=======
-APP_KEY=base64:9N1DKlVj0bRMisNZx0uHxIIWPFVrfgmxxe17Y8p7e4c=
->>>>>>> 2aa2d9f9cd8281e87c8d76e847ee5e537d862b20
+APP_KEY=base64:fee3tTbVimBPKT3ptTlsMLSS7RmmwEJfuyeAwsYg2vw=
 APP_DEBUG=true
 APP_URL=http://localhost
 
@@ -13,16 +9,12 @@ LOG_DEPRECATIONS_CHANNEL=null
 LOG_LEVEL=debug
 
 DB_CONNECTION=mysql
-DB_HOST=localhost
+DB_HOST=86.107.103.156
 # DB_HOST= 192.168.1.172
 DB_PORT=3306
-<<<<<<< HEAD
-DB_DATABASE=maxh_module8
-=======
 DB_DATABASE=matildaj_module8
->>>>>>> 2aa2d9f9cd8281e87c8d76e847ee5e537d862b20
-DB_USERNAME=root
-DB_PASSWORD=
+DB_USERNAME=matildaj_module8
+DB_PASSWORD="module8"
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file

@@ -2074,7 +2074,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Register__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Register */ "./resources/js/components/Register.js");
 /* harmony import */ var _components_EditPost__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/EditPost */ "./resources/js/components/EditPost.js");
 /* harmony import */ var _components_CreatePost__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/CreatePost */ "./resources/js/components/CreatePost.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_Timeline__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Timeline */ "./resources/js/components/Timeline.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2091,6 +2092,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // requir
 
 
 __webpack_require__(/*! ./index */ "./resources/js/index.js");
+
 
 
 
@@ -2118,76 +2120,74 @@ function App(props) {
   }
 
   if (props.page === 'test') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Thread__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Thread__WEBPACK_IMPORTED_MODULE_2__["default"], {
         darkMode: darkMode
       })]
     });
   }
 
   if (props.page === 'index') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Start__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Start__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Timeline__WEBPACK_IMPORTED_MODULE_9__["default"], {
         darkMode: darkMode
       })]
     });
   }
 
   if (props.page === 'thread') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Thread__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Thread__WEBPACK_IMPORTED_MODULE_2__["default"], {
         darkMode: darkMode
       })]
     });
   }
 
   if (props.page === 'login') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
       })
     });
   }
 
   if (props.page === 'register') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
       })
     });
   }
 
   if (props.page === 'profile') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Profile__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Profile__WEBPACK_IMPORTED_MODULE_3__["default"], {
         darkMode: darkMode
       })]
     });
   }
 
   if (props.page === 'create') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_CreatePost__WEBPACK_IMPORTED_MODULE_8__["default"], {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_CreatePost__WEBPACK_IMPORTED_MODULE_8__["default"], {})]
     });
   }
 
   if (props.page === 'edit') {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
         darkMode: darkMode
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_EditPost__WEBPACK_IMPORTED_MODULE_7__["default"], {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_EditPost__WEBPACK_IMPORTED_MODULE_7__["default"], {})]
     });
   }
 }
@@ -2761,12 +2761,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 // import findus from './findus.png'
 
 
 
 
 function Profile(props) {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      toggleDropDown = _React$useState2[0],
+      setToggleDropDown = _React$useState2[1];
+
+  function linkCreatePost() {
+    window.location = 'http://127.0.0.1:8000/create';
+  }
+
+  var dropdown = document.getElementById('dropdown');
+
+  function toggleDropdown() {
+    setToggleDropDown(function (prevToggle) {
+      return !prevToggle;
+    });
+  }
+
+  function test() {
+    alert('hello');
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "container",
@@ -2778,19 +2811,55 @@ function Profile(props) {
           className: "col-lg-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "profile--img"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+            className: "pt-3 text-center",
+            children: "Name"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "row p-5",
+            style: {
+              position: 'relative'
+            },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "col-lg-10 profile--create-post ".concat(props.darkMode ? 'bg--dark-bright' : 'bg--light'),
+              onClick: linkCreatePost,
+              className: "col-lg-10 profile--create-post btn--create-post ".concat(props.darkMode ? 'bg--dark-bright' : 'bg--light'),
               children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
                 className: "".concat(props.darkMode ? 'c-white' : 'c-gray', " profile--create-post-text"),
                 children: "Create Post"
               }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: "col-lg-2 profile--settings ".concat(props.darkMode && 'bg--darkgray'),
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              onClick: toggleDropdown,
+              className: "col-lg-2 profile--settings btn--profile-settings ".concat(props.darkMode && 'bg--darkgray'),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
                 className: "fal fa-ellipsis-h fa-3x settings--i"
-              })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                id: "dropdown",
+                className: "profile--settings-dropdown ".concat(props.darkMode && 'bg--darkgray', " ").concat(toggleDropDown && 'none'),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+                    className: "text-left",
+                    children: "Menu"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
+                    style: {
+                      listStyleType: 'none',
+                      padding: '0px',
+                      margin: '0px'
+                    },
+                    className: "pl-3 pt-3",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+                      onClick: test,
+                      className: "link",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                        className: "fal fa-tint pr-3"
+                      }), " ", props.darkMode ? 'Lightmode' : 'Darkmode']
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+                      className: "link",
+                      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                        className: "fal fa-sign-out pr-3"
+                      }), " Log out"]
+                    })]
+                  })]
+                })
+              })]
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -2989,12 +3058,15 @@ function Start(props) {
             src: "",
             alt: ""
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+            className: img ? "pl-3 img-text text-border" : "pl-3",
+            children: props.title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             className: "post--p p-3",
-            children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis nostrum labore optio. Nulla unde aliquid sit nobis quas qui."
-          })
+            children: props.text
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "bg--light comments-sm p-3 post--end",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
@@ -3002,12 +3074,14 @@ function Start(props) {
             type: "radio",
             name: "likes",
             id: "like",
+            className: "likeInput",
             value: "like"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             hidden: true,
             type: "radio",
             name: "likes",
             id: "dislike",
+            className: "likeInput",
             value: "dislike"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
             className: "like--i",
@@ -3023,14 +3097,21 @@ function Start(props) {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             className: "comments--comment",
-            children: "Comments"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "./thread/".concat(props.id),
+              style: {
+                color: "white",
+                textDecoration: "none"
+              },
+              children: "Comments"
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-              children: "Lorem ipsum dolor sit amet."
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              children: props.comment1
+            }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-              children: "Lorem ipsum dolor sit."
+              children: props.comment2
             })]
           })]
         })]
@@ -3114,7 +3195,7 @@ function Thread(props) {
   //if the list is empty, return 'null'
   //else, 
   //this is wrong, the algorithm deletes everything but direct children, leading to a loss of information
-  //only the parents need to be removed
+  //only the parents need to be remove
 
 
   var removeParents = function removeParents(list) {
@@ -3207,6 +3288,44 @@ function Thread(props) {
     })]
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/Timeline.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Timeline.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Start__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Start */ "./resources/js/components/Start.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var Timeline = function Timeline(props) {
+  console.log("blabla");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    children: posts.map(function (element, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Start__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        comment1: comments[index][0] && comments[index][0].text,
+        comment2: comments[index][1] && comments[index][1].text,
+        title: element.title,
+        id: element.id,
+        text: element.text,
+        darkMode: props.darkMode
+      }, element.id);
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Timeline);
 
 /***/ }),
 
@@ -3330,7 +3449,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D;\r\n    color: #fff;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070;\r\n}\r\n\r\n.c-white{\r\n    color: #fff;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    border: 1px solid #333;\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    /* border: 1px solid #707070; */\r\n    border-radius: 25px;\r\n    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.3);\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.5rem;\r\n    /* background-color: #FFF; -----------------------------------------------------------------------------------------\r\n    color: #707070; */\r\n    /* border-color: #707070; */\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D;\r\n    color: #fff;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070;\r\n}\r\n\r\n.c-white{\r\n    color: #fff;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--create-post:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.btn--profile-settings:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    border: 1px solid #333;\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n.none{\r\n    display: none;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    position: relative;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.likeInput:active ~ label {\r\n    filter:brightness(100);\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.profile--settings-dropdown{\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 60px;\r\n    right: 0px;\r\n    padding: 20px;\r\n    border-radius: 20px;\r\n}\r\n\r\n.link{\r\n    text-decoration: none;\r\n    font-size: 20px;\r\n    /* padding: 20px; */\r\n}\r\n\r\n.link:hover{\r\n    text-decoration: none;\r\n\r\n\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    border: 1px solid #707070;\r\n    border-radius: 25px;\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.5rem;\r\n    /* background-color: #FFF; -----------------------------------------------------------------------------------------\r\n    color: #707070; */\r\n    /* border-color: #707070; */\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -52261,7 +52380,7 @@ module.exports = function (list, options) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Projects\\\\Project8\\\\Modul-8-Asocial-Media\\\\M8"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Projects\\\\Project8\\\\Modul-8-Asocial-Media\\\\M8","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\max.hansen\\\\Downloads\\\\Projekt\\\\Modul 8, Asocial Media(working version)\\\\Modul-8-Asocial-Media\\\\M8"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Users\\\\max.hansen\\\\Downloads\\\\Projekt\\\\Modul 8, Asocial Media(working version)\\\\Modul-8-Asocial-Media\\\\M8","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

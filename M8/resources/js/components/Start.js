@@ -16,19 +16,20 @@ export default function Start(props){
                         <img src="" alt="" />
                     </div>}
                     <div className={props.darkMode ? "bg--dark-bright" : "bg--light-bright"}> 
-                        <p className="post--p p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis nostrum labore optio. Nulla unde aliquid sit nobis quas qui.</p>
+                        <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{props.title}</h1>
+                        <p className="post--p p-3">{props.text}</p>
                     </div>
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "bg--light comments-sm p-3 post--end"}>
-                        <input hidden type="radio" name="likes" id="like" value="like" />
-                        <input hidden type="radio" name="likes" id="dislike" value="dislike" />
+                        <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
+                        <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
                         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
                         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>  
 
-                        <p className="comments--comment">Comments</p> 
+                        <p className="comments--comment"><a href={`./thread/${props.id}`} style={{color: "white", textDecoration: "none"}}>Comments</a></p>
 
                         <div>
-                            <div className={props.darkMode ? "comment bg--darkgray" : "comment bg--white"}>Lorem ipsum dolor sit amet.</div>
-                            <div className={props.darkMode ? "comment bg--darkgray" : "comment bg--white"}>Lorem ipsum dolor sit.</div>
+                            {props.comment1 && <div className={props.darkMode ? "comment bg--darkgray" : "comment bg--white"}>{props.comment1}</div>}
+                            {props.comment2 && <div className={props.darkMode ? "comment bg--darkgray" : "comment bg--white"}>{props.comment2}</div>}
                         </div>
                     </div>
                 </div>

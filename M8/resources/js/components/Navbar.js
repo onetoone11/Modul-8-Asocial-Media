@@ -2,9 +2,6 @@ import Button from './Button'
 import Logo from './logoBlack.png'
 import React from 'react'
 
-
-
-
 export default function Navbar(props){
     // if(!globalData.user) {
     //     console.log("test")

@@ -83,6 +83,16 @@ body{
     transition: 0.2s;
 }
 
+.btn--create-post:hover{
+    filter: brightness(105%);
+    cursor: pointer;
+}
+
+.btn--profile-settings:hover{
+    filter: brightness(105%);
+    cursor: pointer;
+}
+
 .post--top{
     position: relative;
 }
@@ -169,6 +179,10 @@ input[type=search]:focus {
     cursor: pointer;
 }
 
+.none{
+    display: none;
+}
+
 /* Comments */
 
 .post--p{
@@ -201,6 +215,7 @@ input[type=search]:focus {
     border-radius: 23px;
     border: 1px solid #333;
     margin: 10px 0;
+    position: relative;
     /* display: inline-block; */
     /* float: left; */
 }
@@ -220,6 +235,10 @@ input[type=search]:focus {
     cursor: pointer;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.likeInput:active ~ label {
+    filter:brightness(100);
 }
 
 .post--end{
@@ -249,6 +268,27 @@ input[type=search]:focus {
 
 .profile--create-post-text{
     margin-top: 10px;
+}
+
+.profile--settings-dropdown{
+    position: absolute;
+    width: 200px;
+    top: 60px;
+    right: 0px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.link{
+    text-decoration: none;
+    font-size: 20px;
+    /* padding: 20px; */
+}
+
+.link:hover{
+    text-decoration: none;
+
+
 }
 
 .settings--i{
