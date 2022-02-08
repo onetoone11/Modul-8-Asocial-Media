@@ -222,6 +222,10 @@ input[type=search]:focus {
     padding-bottom: 10px;
 }
 
+.likeInput:active ~ label {
+    filter:brightness(100);
+}
+
 .post--end{
     border-radius: 0 0 20px 20px;
 }
