@@ -13,8 +13,7 @@ class PagesController extends Controller
 {
 
     public function index(){
-        $data = "hello";
-        return view('index')->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return view('index')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function thread(){
