@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Post;
 use App\Models\User;
+use Redirect;
 // use App\Http\Controllers\Auth;
 // use Auth;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,15 @@ class PagesController extends Controller
 
     public function test(){
         return view('test')->with(["globalData" => collect(['user' => Auth::user()])]);
+    }
+
+    public function userImage(request $request, $user_id){
+
+        $user = User::find($user_id);
+        $user->image = $request->input('post_img');
+        $user->save();
+
+        return view('profile');
     }
 
 }

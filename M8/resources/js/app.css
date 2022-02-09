@@ -33,6 +33,11 @@ body{
     color: #fff;
 }
 
+.bg--dark-bright-op{
+    background-color: rgba(125, 125, 125, 0.7);
+    color: #fff;
+}
+
 .c-gray{
     color: #707070;
 }
@@ -60,6 +65,11 @@ body{
 
 .text-border {
     text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
+
+.x-mark:hover{
+    cursor: pointer;
+    color: #FF8C8C;
 }
 
 /* btn */
@@ -92,6 +102,17 @@ body{
     filter: brightness(105%);
     cursor: pointer;
     z-index: 1000;
+}
+
+.profile--change-image-btn{
+    height: 40px;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: none;
+}
+
+.profile--change-image-btn:hover{
+    cursor: pointer;
 }
 
 .post--top{
@@ -257,6 +278,26 @@ input[type=search]:focus {
     /* background-image: url('../components/findus.png'); */
 }
 
+.profile--img-cover{
+    width: 400px;
+    height: 400px;
+    border-radius: 200px;
+    opacity: 0.5;
+    position: absolute;
+    top: 0px;
+    left: 85px;
+    background: linear-gradient(180deg, #616161 70%, #333 30%);
+}
+
+.profile--image-upload{
+    height: 50px; 
+    width: 400px;
+    bottom: 50px;
+    position: absolute;
+    padding: 10px 40px 0px 40px;
+    border-radius: 0 0 200px 200px;
+}
+
 .profile--create-post{
     height: 60px;
     border: 1px solid #707070;
@@ -282,6 +323,15 @@ input[type=search]:focus {
 
 .profile--settings-dropdown li:hover{
     filter: brightness(0.8);
+}
+
+.profile--change-image{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 10002;
+    top: 0px;
+    position: fixed;
 }
 
 .link{

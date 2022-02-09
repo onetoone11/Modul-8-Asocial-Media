@@ -19,7 +19,7 @@ class PostsController extends Controller
         foreach($posts as $post) {
             $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
         }
-        return view('index')->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);;
+        return view('index')->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function create(Request $request)
@@ -93,7 +93,7 @@ class PostsController extends Controller
     {
         $post = Post::find($post_id);
         $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
-        return view('thread')->with('comments', $comments)->with('post', $post)->with('post_id', $post_id);
+        return view('thread')->with('comments', $comments)->with('post', $post)->with('post_id', $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     /**
