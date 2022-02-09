@@ -78,7 +78,7 @@ export default function Profile(props){
                 <form action={`/changeImage/${user_id}`}>
                     <div className="text-center" style={{opacity: '1', marginTop: '250px', position: 'relative'}}>
                         <i className="fa-solid fa-xmark fa-3x x-mark" onClick={changeProfileImage} style={{position: 'absolute', top: '-100px', right: '400px'}}></i>
-                        <input type="text" placeholder='https://example.com' /><br /><br />
+                        <input type="text" name='profile_img' placeholder='https://example.com' /><br /><br />
                         <button className="profile--change-image-btn">Submit</button>
                     </div>
                     

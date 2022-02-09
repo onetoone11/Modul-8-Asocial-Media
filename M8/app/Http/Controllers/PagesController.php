@@ -58,7 +58,7 @@ class PagesController extends Controller
     public function userImage(request $request, $user_id){
 
         $user = User::find($user_id);
-        $user->image = $request->input('post_img');
+        $user->image = $request->input('profile_img');
         $user->save();
 
         return view('profile');
