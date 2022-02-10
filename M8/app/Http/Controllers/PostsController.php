@@ -93,7 +93,7 @@ class PostsController extends Controller
     {
         $post = Post::find($post_id);
         $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
-        return view('thread')->with('comments', $comments)->with('post', $post)->with('post_id', $post_id);
+        return view('thread')->with('comments', $comments)->with('post', $post)->with('post_id', $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);;
     }
 
     /**
@@ -131,6 +131,15 @@ class PostsController extends Controller
 
         Post::find($post_id)->delete();
         return Redirect::to('/');
+    }
+
+    public function ratePost(Request $request) {
+        $user_id = $request->input('user_id');
+        $post_id = $request->input('post_id');
+        $value = $request->input('likes');
+
+        $value = intval($value);
+        DB::statement("INSERT INTO post_likes (user_id, post_id, value) VALUES ($user_id, $post_id, $value) ON DUPLICATE KEY UPDATE value=$value");
     }
 
     public function test() {

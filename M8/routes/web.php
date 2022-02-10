@@ -49,4 +49,6 @@ Route::get('/createPost', [PostsController::class, 'create']);
 
 Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);
 
+Route::post('rateComment', [CommentsController::class, 'rateComment']);
+
 Auth::routes();
