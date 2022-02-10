@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
 use Redirect;
+use App\Models\User;
 use DB;
 
 class PostsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
 
     public function index()
     {
@@ -63,7 +74,7 @@ class PostsController extends Controller
 
 
 
-        return Redirect::to('/thread/'. $post_id);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
 
         // return redirect('thread');
 
@@ -111,7 +122,7 @@ class PostsController extends Controller
         $post->text = $request->input('post_body');
         $post->save();
 
-        return Redirect::to('/thread/'. $post_id);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function update(Request $request, $id)
@@ -130,7 +141,7 @@ class PostsController extends Controller
         }
 
         Post::find($post_id)->delete();
-        return Redirect::to('/');
+        return view('/')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function test() {

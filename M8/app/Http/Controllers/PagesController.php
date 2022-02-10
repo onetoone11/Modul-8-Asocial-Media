@@ -14,16 +14,18 @@ use Illuminate\Support\Facades\Auth;
 class PagesController extends Controller
 {
 
-    public function index(){
-        return view('index')->with(["globalData" => collect(['user' => Auth::user()])]);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['thread']]);
     }
 
     public function thread(){
         return view('thread')->with(["globalData" => collect(['user' => Auth::user()])]);
-    }
-
-    public function login(){
-        return view('login');
     }
 
     public function profile(){
@@ -45,10 +47,6 @@ class PagesController extends Controller
     public function edit($post_id){
         $data = Post::find($post_id);
         return view('edit')->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
-    }
-
-    public function register(){
-        return view('register');
     }
 
     public function test(){
