@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Comment;
 use Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
@@ -48,7 +49,7 @@ class CommentsController extends Controller
         $comment->parent_comment_id = $request->input('parent_id');
         $comment->save();
 
-        return Redirect::to('/thread/'. $post_id);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
         // return view('index');
     }
 

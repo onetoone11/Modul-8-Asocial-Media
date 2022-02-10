@@ -6,7 +6,7 @@ export default function Navbar(props){
     // if(!globalData.user) {
     //     console.log("test")
     // } else {
-    //     console.log(globalData.user)
+        console.log(globalData.user)
     // }
 
     const onLogin = () => {
@@ -17,13 +17,24 @@ export default function Navbar(props){
         window.location.href = `/register`;
     }
 
+    const onProfile = () => {
+        window.location.href = `/profile`;
+    }
 
-    const [loggedIn, setLoggedIn] = React.useState(true);
+    const onLogo = () => {
+        window.location.href = `/`;
+    }
+
+    let name = ""
+    if(!globalData.user) {
+    } else {
+        name = globalData.user.name;
+    }
 
     return(
         <nav className={`d-flex justify-content-between align-items-center p-0 ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`}>
             <div className="d-flex w-50 ">
-                <div className="nav--logo mr-5"><img className="logo--image" src={Logo}></img></div>
+                <div className="nav--logo mr-5" onClick={onLogo}><img className="logo--image" src={Logo}></img></div>
 
                 <form className="d-flex justify-content-center align-items-center position-relative w-100">
                     <input type="search"/>
@@ -40,8 +51,8 @@ export default function Navbar(props){
             </div> 
             : 
             <div className="nav--account mr-3">
-                <h3 className="nav--account-name">Name</h3>
-                <div className="nav--account-img"></div>
+                <h3 className="nav--account-name" id="username" onClick={onProfile}>{name}</h3>
+                <div className="nav--account-img" onClick={onProfile}></div>
             </div>}
         </nav>
     )

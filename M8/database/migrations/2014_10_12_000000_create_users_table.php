@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('type');
-            $table->string('mode');
+            $table->string('mode')->default('light');
         });
     }
 
