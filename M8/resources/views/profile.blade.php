@@ -6,5 +6,8 @@
         let posts = {!! json_encode($posts) !!};
         let comments = {!! json_encode($comments) !!};
     </script>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
     <div id="profile"></div>
 @endsection

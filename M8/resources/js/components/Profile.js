@@ -19,6 +19,18 @@ export default function Profile(props){
     function toggleDropdown(){
         setToggleDropDown(prevToggle => !prevToggle);
     }
+    const onLogout = (e) => {
+        e.preventDefault();
+        document.getElementById('logout-form').submit();
+    }
+
+    const onMode = (e) => {
+        e.preventDefault();
+        document.getElementById('mode-form').submit();
+    }
+
+    const name = globalData.user.name;
+    const userID = globalData.user.id;
 
 
     return(
@@ -30,7 +42,7 @@ export default function Profile(props){
                     <div className="col-lg-6">
                         <div className="profile--img"></div>
 
-                        <h1 className="pt-3 text-center">{user.name}</h1>
+                        <h1 className="pt-3 text-center">{name}</h1>
 
                         <div className="row p-5" style={{position: 'relative'}}>
                             <div onClick={linkCreatePost} className={`col-lg-10 profile--create-post btn--create-post ${props.darkMode ? 'bg--dark-bright' : 'bg--light'}`}> <h3 className={`${props.darkMode ? 'c-white' : 'c-gray'} profile--create-post-text`}>Create Post</h3> </div>
@@ -40,9 +52,9 @@ export default function Profile(props){
                                     <div>
                                         <h3 className="text-left">Menu</h3>
                                         <ul style={{listStyleType: 'none', padding: '0px', margin: '0px'}} className="pl-3 pt-3">
-                                            <li className="link"><i className="fal fa-tint pr-3"></i> {props.darkMode ? 'Lightmode' : 'Darkmode'}</li>
+                                            <li className="link" onClick={onMode}><i className="fal fa-tint pr-3"></i> {props.darkMode ? 'Lightmode' : 'Darkmode'}</li>
                                             <hr />
-                                            <li className="link"> <i className="fal fa-sign-out pr-3"></i> Log out</li>
+                                            <li className="link" onClick={onLogout}> <i className="fal fa-sign-out pr-3"></i> Log out</li>
                                         </ul>
                                     </div>
                                     
@@ -50,7 +62,7 @@ export default function Profile(props){
                             </div>
                             
                         </div>
-
+                        <form id="mode-form" action={`/changeMode/${userID}`} method="get" className="d-none"></form>
                     </div>
 
                     <div className="col-lg-3"></div>

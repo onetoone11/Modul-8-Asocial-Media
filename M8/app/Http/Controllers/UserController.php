@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Models\Comment;
-use Redirect;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class CommentsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $data = DB::select(DB::raw("SELECT * FROM comments"));
-
-        return view('test')->with('data', $data);
+        //
     }
 
     /**
@@ -38,19 +36,9 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $post_id)
+    public function store(Request $request)
     {
-        // $post_id = 1;
-        $comment = new Comment;
-        $comment->post_id = $post_id;
-        $comment->user_id = null;
-        $comment->text = $request->input('text');
-        $comment->likes = "0";
-        $comment->parent_comment_id = $request->input('parent_id');
-        $comment->save();
-
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
-        // return view('index');
+        //
     }
 
     /**
@@ -61,7 +49,7 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -70,9 +58,31 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id)
     {
-        //
+        $user = User::find($user_id);
+
+        $uLight = DB::select(DB::raw("SELECT * FROM users WHERE id = $user_id AND mode = 'light'"));
+
+        if(!$uLight) {
+            $user->mode = 'light';
+            $user->save();
+        } else {
+            $user->mode = 'dark';
+            $user->save();
+        }
+        
+
+        // Måste ändras
+        $user_id = 1;
+        $user = User::find(11);
+        $posts = DB::select(DB::raw("SELECT * FROM posts WHERE user_id = $user_id ORDER BY created_at"));
+        $comments = array();
+        foreach($posts as $post) {
+            $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
+        }
+
+        return view('profile')->with('user', $user)->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     /**
@@ -82,18 +92,9 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
-
-    // public function like(Request $request, $comment_id) {
-    //     $comment = Comment::find($comment_id);
-    //     if()
-    // }
-
-    public function dislike(Request $request, $comment_id) {
-
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     /**
