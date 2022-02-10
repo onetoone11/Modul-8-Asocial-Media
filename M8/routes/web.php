@@ -51,5 +51,6 @@ Route::get('/createPost', [PostsController::class, 'create']);
 Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);
 
 Route::get('/changeMode/{user_id}', [UserController::class, 'edit']);
+Route::get('/changeImage/{user_id}', [PagesController::class, 'userImage']);
 
 Auth::routes();
