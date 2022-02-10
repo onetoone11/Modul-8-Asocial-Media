@@ -28,6 +28,8 @@ Route::get('/profile', [PagesController::class, 'profile']);
 
 Route::get('/create', [PagesController::class, 'create']);
 
+Route::get('/users', [PagesController::class, 'users']);
+
 Route::get('/edit/{post_id}', [PagesController::class, 'edit']);
 
 

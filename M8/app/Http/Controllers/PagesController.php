@@ -64,4 +64,8 @@ class PagesController extends Controller
         return view('profile');
     }
 
+    public function users(){
+        return view('users')->with(["globalData" => collect(['user' => Auth::user()])]);
+    }
+
 }
