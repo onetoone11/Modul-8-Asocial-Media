@@ -5,6 +5,17 @@ export default function Thread(props) {
 
     const [img, setImg] = React.useState(false)
 
+    React.useEffect(() => {
+        setImg(() => {
+            if(post.image == null){
+                return (false);
+            }
+            else{
+                return (true);
+            }
+        })
+    }, [img])
+
     console.log(comments);
     console.log(post);
 
@@ -58,9 +69,8 @@ export default function Thread(props) {
 
     return (
         <div className="container">
-            {img && <div>
-                <h1>IMG</h1>
-                <img src={Logo} alt="" />
+            {img && <div className={`text-center ${props.darkMode ? 'bg--dark-img' : 'bg--light'}`}>
+                <img style={{maxWidth: '1100px', maxHeight: '500px'}} src={post.image} alt="" />
             </div>}
             
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
@@ -70,7 +80,7 @@ export default function Thread(props) {
                     <button className="btn--deletePost border-r c-red border-1_5">Delete</button>
                 </form>
                 <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
-                    {globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>}
+                    {globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
                 </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>

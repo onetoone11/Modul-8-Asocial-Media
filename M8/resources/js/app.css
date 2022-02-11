@@ -20,8 +20,8 @@ body{
 }
 
 .bg--darkgray{
-    background-color: #616161;
-    color: #fff;
+    background-color: #616161 !important;
+    color: #fff !important;
 }
 
 .bg--darkmode{
@@ -34,13 +34,17 @@ body{
 }
 
 .bg--dark-bright{
-    background-color: #7D7D7D;
+    background-color: #7D7D7D; 
     color: #fff;
 }
 
 .bg--dark-bright-op{
     background-color: rgba(125, 125, 125, 0.7);
     color: #fff;
+}
+
+.bg--dark-img{
+    background-color: #555555;
 }
 
 .c-gray{
@@ -78,12 +82,17 @@ body{
 }
 
 .text-border {
-    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+    text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;
 }
 
 .x-mark:hover{
     cursor: pointer;
     color: #FF8C8C;
+}
+
+.placeholder--hover-w::placeholder{
+    color: #fff !important;
+    filter: brightness(0.7);
 }
 
 /* btn */

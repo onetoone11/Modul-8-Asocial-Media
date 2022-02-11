@@ -2444,11 +2444,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CreatePost = function CreatePost(darkMode) {
+var CreatePost = function CreatePost(props) {
+  console.log(props.darkMode);
+
+  function test() {
+    console.log(darkMode);
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "container post-create-body ".concat(darkMode ? "c-white" : "c-gray"),
+    className: "container post-create-body ".concat(props.darkMode ? "c-white" : "c-gray"),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "card-body ".concat(darkMode ? "bg--dark" : "bg--light"),
+      className: "card-body ".concat(props.darkMode ? "bg--dark" : "bg--light"),
       style: {
         borderRadius: "20px"
       },
@@ -2465,7 +2471,7 @@ var CreatePost = function CreatePost(darkMode) {
             name: "post_header",
             type: "text",
             placeholder: "Header",
-            className: "form-control ".concat(darkMode && 'bg--darkgray')
+            className: "form-control ".concat(props.darkMode ? 'bg--darkgray placeholder--hover-w' : '')
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group",
@@ -2477,7 +2483,7 @@ var CreatePost = function CreatePost(darkMode) {
             maxLength: "512",
             placeholder: "Body text",
             rows: "5",
-            className: "form-control ".concat(darkMode && 'bg--darkgray')
+            className: "form-control ".concat(props.darkMode && 'bg--darkgray placeholder--hover-w')
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group",
@@ -2486,19 +2492,20 @@ var CreatePost = function CreatePost(darkMode) {
             placeholder: "https://ImageExample.com",
             name: "post_img",
             id: "image-input",
-            className: "form-control ".concat(darkMode && 'bg--darkgray')
+            className: "form-control ".concat(props.darkMode && 'bg--darkgray placeholder--hover-w')
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           hidden: true,
           type: "text",
           name: "user_id",
-          value: globalData.user.id
+          value: globalData.user.id,
+          onChange: test
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group w-100 d-flex justify-content-center",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             type: "submit",
             value: "Post",
-            className: "btn btn-outline-dark login-btn bg--white"
+            className: "btn login-btn bg--white"
           })
         })]
       })]
@@ -2545,7 +2552,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var EditPost = function EditPost(darkMode) {
+var EditPost = function EditPost(props) {
   console.log(post);
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
@@ -2566,9 +2573,9 @@ var EditPost = function EditPost(darkMode) {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "container post-create-body ".concat(darkMode ? "c-white" : "c-gray"),
+    className: "container post-create-body ".concat(props.darkMode ? "c-white" : "c-gray"),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "card-body ".concat(darkMode ? "bg--dark" : "bg--light"),
+      className: "card-body ".concat(props.darkMode ? "bg--dark" : "bg--light"),
       style: {
         borderRadius: "20px"
       },
@@ -2586,7 +2593,7 @@ var EditPost = function EditPost(darkMode) {
             onChange: handleInput,
             type: "text",
             placeholder: "Header",
-            className: "form-control"
+            className: "form-control ".concat(props.darkMode && 'bg--darkgray placeholder--hover-w')
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group",
@@ -2600,7 +2607,7 @@ var EditPost = function EditPost(darkMode) {
             maxLength: "512",
             placeholder: "Body text",
             rows: "5",
-            className: "form-control"
+            className: "form-control ".concat(props.darkMode && 'bg--darkgray placeholder--hover-w')
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group",
@@ -2611,14 +2618,14 @@ var EditPost = function EditPost(darkMode) {
             value: post_data.post_img,
             name: "post_img",
             id: "image-input",
-            className: "form-control"
+            className: "form-control ".concat(props.darkMode && 'bg--darkgray placeholder--hover-w')
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-group w-100 d-flex justify-content-center",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             type: "submit",
             value: "Save",
-            className: "btn btn-outline-dark login-btn bg--white"
+            className: "btn login-btn bg--white"
           })
         })]
       })]
@@ -2756,7 +2763,7 @@ function Navbar(props) {
           className: "logo--image",
           src: props.darkMode ? _logoWhite_png__WEBPACK_IMPORTED_MODULE_2__["default"] : _logoBlack_png__WEBPACK_IMPORTED_MODULE_1__["default"]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "d-flex justify-content-center align-items-center position-relative w-100",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           type: "search",
@@ -2766,6 +2773,15 @@ function Navbar(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fa fa-search fa-lg"
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "bg--darkgray",
+          style: {
+            height: '20px',
+            width: '95%',
+            backgroundColor: 'red',
+            position: 'absolute',
+            top: '62px'
+          }
         })]
       })]
     }), !globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -3211,11 +3227,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Start(props) {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       img = _React$useState2[0],
       setImg = _React$useState2[1];
 
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setImg(function () {
+      if (props.image == null) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }, [img]);
   console.log(props.darkMode);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "container mt-5",
@@ -3225,17 +3250,19 @@ function Start(props) {
         className: "col-lg-3"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "col-lg-6",
-        children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-            children: "IMG"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-            src: "",
+        children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            style: {
+              maxWidth: '540px',
+              maxHeight: '540px'
+            },
+            src: props.image,
             alt: ""
-          })]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-            className: img ? "pl-3 img-text text-border" : "pl-3",
+            className: img ? "pl-3 img-text text-border c-white" : "pl-3",
             children: props.title
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             className: "post--p p-3",
@@ -3336,6 +3363,15 @@ function Thread(props) {
       img = _React$useState2[0],
       setImg = _React$useState2[1];
 
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setImg(function () {
+      if (post.image == null) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }, [img]);
   console.log(comments);
   console.log(post); // const toRecursiveTree = list => {
   //     if(list === []) {
@@ -3401,13 +3437,16 @@ function Thread(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "container",
-    children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-        children: "IMG"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-        src: _logoBlack_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "text-center ".concat(props.darkMode ? 'bg--dark-img' : 'bg--light'),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        style: {
+          maxWidth: '1100px',
+          maxHeight: '500px'
+        },
+        src: post.image,
         alt: ""
-      })]
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
@@ -3432,7 +3471,7 @@ function Thread(props) {
         },
         action: "/edit/".concat(post.id),
         children: globalData.user !== null && globalData.user.id == "".concat(post.user_id) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-          className: "btn--editPost border-w c-white mr-3",
+          className: "btn--editPost ".concat(props.darkMode ? 'border-w c-white' : 'border-b c-black', "  mr-3"),
           children: "Edit"
         })
       })]
@@ -3499,6 +3538,7 @@ var Timeline = function Timeline(props) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Start__WEBPACK_IMPORTED_MODULE_1__["default"], {
         comment1: comments[index][0] && comments[index][0].text,
         comment2: comments[index][1] && comments[index][1].text,
+        image: element.image,
         title: element.title,
         id: element.id,
         text: element.text,
@@ -3889,7 +3929,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161;\r\n    color: #fff;\r\n}\r\n\r\n.bg--darkmode{\r\n    background-color: #474747;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-bright-op{\r\n    background-color: rgba(125, 125, 125, 0.7);\r\n    color: #fff;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070 !important;\r\n}\r\n\r\n.c-white{\r\n    color: #fff !important;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border: 1px solid;\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.border-none{\r\n    border: none;\r\n}\r\n\r\n.border-1_5{\r\n    border-width: 1.5px;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;\r\n}\r\n\r\n.x-mark:hover{\r\n    cursor: pointer;\r\n    color: #FF8C8C;\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 120px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    /* background-color: #FF8C8C; */\r\n    /* color: #fff; */\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--create-post:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.btn--profile-settings:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n    z-index: 1000;\r\n}\r\n\r\n.profile--change-image-btn{\r\n    height: 40px;\r\n    padding: 5px 20px;\r\n    border-radius: 20px;\r\n    border: none;\r\n}\r\n\r\n.profile--change-image-btn:hover{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    border: 1px solid #333;\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n    cursor: pointer;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n    cursor: pointer;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n    cursor: pointer;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n.none{\r\n    display: none;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    position: relative;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.likeInput:active ~ label {\r\n    filter:brightness(100);\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--img-cover{\r\n    width: 400px;\r\n    height: 400px;\r\n    border-radius: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 85px;\r\n    background: linear-gradient(180deg, #616161 70%, #333 30%);\r\n}\r\n\r\n.profile--image-upload{\r\n    height: 50px; \r\n    width: 400px;\r\n    bottom: 50px;\r\n    position: absolute;\r\n    padding: 10px 40px 0px 40px;\r\n    border-radius: 0 0 200px 200px;\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.profile--settings-dropdown{\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 70px;\r\n    right: 0px;\r\n    padding: 20px;\r\n    border-radius: 20px;\r\n}\r\n\r\n.profile--settings-dropdown li:hover{\r\n    filter: brightness(0.8);\r\n}\r\n\r\n.profile--change-image{\r\n    height: 100vh;\r\n    width: 100%;\r\n    position: absolute;\r\n    z-index: 10002;\r\n    top: 0px;\r\n    position: fixed;\r\n}\r\n\r\n.link{\r\n    text-decoration: none;\r\n    font-size: 20px;\r\n    /* padding: 20px; */\r\n}\r\n\r\n.link:hover{\r\n    text-decoration: none;\r\n\r\n\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    /* border: 1px solid #707070; */\r\n    border-radius: 25px;\r\n    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.3);\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.4rem;\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.login-btn:hover{\r\n    transform: scale(1.1);\r\n    filter: brightness(1.1);\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161 !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.bg--darkmode{\r\n    background-color: #474747;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D; \r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-bright-op{\r\n    background-color: rgba(125, 125, 125, 0.7);\r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-img{\r\n    background-color: #555555;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070 !important;\r\n}\r\n\r\n.c-white{\r\n    color: #fff !important;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border: 1px solid;\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.border-none{\r\n    border: none;\r\n}\r\n\r\n.border-1_5{\r\n    border-width: 1.5px;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;\r\n}\r\n\r\n.x-mark:hover{\r\n    cursor: pointer;\r\n    color: #FF8C8C;\r\n}\r\n\r\n.placeholder--hover-w::-moz-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w:-ms-input-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w::placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 120px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    /* background-color: #FF8C8C; */\r\n    /* color: #fff; */\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--create-post:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.btn--profile-settings:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n    z-index: 1000;\r\n}\r\n\r\n.profile--change-image-btn{\r\n    height: 40px;\r\n    padding: 5px 20px;\r\n    border-radius: 20px;\r\n    border: none;\r\n}\r\n\r\n.profile--change-image-btn:hover{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    border: 1px solid #333;\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n    cursor: pointer;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n    cursor: pointer;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n    cursor: pointer;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n.none{\r\n    display: none;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    position: relative;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.likeInput:active ~ label {\r\n    filter:brightness(100);\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--img-cover{\r\n    width: 400px;\r\n    height: 400px;\r\n    border-radius: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 85px;\r\n    background: linear-gradient(180deg, #616161 70%, #333 30%);\r\n}\r\n\r\n.profile--image-upload{\r\n    height: 50px; \r\n    width: 400px;\r\n    bottom: 50px;\r\n    position: absolute;\r\n    padding: 10px 40px 0px 40px;\r\n    border-radius: 0 0 200px 200px;\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.profile--settings-dropdown{\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 70px;\r\n    right: 0px;\r\n    padding: 20px;\r\n    border-radius: 20px;\r\n}\r\n\r\n.profile--settings-dropdown li:hover{\r\n    filter: brightness(0.8);\r\n}\r\n\r\n.profile--change-image{\r\n    height: 100vh;\r\n    width: 100%;\r\n    position: absolute;\r\n    z-index: 10002;\r\n    top: 0px;\r\n    position: fixed;\r\n}\r\n\r\n.link{\r\n    text-decoration: none;\r\n    font-size: 20px;\r\n    /* padding: 20px; */\r\n}\r\n\r\n.link:hover{\r\n    text-decoration: none;\r\n\r\n\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    /* border: 1px solid #707070; */\r\n    border-radius: 25px;\r\n    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.3);\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.4rem;\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.login-btn:hover{\r\n    transform: scale(1.1);\r\n    filter: brightness(1.1);\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

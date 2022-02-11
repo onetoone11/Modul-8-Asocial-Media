@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
 <div class="container login-body">
 
                 <div class="card-body bg--light">

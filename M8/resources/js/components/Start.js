@@ -1,8 +1,18 @@
 import React from 'react'
 export default function Start(props){
 
-    const [img, setImg] = React.useState(false)
+    const [img, setImg] = React.useState(true)
 
+    React.useEffect(() => {
+        setImg(() => {
+            if(props.image == null){
+                return (false);
+            }
+            else{
+                return (true);
+            }
+        })
+    }, [img])
 
     console.log(props.darkMode)
 
@@ -12,11 +22,10 @@ export default function Start(props){
                 <div className="col-lg-3"></div>
                 <div className="col-lg-6">
                     {img && <div>
-                        <h1>IMG</h1>
-                        <img src="" alt="" />
+                        <img style={{maxWidth: '540px', maxHeight: '540px'}} src={props.image} alt="" />
                     </div>}
                     <div className={props.darkMode ? "bg--dark-bright" : "bg--light-bright"}> 
-                        <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{props.title}</h1>
+                        <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{props.title}</h1>
                         <p className="post--p p-3">{props.text}</p>
                     </div>
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
