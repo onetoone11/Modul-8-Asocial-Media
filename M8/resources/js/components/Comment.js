@@ -6,7 +6,10 @@ export default function Comment(props){
 
     const [isReplying, setIsReplying] = React.useState(false);
 
-    // console.log(post_id)
+    const onNotLogged = () => {
+        window.location.href = `/login`;
+    }
+    
 
     return(
     <div>
@@ -17,8 +20,10 @@ export default function Comment(props){
                 <input hidden type="checkbox" name="likes" id="like" value="like" />
                 <label className="like--i ml-3" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-lg"></i></label>
                 
-                <button className="icon-btn" onClick={() => setIsReplying(a => !a)}><i className="fal fa-reply mr-4 ml-3 fa-lg"></i></button>
-
+                {!globalData.user ?
+                 <button className="icon-btn" onClick={onNotLogged}><i className="fal fa-reply mr-4 ml-3 fa-lg"></i></button>
+                :
+                <button className="icon-btn" onClick={() => setIsReplying(a => !a)}><i className="fal fa-reply mr-4 ml-3 fa-lg"></i></button>}
                 {props.test && 
                 <button className="icon-btn" onClick={() => setShowToggle((prevShowToggle) => !prevShowToggle)}><i style={{transition: "0.2s", transform: `rotate3d(0, 0, 1, ${showToggle ? "0deg" : "-180deg"})`}} className="fal fa-chevron-down fa-lg ml-3"></i></button>}
             </div>    

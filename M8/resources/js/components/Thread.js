@@ -56,6 +56,24 @@ export default function Thread(props) {
         )
     }
 
+    let admin = false;
+    let isOP = false;
+    if(!globalData.user) {
+    } else {
+        if(!(globalData.user.type === 'admin')) {
+            admin = false;
+        } else {
+            admin = true;
+        }
+        if(post.user_id == globalData.user.id) {
+            isOP = true;
+        }
+    }
+
+    const onNotLogged = () => {
+        window.location.href = `/login`;
+    }
+
     return (
         <div className="container">
             {img && <div>
@@ -66,16 +84,26 @@ export default function Thread(props) {
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
                 <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3">{post.text}</p>
+                {(isOP || admin) && 
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
                     <button className="btn--deletePost border-r c-red">Delete</button>
                 </form>
-                
+                }
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
-                <input hidden type="radio" name="likes" id="like" value="like" />
-                <input hidden type="radio" name="likes" id="dislike" value="dislike" />
-                <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-                <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>
+                {!globalData.user ? 
+                <div style={{display: 'inline'}} onClick={onNotLogged}>
+                    <input hidden type="radio" name="likes" id="like" value="like" />
+                    <input hidden type="radio" name="likes" id="dislike" value="dislike" />
+                    <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+                    <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+                </div> :
+                <div style={{display: 'inline'}}>
+                    <input hidden type="radio" name="likes" id="like" value="like" />
+                    <input hidden type="radio" name="likes" id="dislike" value="dislike" />
+                    <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+                    <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+                </div>}
 
                 <p className="comments--comment">Comments</p>
 

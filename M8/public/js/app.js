@@ -2295,8 +2295,11 @@ function Comment(props) {
   var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       isReplying = _React$useState4[0],
-      setIsReplying = _React$useState4[1]; // console.log(post_id)
+      setIsReplying = _React$useState4[1];
 
+  var onNotLogged = function onNotLogged() {
+    window.location.href = "/login";
+  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -2324,7 +2327,13 @@ function Comment(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
             className: "fal fa-grin-hearts mr-4 fa-lg"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        }), !globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          className: "icon-btn",
+          onClick: onNotLogged,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+            className: "fal fa-reply mr-4 ml-3 fa-lg"
+          })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
           className: "icon-btn",
           onClick: function onClick() {
             return setIsReplying(function (a) {
@@ -2816,7 +2825,6 @@ function Profile(props) {
 
   var onLogout = function onLogout(e) {
     e.preventDefault();
-    alert("test");
     document.getElementById('logout-form').submit();
   };
 
@@ -3143,6 +3151,11 @@ function Start(props) {
       setImg = _React$useState2[1];
 
   console.log(props.darkMode);
+
+  var onNotLogged = function onNotLogged() {
+    window.location.href = "/login";
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "container mt-5",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -3169,32 +3182,65 @@ function Start(props) {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "bg--light comments-sm p-3 post--end",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            hidden: true,
-            type: "radio",
-            name: "likes",
-            id: "like",
-            className: "likeInput",
-            value: "like"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            hidden: true,
-            type: "radio",
-            name: "likes",
-            id: "dislike",
-            className: "likeInput",
-            value: "dislike"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "like--i",
-            htmlFor: "like",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              className: "fal fa-grin-hearts mr-4 fa-xl"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "like--i",
-            htmlFor: "dislike",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              className: "fal fa-sad-cry fa-xl"
-            })
+          children: [!globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            style: {
+              display: 'inline'
+            },
+            onClick: onNotLogged,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              hidden: true,
+              type: "radio",
+              name: "likes",
+              id: "like",
+              value: "like"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              hidden: true,
+              type: "radio",
+              name: "likes",
+              id: "dislike",
+              value: "dislike"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "like--i",
+              htmlFor: "like",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-grin-hearts mr-4 fa-xl"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "like--i",
+              htmlFor: "dislike",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-sad-cry fa-xl"
+              })
+            })]
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            style: {
+              display: 'inline'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              hidden: true,
+              type: "radio",
+              name: "likes",
+              id: "like",
+              value: "like"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              hidden: true,
+              type: "radio",
+              name: "likes",
+              id: "dislike",
+              value: "dislike"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "like--i",
+              htmlFor: "like",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-grin-hearts mr-4 fa-xl"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "like--i",
+              htmlFor: "dislike",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-sad-cry fa-xl"
+              })
+            })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
             className: "comments--comment",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
@@ -3324,6 +3370,25 @@ function Thread(props) {
     };
   };
 
+  var admin = false;
+  var isOP = false;
+
+  if (!globalData.user) {} else {
+    if (!(globalData.user.type === 'admin')) {
+      admin = false;
+    } else {
+      admin = true;
+    }
+
+    if (post.user_id == globalData.user.id) {
+      isOP = true;
+    }
+  }
+
+  var onNotLogged = function onNotLogged() {
+    window.location.href = "/login";
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "container",
     children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -3341,7 +3406,7 @@ function Thread(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "post--p p-3",
         children: post.text
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
+      }), (isOP || admin) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
         style: {
           display: 'contents'
         },
@@ -3354,30 +3419,65 @@ function Thread(props) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "".concat(props.darkMode ? 'bg--dark' : 'bg--light', " comments-sm p-3 post--end"),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        hidden: true,
-        type: "radio",
-        name: "likes",
-        id: "like",
-        value: "like"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        hidden: true,
-        type: "radio",
-        name: "likes",
-        id: "dislike",
-        value: "dislike"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-        className: "like--i",
-        htmlFor: "like",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-          className: "fal fa-grin-hearts mr-4 fa-xl"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-        className: "like--i",
-        htmlFor: "dislike",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-          className: "fal fa-sad-cry fa-xl"
-        })
+      children: [!globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        style: {
+          display: 'inline'
+        },
+        onClick: onNotLogged,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          hidden: true,
+          type: "radio",
+          name: "likes",
+          id: "like",
+          value: "like"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          hidden: true,
+          type: "radio",
+          name: "likes",
+          id: "dislike",
+          value: "dislike"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+          className: "like--i",
+          htmlFor: "like",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+            className: "fal fa-grin-hearts mr-4 fa-xl"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+          className: "like--i",
+          htmlFor: "dislike",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+            className: "fal fa-sad-cry fa-xl"
+          })
+        })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        style: {
+          display: 'inline'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          hidden: true,
+          type: "radio",
+          name: "likes",
+          id: "like",
+          value: "like"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          hidden: true,
+          type: "radio",
+          name: "likes",
+          id: "dislike",
+          value: "dislike"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+          className: "like--i",
+          htmlFor: "like",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+            className: "fal fa-grin-hearts mr-4 fa-xl"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+          className: "like--i",
+          htmlFor: "dislike",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+            className: "fal fa-sad-cry fa-xl"
+          })
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "comments--comment",
         children: "Comments"
