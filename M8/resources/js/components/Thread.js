@@ -1,6 +1,7 @@
 import React from 'react'
 import Comment from './Comment'
 import Logo from './logoBlack.png'
+import LikePostForm from './LikePostForm'
 export default function Thread(props) {
 
     const [img, setImg] = React.useState(false)
@@ -75,10 +76,12 @@ export default function Thread(props) {
                 </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
-                <input hidden type="radio" name="likes" id="like" value="like" />
+                {/* <input hidden type="radio" name="likes" id="like" value="like" />
                 <input hidden type="radio" name="likes" id="dislike" value="dislike" />
                 <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-                <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>
+                <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> */}
+                <LikePostForm post_id={post.id} user_id={globalData.user.id} />
+                
 
                 <p className="comments--comment">Comments</p>
 

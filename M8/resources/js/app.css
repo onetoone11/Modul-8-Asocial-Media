@@ -20,8 +20,8 @@ body{
 }
 
 .bg--darkgray{
-    background-color: #616161;
-    color: #fff;
+    background-color: #616161 !important;
+    color: #fff !important;
 }
 
 .bg--darkmode{
@@ -185,6 +185,10 @@ body{
 
 .post--top{
     position: relative;
+}
+
+.btn-active {
+    color: #FFC5D9 !important;
 }
 
 /* Navbar */

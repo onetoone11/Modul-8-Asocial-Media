@@ -112,12 +112,12 @@ class PostsController extends Controller
     }
 
     public function ratePost(Request $request) {
-        $user_id = $request->input('user_id');
-        $post_id = $request->input('post_id');
-        $value = $request->input('likes');
+        $user_id = intval($request->input('user_id'));
+        $post_id = intval($request->input('post_id'));
+        $value = intval($request->input('likes'));
 
-        $value = intval($value);
         DB::statement("INSERT INTO post_likes (user_id, post_id, value) VALUES ($user_id, $post_id, $value) ON DUPLICATE KEY UPDATE value=$value");
+        return response()->json(['user_id' => $user_id, 'post_id' => $post_id, 'value' => $value]);
     }
 
     public function test() {
