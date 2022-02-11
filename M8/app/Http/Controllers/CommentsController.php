@@ -102,16 +102,19 @@ class CommentsController extends Controller
     //rating
 
     public function rateComment(Request $request) {
-        $comment_id = $request->input('comment_id');
-        $user_id = $request->input('user_id');
+        $comment_id = intval($request->input('comment_id'));
+        $user_id = intval($request->input('user_id'));
 
-        $exists = DB::statement("SELECT COUNT(1) FROM comment_likes WHERE user_id = $user_id AND comment_id = $comment_id");
+        $exists = DB::select("SELECT COUNT(1) FROM comment_likes WHERE user_id = $user_id AND comment_id = $comment_id");
+        $exists = json_decode(json_encode($exists), true);
+        $exists = $exists[0]["COUNT(1)"];
+
         if($exists == 1) {
             DB::statement("DELETE FROM comment_likes WHERE user_id = $user_id AND comment_id = $comment_id");
         } elseif ($exists == 0) {
             DB::statement("INSERT INTO comment_likes (user_id, comment_id) VALUES ($user_id, $comment_id)");
         }
 
-        return response();
+        return response()->json(['user_id' => $user_id, 'comment_id' => $comment_id, 'exists' => $exists]);
     }
 }

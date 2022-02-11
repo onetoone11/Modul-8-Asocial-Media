@@ -2308,12 +2308,7 @@ function Comment(props) {
   var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       isReplying = _React$useState4[0],
-      setIsReplying = _React$useState4[1]; // console.log(post_id)
-  // const likeDB = async (e) => {
-  //     e.preventDefault();
-  //     const formData = new FormData(this)
-  // }
-
+      setIsReplying = _React$useState4[1];
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -2329,18 +2324,9 @@ function Comment(props) {
             overflowWrap: "break-word"
           },
           children: props.text
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-          hidden: true,
-          type: "checkbox",
-          name: "likes",
-          id: "like",
-          value: "like"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-          className: "like--i ml-3",
-          htmlFor: "like",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-            className: "fal fa-grin-hearts mr-4 fa-lg"
-          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikeCommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          user_id: props.user_id,
+          comment_id: props.id
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           className: "icon-btn",
           onClick: function onClick() {
@@ -2371,7 +2357,7 @@ function Comment(props) {
       className: "ml-4 pl-4 border",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
         className: "row w-100",
-        action: "/comment/".concat(props.post_id),
+        action: "/comment/".concat(post_id),
         method: "get",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "comment--profile bg--white mr-3 ml-4"
@@ -2632,28 +2618,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
 var LikeCommentForm = function LikeCommentForm(props) {
   var handleSubmit = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      var res, data;
+      var formData, fetchResponse, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return fetch("https://jsonplaceholder.typicode.com/todos/".concat(props.comment_id));
+              e.preventDefault();
+              formData = new FormData();
+              formData.append('user_id', props.user_id);
+              formData.append('comment_id', props.comment_id);
+              _context.next = 6;
+              return fetch("/rateComment", {
+                method: "post",
+                body: formData
+              });
 
-            case 2:
-              res = _context.sent;
-              _context.next = 5;
-              return res.json();
+            case 6:
+              fetchResponse = _context.sent;
+              _context.next = 9;
+              return fetchResponse.json();
 
-            case 5:
+            case 9:
               data = _context.sent;
-              console.log(data); // const data = await fetch
+              console.log(data);
 
-            case 7:
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -2666,28 +2658,25 @@ var LikeCommentForm = function LikeCommentForm(props) {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
     onSubmit: handleSubmit,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      type: "hidden",
-      name: "user_id",
-      value: props.user_id
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      type: "hidden",
-      name: "comment_id",
-      value: props.comment_id
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       type: "submit",
-      className: "w-100 h-100 like--i ml-3",
+      className: "like--i",
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
         className: "fal fa-grin-hearts mr-4 fa-lg"
       })
-    })]
+    })
   });
 };
 
 LikeCommentForm.defaultProps = {
-  user_id: 1,
+  user_id: 15,
   comment_id: 1
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LikeCommentForm);
@@ -3417,6 +3406,7 @@ function Thread(props) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         children: findParents(list).map(function (element) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            user_id: globalData.user && globalData.user.id,
             text: element.text,
             id: element.id,
             test: toTree(findChildren(list1)(element.id))(list1)
@@ -3483,10 +3473,7 @@ function Thread(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "comments--comment",
         children: "Comments"
-      }), toTree(comments)(comments), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        darkMode: props.darkMode,
-        id: 1
-      })]
+      }), toTree(comments)(comments)]
     })]
   });
 }

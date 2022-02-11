@@ -48,7 +48,7 @@ export default function Thread(props) {
         return (
         <div>
             {findParents(list).map(element => {
-                return <Comment key={element.id} text={element.text} id={element.id} test={
+                return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
@@ -86,7 +86,6 @@ export default function Thread(props) {
                     return <Comment key={i} darkMode={props.darkMode} id={element.id} text={element.text} />
                 })} */}
                 {toTree(comments)(comments)}
-                <Comment darkMode={props.darkMode} id={1} />
 
             </div>
         </div>
