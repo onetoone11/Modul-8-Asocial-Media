@@ -24,6 +24,11 @@ body{
     color: #fff;
 }
 
+.bg--darkmode{
+    background-color: #474747;
+    color: #fff;
+}
+
 .bg--light-bright{
     background-color: rgba(223, 222, 220, 0.7);
 }
@@ -39,11 +44,11 @@ body{
 }
 
 .c-gray{
-    color: #707070;
+    color: #707070 !important;
 }
 
 .c-white{
-    color: #fff;
+    color: #fff !important;
 }
 
 .c-red{
@@ -51,6 +56,7 @@ body{
 }
 
 .border-w{
+    border: 1px solid;
     border-color: #fff;
 }
 
@@ -61,6 +67,14 @@ body{
 
 .border-r{
     border: 1px solid #FF8C8C;
+}
+
+.border-none{
+    border: none;
+}
+
+.border-1_5{
+    border-width: 1.5px;
 }
 
 .text-border {
@@ -90,6 +104,60 @@ body{
     transform: scale(1.1);
     background-color: #FF8C8C;
     color: #fff;
+    transition: 0.2s;
+}
+
+.btn--editPost{
+    position: absolute;
+    top: 20px;
+    right: 120px;
+    background-color: transparent;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.btn--editPost:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    /* background-color: #FF8C8C; */
+    /* color: #fff; */
+    transition: 0.2s;
+}
+
+.btn--deleteUser{
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.btn--deleteUser:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #FF8C8C;
+    color: #fff;
+    transition: 0.2s;
+}
+
+.btn--admin{
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.btn--admin:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #333;
     transition: 0.2s;
 }
 
@@ -126,7 +194,6 @@ nav{
     position: fixed !important;
     box-shadow: 0px 4px 10px #888888;
     top: 0;
-    /* background-color: #fff; ----------------------------------------------------------------------------------------- */
     z-index: 1000;
 }
 
@@ -386,12 +453,14 @@ input[type=search]:focus {
 .login-btn {
     padding: 0.8% 7%;
     border-radius: 25px;
-    font-size: 1.5rem;
-    /* background-color: #FFF; -----------------------------------------------------------------------------------------
-    color: #707070; */
-    /* border-color: #707070; */
+    font-size: 1.4rem;
     border: none;
     cursor: pointer;
+}
+
+.login-btn:hover{
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 /* Create and Edit forms */

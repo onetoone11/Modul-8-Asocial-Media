@@ -1,5 +1,6 @@
 import Button from './Button'
-import Logo from './logoBlack.png'
+import LogoDark from './logoBlack.png'
+import LogoLight from './logoWhite.png'
 import React from 'react'
 
 export default function Navbar(props){
@@ -8,6 +9,10 @@ export default function Navbar(props){
     // } else {
         console.log(globalData.user)
     // }
+
+    if(props.darkMode){
+        document.body.style.backgroundColor = '#474747';
+    }
 
     const onLogin = () => {
         window.location.href = `/login`;
@@ -32,12 +37,12 @@ export default function Navbar(props){
     }
 
     return(
-        <nav className={`d-flex justify-content-between align-items-center p-0 ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`}>
+        <nav className={`d-flex justify-content-between align-items-center p-0 ${props.darkMode ? 'bg--darkmode' : 'bg--white'}`}>
             <div className="d-flex w-50 ">
-                <div className="nav--logo mr-5" onClick={onLogo}><img className="logo--image" src={Logo}></img></div>
+                <div className="nav--logo mr-5" onClick={onLogo}><img className="logo--image" src={props.darkMode ? LogoLight : LogoDark}></img></div>
 
                 <form className="d-flex justify-content-center align-items-center position-relative w-100">
-                    <input type="search"/>
+                    <input type="search" className={props.darkMode ? 'border-none' : 'border-b'} />
                     <button className="icon-btn search-icon"><i className="fa fa-search fa-lg"></i></button>
                 </form>
             </div>
@@ -46,13 +51,13 @@ export default function Navbar(props){
             {!globalData.user ? 
             
             <div className="nav--account">
-                <button onClick={onLogin} className={`mr-3 btn-login ${props.darkMode ? 'bg--white' : 'bg--light'}`}>Log In</button>
-                <button onClick={onRegister} className={`btn-register ${props.darkMode ? 'bg--darkgray border-w' : 'bg--white border-b'}`} >Register</button>
+                <button onClick={onLogin} className={`mr-3 btn-login ${props.darkMode ? 'bg--white border-none' : 'bg--light border-b'}`}>Log In</button>
+                <button onClick={onRegister} className={`btn-register ${props.darkMode ? 'bg--darkgray border-w' : 'bg--white border-b'} mr-3`} >Register</button>
             </div> 
             : 
             <div className="nav--account mr-3">
                 <h3 className="nav--account-name" id="username" onClick={onProfile}>{name}</h3>
-                <div className="nav--account-img" onClick={onProfile}></div>
+                <div className="nav--account-img" style={{}} onClick={onProfile}><img className="nav--account-img" src={globalData.user.img} alt="" /></div>
             </div>}
         </nav>
     )

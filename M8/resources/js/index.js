@@ -11,6 +11,7 @@ const register = document.getElementById('register');
 const profile = document.getElementById('profile');
 const create = document.getElementById('create');
 const edit = document.getElementById('edit');
+const users = document.getElementById('users');
 
 const test = document.getElementById('test')
 
@@ -73,4 +74,11 @@ if(edit) {
         <App page='edit' />
         , 
         edit)
+}
+
+if(users) {
+    ReactDOM.render(
+        <App page='users' />
+        , 
+        users)
 }

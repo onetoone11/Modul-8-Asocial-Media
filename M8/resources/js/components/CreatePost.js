@@ -10,11 +10,11 @@ const CreatePost = (darkMode) => {
                     <hr></hr>
                     <form action='./createPost' method="get" encType='multipart/form-data'>
                         <div className="form-group">
-                            <input name="post_header" type="text" placeholder="Header" className="form-control" />
+                            <input name="post_header" type="text" placeholder="Header" className={`form-control ${darkMode && 'bg--darkgray'}`} />
                         </div>
                         
                         <div className="form-group">
-                            <textarea name="post_body" style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className="form-control" />
+                            <textarea name="post_body" style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className={`form-control ${darkMode && 'bg--darkgray'}`} />
                         </div>
                         
                         {/* <div className="form-group">
@@ -22,9 +22,10 @@ const CreatePost = (darkMode) => {
                         </div> */}
 
                         <div className="form-group">
-                            <input type="url" placeholder="https://ImageExample.com" name="post_img" id="image-input" className="form-control"/>
+                            <input type="url" placeholder="https://ImageExample.com" name="post_img" id="image-input" className={`form-control ${darkMode && 'bg--darkgray'}`}/>
                         </div>
                         
+                        <input hidden type="text" name="user_id" value={globalData.user.id} />
 
                         <div className="form-group w-100 d-flex justify-content-center">
                             <input type="submit" value="Post" className="btn btn-outline-dark login-btn bg--white" />

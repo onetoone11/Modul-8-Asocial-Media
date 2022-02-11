@@ -48,7 +48,7 @@ export default function Thread(props) {
         return (
         <div>
             {findParents(list).map(element => {
-                return <Comment key={element.id} text={element.text} id={element.id} test={
+                return <Comment darkMode={props.darkMode} key={element.id} text={element.text} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
@@ -84,15 +84,16 @@ export default function Thread(props) {
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
                 <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3">{post.text}</p>
-                {(isOP || admin) && 
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
-                    <button className="btn--deletePost border-r c-red">Delete</button>
+                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>
-                }
+                <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
+                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>}
+                </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
                 {!globalData.user ? 
-                <div style={{display: 'inline'}} onClick={onNotLogged}>
+                <div style={{display: 'inline'}}  onClick={onNotLogged}>
                     <input hidden type="radio" name="likes" id="like" value="like" />
                     <input hidden type="radio" name="likes" id="dislike" value="dislike" />
                     <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>

@@ -29,6 +29,8 @@ Route::get('/profile', [PagesController::class, 'profile']);
 
 Route::get('/create', [PagesController::class, 'create']);
 
+Route::get('/users', [PagesController::class, 'users']);
+
 Route::get('/edit/{post_id}', [PagesController::class, 'edit']);
 
 
@@ -52,5 +54,10 @@ Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);
 
 Route::get('/changeMode/{user_id}', [UserController::class, 'edit']);
 Route::get('/changeImage/{user_id}', [PagesController::class, 'userImage']);
+
+// admin
+
+Route::get('/deleteUser/{user_id}', [PagesController::class, 'deleteUser']);
+Route::get('/adminUser/{user_id}', [PagesController::class, 'adminUser']);
 
 Auth::routes();
