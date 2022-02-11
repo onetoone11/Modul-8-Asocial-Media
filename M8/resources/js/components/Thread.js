@@ -48,7 +48,8 @@ export default function Thread(props) {
         return (
         <div>
             {findParents(list).map(element => {
-                return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
+                // return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
+                return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
@@ -67,9 +68,11 @@ export default function Thread(props) {
                 <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3">{post.text}</p>
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
-                    <button className="btn--deletePost border-r c-red">Delete</button>
+                    <button className="btn--deletePost border-r c-red border-1_5">Delete</button>
                 </form>
-                
+                <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
+                    {globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>}
+                </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
                 <input hidden type="radio" name="likes" id="like" value="like" />

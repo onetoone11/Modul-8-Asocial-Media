@@ -14,14 +14,25 @@ import Register from './components/Register'
 import EditPost from './components/EditPost'
 import CreatePost from './components/CreatePost'
 import Timeline from './components/Timeline'
+import Users from './components/Users'
 
 
 // import test from process.env.REACT_DARK;
 
 export default function App(props){
 
-    const [darkMode, setDarkMode] = React.useState(true)
-    
+    const [darkMode, setDarkMode] = React.useState(false)
+
+    if(globalData.user !== null){
+        React.useEffect(() => {
+            if(globalData.user.mode == 'light'){
+                setDarkMode(() => false)
+            }
+            else{
+                setDarkMode(() => true)
+            }
+        }, [])
+    }
 
     function handleClick(){
         setDarkMode((prevDarkMode) => !prevDarkMode)
@@ -104,6 +115,15 @@ export default function App(props){
             <>
                 <Navbar darkMode={darkMode} /> 
                 <EditPost  />
+            </>
+        )
+    }
+
+    if(props.page === 'users'){
+        return(
+            <>
+                <Navbar darkMode={darkMode} /> 
+                <Users darkMode={darkMode} />
             </>
         )
     }
