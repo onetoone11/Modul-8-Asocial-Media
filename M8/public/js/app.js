@@ -2788,7 +2788,13 @@ function Navbar(props) {
         children: name
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "nav--account-img",
-        onClick: onProfile
+        style: {},
+        onClick: onProfile,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+          className: "nav--account-img",
+          src: globalData.user.img,
+          alt: ""
+        })
       })]
     })]
   });
@@ -2824,7 +2830,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 // import findus from './findus.png'
 
- // import test from 'https://i.imgur.com/RYs8MOT.png';
 
 
 
@@ -2898,15 +2903,21 @@ function Profile(props) {
         className: "row",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "col-lg-3"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          src: globalData.user.img,
-          alt: ""
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "col-lg-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "profile--img",
             onMouseEnter: toggleProfileImage,
-            onMouseLeave: toggleProfileImage
+            onMouseLeave: toggleProfileImage,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              style: {
+                height: '400px',
+                width: '400px',
+                borderRadius: '200px'
+              },
+              src: globalData.user.img,
+              alt: ""
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             onClick: changeProfileImage,
             className: "".concat(toggleImage && 'none', " profile--img-cover"),

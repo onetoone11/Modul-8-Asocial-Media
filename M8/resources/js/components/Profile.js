@@ -1,7 +1,6 @@
 // import findus from './findus.png'
 import React, { useReducer } from 'react'
 import Timeline from './Timeline'
-// import test from 'https://i.imgur.com/RYs8MOT.png';
 
 
 export default function Profile(props){
@@ -55,9 +54,8 @@ export default function Profile(props){
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3"></div>
-                    <img src={globalData.user.img} alt="" />
                     <div className="col-lg-6">
-                        <div className="profile--img"  onMouseEnter={toggleProfileImage} onMouseLeave={toggleProfileImage}></div>
+                        <div className="profile--img"  onMouseEnter={toggleProfileImage} onMouseLeave={toggleProfileImage}><img style={{height: '400px', width: '400px', borderRadius: '200px'}} src={globalData.user.img} alt="" /></div>
                         <div onClick={changeProfileImage} className={`${toggleImage && 'none'} profile--img-cover`} style={{cursor: 'pointer'}} >
                             <div className='profile--image-upload'>
                                 <h3 className="text-center c-white"><i className="fal fa-image pr-3"></i>Change profile picture </h3>

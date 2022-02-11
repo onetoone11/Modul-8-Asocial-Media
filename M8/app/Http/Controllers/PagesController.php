@@ -57,13 +57,13 @@ class PagesController extends Controller
         return view('test')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
-    public function userImage(request $request, $user_id){
+    public function userImage(Request $request, $user_id){
 
         $user = User::find($user_id);
-        $user->image = $request->input('profile_img');
+        $user->img = $request->input('profile_img');
         $user->save();
 
-        return view('profile');
+        return Redirect::to('/profile')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function users(){
