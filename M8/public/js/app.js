@@ -2284,149 +2284,6 @@ var Button = function Button(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Comment.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Comment.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Comment)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-function Comment(props) {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      showToggle = _React$useState2[0],
-      setShowToggle = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      isReplying = _React$useState4[0],
-      setIsReplying = _React$useState4[1]; // console.log(post_id)
-
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "row w-100",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "comment--profile bg--white mr-3 ml-4"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "comment ".concat(props.darkMode ? 'bg--darkgray' : 'bg--white'),
-          style: {
-            minWidth: "200px",
-            maxWidth: "500px",
-            overflowWrap: "break-word",
-            position: 'relative'
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            style: {
-              position: 'absolute',
-              fontSize: '8px',
-              top: '2px'
-            },
-            children: "Replace with the name of the owner"
-          }), props.text]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          hidden: true,
-          type: "checkbox",
-          name: "likes",
-          id: "like",
-          value: "like"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-          className: "like--i ml-3",
-          htmlFor: "like",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-            className: "fal fa-grin-hearts mr-4 fa-lg"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "icon-btn",
-          onClick: function onClick() {
-            return setIsReplying(function (a) {
-              return !a;
-            });
-          },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-            className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
-          })
-        }), props.test && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "icon-btn",
-          onClick: function onClick() {
-            return setShowToggle(function (prevShowToggle) {
-              return !prevShowToggle;
-            });
-          },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-            style: {
-              transition: "0.2s",
-              transform: "rotate3d(0, 0, 1, ".concat(showToggle ? "-180deg" : "0deg", ")")
-            },
-            className: "".concat(props.darkMode && 'c-white', " fal fa-chevron-down fa-lg ml-3")
-          })
-        })]
-      })]
-    }), isReplying && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "ml-4 pl-4 border",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-        className: "row w-100",
-        action: "/comment/".concat(post_id),
-        method: "get",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "comment--profile bg--white mr-3 ml-4"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            type: "hidden",
-            id: "parent_id",
-            name: "parent_id",
-            value: props.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
-            id: "text",
-            name: "text",
-            className: "comment ".concat(props.darkMode ? 'bg--darkgray' : 'bg--white'),
-            maxLength: "256",
-            cols: "100",
-            rows: "3",
-            style: {
-              width: "100%",
-              overflowWrap: "break-word"
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "icon-btn",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              className: "fa fa-paper-plane",
-              "aria-hidden": "true"
-            })
-          })]
-        })]
-      })
-    }), props.test && showToggle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "ml-4 pl-4",
-      children: props.test
-    })]
-  });
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/CreatePost.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/CreatePost.js ***!
@@ -3242,85 +3099,120 @@ function Start(props) {
     });
   }, [img]);
   console.log(props.darkMode);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "container mt-5",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "row",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "col-lg-3"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "col-lg-6",
-        children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-            style: {
-              maxWidth: '540px',
-              maxHeight: '540px'
-            },
-            src: props.image,
-            alt: ""
-          })
+
+  var onNotLogged = function onNotLogged() {
+    window.location.href = "/login";
+  };
+
+  return (
+    /*#__PURE__*/
+    // {!globalData.user ? 
+    //     <div style={{display: 'inline'}} onClick={onNotLogged} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
+    //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
+    //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
+    //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+    //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+    //     </div> :
+    //     <div style={{display: 'inline'}} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
+    //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
+    //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
+    //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+    //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+    //     </div>}
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "container mt-5",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "row",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "col-lg-3"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-            className: img ? "pl-3 img-text text-border c-white" : "pl-3",
-            children: props.title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "post--p p-3",
-            children: props.text
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            hidden: true,
-            type: "radio",
-            name: "likes",
-            id: "like",
-            className: "likeInput",
-            value: "like"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            hidden: true,
-            type: "radio",
-            name: "likes",
-            id: "dislike",
-            className: "likeInput",
-            value: "dislike"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "like--i",
-            htmlFor: "like",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              className: "fal fa-grin-hearts mr-4 fa-xl"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "like--i",
-            htmlFor: "dislike",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              className: "fal fa-sad-cry fa-xl"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "comments--comment",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-              href: "./thread/".concat(props.id),
-              className: props.darkMode ? 'c-white' : 'c-gray',
+          className: "col-lg-6",
+          children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
               style: {
-                textDecoration: "none"
+                maxWidth: '540px',
+                maxHeight: '540px'
               },
-              children: "Comments"
+              src: props.image,
+              alt: ""
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-              children: props.comment1
-            }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-              children: props.comment2
+            className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+              className: img ? "pl-3 img-text text-border c-white" : "pl-3",
+              children: props.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              className: "post--p p-3",
+              children: props.text
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              hidden: true,
+              type: "radio",
+              name: "likes",
+              id: "like",
+              className: "likeInput",
+              value: "like"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              hidden: true,
+              type: "radio",
+              name: "likes",
+              id: "dislike",
+              className: "likeInput",
+              value: "dislike"
+            }), !globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              onClick: onNotLogged,
+              className: "like--i",
+              htmlFor: "like",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-grin-hearts mr-4 fa-xl"
+              })
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "like--i",
+              htmlFor: "like",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-grin-hearts mr-4 fa-xl"
+              })
+            }), !globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              onClick: onNotLogged,
+              className: "like--i",
+              htmlFor: "dislike",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-sad-cry fa-xl"
+              })
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "like--i",
+              htmlFor: "dislike",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fal fa-sad-cry fa-xl"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              className: "comments--comment",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "./thread/".concat(props.id),
+                className: props.darkMode ? 'c-white' : 'c-gray',
+                style: {
+                  textDecoration: "none"
+                },
+                children: "Comments"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+                children: props.comment1
+              }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+                children: props.comment2
+              })]
             })]
           })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "col-lg-3"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "col-lg-3"
-      })]
+      })
     })
-  });
+  );
 }
 
 /***/ }),
@@ -3329,188 +3221,9 @@ function Start(props) {
 /*!*******************************************!*\
   !*** ./resources/js/components/Thread.js ***!
   \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Thread)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Comment */ "./resources/js/components/Comment.js");
-/* harmony import */ var _logoBlack_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logoBlack.png */ "./resources/js/components/logoBlack.png");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-function Thread(props) {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      img = _React$useState2[0],
-      setImg = _React$useState2[1];
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setImg(function () {
-      if (post.image == null) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-  }, [img]);
-  console.log(comments);
-  console.log(post); // const toRecursiveTree = list => {
-  //     if(list === []) {
-  //         return <Comment />
-  //     }
-  // }
-
-  var findChildren = function findChildren(list) {
-    return function (id) {
-      if (list.some(function (element) {
-        return element.id == id;
-      })) {
-        return list.filter(function (element) {
-          return element.parent_comment_id == id;
-        });
-      } else {
-        console.log("Error");
-      }
-    };
-  };
-
-  var findParents = function findParents(list) {
-    return list.filter(function (el1) {
-      return list.every(function (el2) {
-        return el1.parent_comment_id != el2.id;
-      });
-    });
-  }; //get parents children, get data from parents, continue with children
-  //the tree structure: a tree contains a value and a list of trees, or a value and null
-  //the algorithm:
-  //if the list is empty, return 'null'
-  //else, 
-  //this is wrong, the algorithm deletes everything but direct children, leading to a loss of information
-  //only the parents need to be remove
-
-
-  var removeParents = function removeParents(list) {
-    return list.filter(function (el1) {
-      return !list.every(function (el2) {
-        return el1.parent_comment_id != el2.id;
-      });
-    });
-  };
-
-  var toTree = function toTree(list) {
-    return function (list1) {
-      if (list.length === 0) {
-        return undefined;
-      }
-
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        children: findParents(list).map(function (element) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            darkMode: props.darkMode,
-            text: element.text,
-            id: element.id,
-            test: toTree(findChildren(list1)(element.id))(list1)
-          }, element.id);
-        })
-      });
-    };
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "container",
-    children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "text-center ".concat(props.darkMode ? 'bg--dark-img' : 'bg--light'),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-        style: {
-          maxWidth: '1100px',
-          maxHeight: '500px'
-        },
-        src: post.image,
-        alt: ""
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-        className: img ? "pl-3 img-text text-border" : "pl-3",
-        children: post.title
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        className: "post--p p-3",
-        children: post.text
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
-        style: {
-          display: 'contents'
-        },
-        action: "/deletePost/".concat(post.id),
-        method: "get",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-          className: "btn--deletePost border-r c-red border-1_5",
-          children: "Delete"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
-        style: {
-          display: 'contents'
-        },
-        action: "/edit/".concat(post.id),
-        children: globalData.user !== null && globalData.user.id == "".concat(post.user_id) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-          className: "btn--editPost ".concat(props.darkMode ? 'border-w c-white' : 'border-b c-black', "  mr-3"),
-          children: "Edit"
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "".concat(props.darkMode ? 'bg--dark' : 'bg--light', " comments-sm p-3 post--end"),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        hidden: true,
-        type: "radio",
-        name: "likes",
-        id: "like",
-        value: "like"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        hidden: true,
-        type: "radio",
-        name: "likes",
-        id: "dislike",
-        value: "dislike"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-        className: "like--i",
-        htmlFor: "like",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-          className: "fal fa-grin-hearts mr-4 fa-xl"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-        className: "like--i",
-        htmlFor: "dislike",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-          className: "fal fa-sad-cry fa-xl"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        className: "comments--comment",
-        children: "Comments"
-      }), toTree(comments)(comments), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        darkMode: props.darkMode,
-        id: 1
-      })]
-    })]
-  });
-}
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\resources\\js\\components\\Thread.js: Unexpected token (101:1)\n\n\u001b[0m \u001b[90m  99 |\u001b[39m                 \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mform\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 100 |\u001b[39m                 \u001b[33m<\u001b[39m\u001b[33mform\u001b[39m style\u001b[33m=\u001b[39m{{display\u001b[33m:\u001b[39m \u001b[32m'contents'\u001b[39m}} action\u001b[33m=\u001b[39m{\u001b[32m`/edit/${post.id}`\u001b[39m}\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 101 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 102 |\u001b[39m                     {globalData\u001b[33m.\u001b[39muser \u001b[33m!==\u001b[39m \u001b[36mnull\u001b[39m \u001b[33m&&\u001b[39m globalData\u001b[33m.\u001b[39muser\u001b[33m.\u001b[39mid \u001b[33m==\u001b[39m \u001b[32m`${post.user_id}`\u001b[39m \u001b[33m&&\u001b[39m \u001b[33m<\u001b[39m\u001b[33mbutton\u001b[39m className\u001b[33m=\u001b[39m{\u001b[32m`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`\u001b[39m}\u001b[33m>\u001b[39m\u001b[33mEdit\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mbutton\u001b[39m\u001b[33m>\u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 103 |\u001b[39m \u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 104 |\u001b[39m                     {admin \u001b[33m==\u001b[39m \u001b[36mtrue\u001b[39m \u001b[33m||\u001b[39m globalData\u001b[33m.\u001b[39muser \u001b[33m!==\u001b[39m \u001b[36mnull\u001b[39m \u001b[33m&&\u001b[39m globalData\u001b[33m.\u001b[39muser\u001b[33m.\u001b[39mid \u001b[33m==\u001b[39m \u001b[32m`${post.user_id}`\u001b[39m \u001b[33m&&\u001b[39m \u001b[33m<\u001b[39m\u001b[33mbutton\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"btn--editPost border-w c-white mr-3\"\u001b[39m\u001b[33m>\u001b[39m\u001b[33mEdit\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mbutton\u001b[39m\u001b[33m>\u001b[39m}\u001b[0m\n    at Object._raise (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:506:17)\n    at Object.raiseWithData (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:499:17)\n    at Object.raise (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:460:17)\n    at Object.unexpected (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:3699:16)\n    at Object.jsxParseIdentifier (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:7451:12)\n    at Object.jsxParseNamespacedName (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:7461:23)\n    at Object.jsxParseElementName (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:7472:21)\n    at Object.jsxParseOpeningElementAt (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:7569:22)\n    at Object.jsxParseElementAt (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:7602:33)\n    at Object.jsxParseElementAt (C:\\Users\\matilda.jonsson4\\Desktop\\M8\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:7618:32)");
 
 /***/ }),
 

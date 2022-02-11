@@ -16,7 +16,24 @@ export default function Start(props){
 
     console.log(props.darkMode)
 
+    const onNotLogged = () => {
+        window.location.href = `/login`;
+    }
+
     return(
+        // {!globalData.user ? 
+        //     <div style={{display: 'inline'}} onClick={onNotLogged} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
+        //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
+        //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
+        //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+        //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+        //     </div> :
+        //     <div style={{display: 'inline'}} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
+        //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
+        //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
+        //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+        //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+        //     </div>}
         <div className="container mt-5">
             <div className="row">
                 <div className="col-lg-3"></div>
@@ -31,8 +48,14 @@ export default function Start(props){
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
                         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
                         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
-                        <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-                        <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>  
+                        {!globalData.user ? 
+                            <label onClick={onNotLogged} className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label> :
+                            <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+                        }
+                        {!globalData.user ? 
+                            <label onClick={onNotLogged} className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> :
+                            <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>
+                        }
 
                         <p className={`comments--comment`}><a href={`./thread/${props.id}`} className={props.darkMode ? 'c-white' : 'c-gray'} style={{ textDecoration: "none"}}>Comments</a></p>
 
