@@ -57,7 +57,7 @@ export default function Navbar(props){
             : 
             <div className="nav--account mr-3">
                 <h3 className="nav--account-name" id="username" onClick={onProfile}>{name}</h3>
-                <div className="nav--account-img" onClick={onProfile}></div>
+                <div className="nav--account-img" style={{}} onClick={onProfile}><img className="nav--account-img" src={globalData.user.img} alt="" /></div>
             </div>}
         </nav>
     )
