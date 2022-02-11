@@ -1,8 +1,14 @@
 import React from 'react'
 
 const LikeCommentForm = (props) => {
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const [rating, setRating] = React.useState(false);
+
+    const handleSubmit = async () => {
+        if(props.user_id === null) {
+            window.location.href = `/login`;
+            return;
+        }
+        setRating(oldRating => !oldRating);
 
         let formData = new FormData();
 
@@ -16,13 +22,10 @@ const LikeCommentForm = (props) => {
         const data = await fetchResponse.json();
 
         console.log(data);
-
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <button type="submit" className="like--i" style={{background: 'none', border: 'none', outline: 'none'}}><i className="fal fa-grin-hearts mr-4 fa-lg"></i></button>
-        </form>
+    <button onClick={handleSubmit} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className="fal fa-grin-hearts mr-4 fa-lg"></i></button>
     )
 }
 

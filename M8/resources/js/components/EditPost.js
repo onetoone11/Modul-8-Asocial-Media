@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EditPost = (darkMode) => {
+const EditPost = (props) => {
 
         console.log(post);
 
@@ -24,8 +24,8 @@ const EditPost = (darkMode) => {
     
  
     return (
-        <div className={`container post-create-body ${darkMode ? "c-white" : "c-gray"}`}>
-                <div className={`card-body ${darkMode ? "bg--dark" : "bg--light"}`} style={{borderRadius: "20px"}}>
+        <div className={`container post-create-body ${props.darkMode ? "c-white" : "c-gray"}`}>
+                <div className={`card-body ${props.darkMode ? "bg--dark" : "bg--light"}`} style={{borderRadius: "20px"}}>
                     <h2 className="card-title">Edit Post</h2>
                     
                     <hr></hr>
@@ -34,11 +34,11 @@ const EditPost = (darkMode) => {
                     <form action={`/editPost/${post.id}`} method="get">
 
                         <div className="form-group">
-                            <input value={post_data.post_header} name="post_header" onChange={handleInput} type="text" placeholder="Header" className="form-control" />
+                            <input value={post_data.post_header} name="post_header" onChange={handleInput} type="text" placeholder="Header" className={`form-control ${props.darkMode && 'bg--darkgray placeholder--hover-w'}`} />
                         </div>
                         
                         <div className="form-group">
-                            <textarea value={post_data.post_body} name="post_body" onChange={handleInput} style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className="form-control" />
+                            <textarea value={post_data.post_body} name="post_body" onChange={handleInput} style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className={`form-control ${props.darkMode && 'bg--darkgray placeholder--hover-w'}`} />
                         </div>
                         
                         {/* <div className="form-group">
@@ -46,11 +46,11 @@ const EditPost = (darkMode) => {
                         </div> */}
 
                         <div className="form-group">
-                            <input type="url" placeholder="https://ImageExample.com" onChange={handleInput} value={post_data.post_img} name="post_img" id="image-input" className="form-control"/>
+                            <input type="url" placeholder="https://ImageExample.com" onChange={handleInput} value={post_data.post_img} name="post_img" id="image-input" className={`form-control ${props.darkMode && 'bg--darkgray placeholder--hover-w'}`} />
                         </div>
                         
                         <div className="form-group w-100 d-flex justify-content-center">
-                            <input type="submit" value="Save" className="btn btn-outline-dark login-btn bg--white" />
+                            <input type="submit" value="Save" className="btn login-btn bg--white" />
                         </div>
 
                     </form>

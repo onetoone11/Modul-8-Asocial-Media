@@ -41,10 +41,12 @@ export default function Navbar(props){
             <div className="d-flex w-50 ">
                 <div className="nav--logo mr-5" onClick={onLogo}><img className="logo--image" src={props.darkMode ? LogoLight : LogoDark}></img></div>
 
-                <form className="d-flex justify-content-center align-items-center position-relative w-100">
+                <div className="d-flex justify-content-center align-items-center position-relative w-100">
                     <input type="search" className={props.darkMode ? 'border-none' : 'border-b'} />
                     <button className="icon-btn search-icon"><i className="fa fa-search fa-lg"></i></button>
-                </form>
+
+                    <div className='bg--darkgray' style={{height: '20px', width: '95%', backgroundColor: 'red', position: 'absolute', top: '62px'}}></div>
+                </div>
             </div>
             
 

@@ -6,6 +6,17 @@ export default function Thread(props) {
 
     const [img, setImg] = React.useState(false)
 
+    React.useEffect(() => {
+        setImg(() => {
+            if(post.image == null){
+                return (false);
+            }
+            else{
+                return (true);
+            }
+        })
+    }, [img])
+
     console.log(comments);
     console.log(post);
 
@@ -58,30 +69,67 @@ export default function Thread(props) {
         )
     }
 
+    let admin = false;
+    let isOP = false;
+    if(!globalData.user) {
+    } else {
+        if(!(globalData.user.type === 'admin')) {
+            admin = false;
+        } else {
+            admin = true;
+        }
+        if(post.user_id == globalData.user.id) {
+            isOP = true;
+        }
+    }
+
+    const onNotLogged = () => {
+        window.location.href = `/login`;
+    }
+
     return (
         <div className="container">
-            {img && <div>
-                <h1>IMG</h1>
-                <img src={Logo} alt="" />
+            {img && <div className={`text-center ${props.darkMode ? 'bg--dark-img' : 'bg--light'}`}>
+                <img style={{maxWidth: '1100px', maxHeight: '500px'}} src={post.image} alt="" />
             </div>}
             
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
                 <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3">{post.text}</p>
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
-                    <button className="btn--deletePost border-r c-red border-1_5">Delete</button>
+                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>
                 <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
-                    {globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>}
+                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
+                    {/* {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>} */}
                 </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
-                {/* <input hidden type="radio" name="likes" id="like" value="like" />
-                <input hidden type="radio" name="likes" id="dislike" value="dislike" />
-                <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-                <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> */}
-                <LikePostForm post_id={post.id} user_id={globalData.user.id} />
+                <LikePostForm post_id={post.id} user_id={globalData.user ? globalData.user.id : null} />
                 
+                
+                
+                
+                
+                
+                
+                
+                
+                {/* {!globalData.user ? 
+                <div style={{display: 'inline'}}  onClick={onNotLogged}>
+                    <input hidden type="radio" name="likes" id="like" value="like" />
+                    <input hidden type="radio" name="likes" id="dislike" value="dislike" />
+                    <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+                    <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+                    <LikePostForm post_id={post.id} user_id={globalData.user ? globalData.user.id : null} />
+                </div> :
+                <div style={{display: 'inline'}}>
+                    <input hidden type="radio" name="likes" id="like" value="like" />
+                    <input hidden type="radio" name="likes" id="dislike" value="dislike" />
+                    <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+                    <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+                    <LikePostForm post_id={post.id} user_id={globalData.user.id ? globalData.user.id : null} />
+                </div>} */}
 
                 <p className="comments--comment">Comments</p>
 
