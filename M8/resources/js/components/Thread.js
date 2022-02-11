@@ -98,11 +98,7 @@ export default function Thread(props) {
                     {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>
                 <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
-<<<<<<< HEAD
-                    {globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
-=======
                     {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>}
->>>>>>> 21c8c3a9a65338270edfe9e99ca6d71ac2e4c9cd
                 </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
