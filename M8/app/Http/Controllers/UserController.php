@@ -7,6 +7,7 @@ use DB;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -72,17 +73,14 @@ class UserController extends Controller
             $user->save();
         }
         
-
-        // Måste ändras
-        $user_id = 1;
-        $user = User::find(11);
+        $user = User::find($user_id);
         $posts = DB::select(DB::raw("SELECT * FROM posts WHERE user_id = $user_id ORDER BY created_at"));
         $comments = array();
         foreach($posts as $post) {
             $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
         }
 
-        return view('profile')->with('user', $user)->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return Redirect::to('profile')->with('user', $user)->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     /**

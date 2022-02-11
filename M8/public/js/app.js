@@ -2824,6 +2824,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 // import findus from './findus.png'
 
+ // import test from 'https://i.imgur.com/RYs8MOT.png';
 
 
 
@@ -2897,6 +2898,9 @@ function Profile(props) {
         className: "row",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "col-lg-3"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+          src: globalData.user.img,
+          alt: ""
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "col-lg-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -2969,7 +2973,7 @@ function Profile(props) {
                         className: "link",
                         onClick: adminAccess,
                         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-                          "class": "fa-solid fa-user-shield pr-3"
+                          className: "fa-solid fa-user-shield pr-3"
                         }), "Admin"]
                       }), " "]
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {

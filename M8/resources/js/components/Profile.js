@@ -1,6 +1,7 @@
 // import findus from './findus.png'
 import React, { useReducer } from 'react'
 import Timeline from './Timeline'
+// import test from 'https://i.imgur.com/RYs8MOT.png';
 
 
 export default function Profile(props){
@@ -54,7 +55,7 @@ export default function Profile(props){
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3"></div>
-
+                    <img src={globalData.user.img} alt="" />
                     <div className="col-lg-6">
                         <div className="profile--img"  onMouseEnter={toggleProfileImage} onMouseLeave={toggleProfileImage}></div>
                         <div onClick={changeProfileImage} className={`${toggleImage && 'none'} profile--img-cover`} style={{cursor: 'pointer'}} >
@@ -75,7 +76,7 @@ export default function Profile(props){
                                         <ul style={{listStyleType: 'none', padding: '0px', margin: '0px'}} className="pl-3 pt-3">
                                             <li className="link" onClick={onMode}><i className="fal fa-tint pr-3"></i> {props.darkMode ? 'Lightmode' : 'Darkmode'}</li>
                                             {globalData.user.type === 'admin' && <> <hr />
-                                            <li className="link" onClick={adminAccess}><i class="fa-solid fa-user-shield pr-3"></i>Admin</li> </>}
+                                            <li className="link" onClick={adminAccess}><i className="fa-solid fa-user-shield pr-3"></i>Admin</li> </>}
                                             <hr />
                                             <li className="link" onClick={onLogout}> <i className="fal fa-sign-out pr-3"></i> Log out</li>
                                         </ul>
