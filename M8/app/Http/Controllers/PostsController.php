@@ -35,32 +35,8 @@ class PostsController extends Controller
 
     public function create(Request $request)
     {
-        // php artisan storage:link
-        // npm install csrf
-
-        // Save Image
-
-        // Handle file upload
-        // if($request->hasFile('post_img')){
-        //     // Get filename with the extension
-        //     // $fileNameWithExt = $request->input('post_img');
-        //     $fileNameWithExt = $request->file('post_img')->getClientOriginalName();
-        //     // Get just filename
-        //     $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-        //     // Get just ext
-        //     $extension = $request->file('post_img')->getClientOriginalExtension();
-        //     // Filename to store
-        //     $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        //     // Upload Image'
-        //     $path = $request->file('post_img')->storeAs('public/post_images', $fileNameToStore);
-        // }
-        // else{
-        //     $fileNameToStore = 'noimage.jpg';
-        // }
-
-
         $post = new Post;
-        $post->user_id = 1;
+        $post->user_id = $request->input('user_id');
         $post->image = $request->input('post_img');
         $post->title = $request->input('post_header');
         $post->text = $request->input('post_body');
@@ -70,17 +46,8 @@ class PostsController extends Controller
 
         $post_id = $post->id;
 
-        
-
-
-
         return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
 
-        // return redirect('thread');
-
-        // $data = [($request->input('post_header')), ($request->input('post_body')), ($request->input('post_img'))];
-
-        // return view('test2')->with('data', $data);
     }
 
     /**

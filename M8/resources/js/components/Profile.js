@@ -5,7 +5,7 @@ import Timeline from './Timeline'
 
 export default function Profile(props){
 
-    const user_id = 11;
+    const user_id = globalData.user.id;
 
     const [toggleDropDown, setToggleDropDown] = React.useState(true);
     const [toggleImage, setToggleImage] = React.useState(true);
@@ -44,6 +44,10 @@ export default function Profile(props){
         setToggleChangeImage(prevToggle => !prevToggle);
     }
 
+    function adminAccess(){
+        window.location.href = '/users'
+    }
+
 
     return(
         <>
@@ -59,17 +63,19 @@ export default function Profile(props){
                             </div>  
                         </div>
 
-                        <h1 className="pt-3 text-center">{name}</h1>
+                        <h1 className={`${props.darkMode && 'c-white'} pt-3 text-center`}>{name}</h1>
 
                         <div className="row p-5" style={{position: 'relative'}}>
                             <div onClick={linkCreatePost} className={`col-lg-10 profile--create-post btn--create-post ${props.darkMode ? 'bg--dark-bright' : 'bg--light'}`}> <h3 className={`${props.darkMode ? 'c-white' : 'c-gray'} profile--create-post-text`}>Create Post</h3> </div>
                             <div onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown} className={`col-lg-2 profile--settings btn--profile-settings ${props.darkMode && 'bg--darkgray'}`}><i className="fal fa-ellipsis-h fa-3x settings--i"></i>
                                 <div style={{height: '20px', backgroundColor: 'transparent'}}></div>
-                                <div id="dropdown" className={`profile--settings-dropdown ${props.darkMode && 'bg--darkgray'} ${toggleDropDown && 'none'}`} >
+                                <div id="dropdown" className={`profile--settings-dropdown ${props.darkMode ? 'bg--darkgray' : 'bg--light'} ${toggleDropDown && 'none'}`} >
                                     <div>
                                         <h3 className="text-left">Menu</h3>
                                         <ul style={{listStyleType: 'none', padding: '0px', margin: '0px'}} className="pl-3 pt-3">
                                             <li className="link" onClick={onMode}><i className="fal fa-tint pr-3"></i> {props.darkMode ? 'Lightmode' : 'Darkmode'}</li>
+                                            {globalData.user.type === 'admin' && <> <hr />
+                                            <li className="link" onClick={adminAccess}><i class="fa-solid fa-user-shield pr-3"></i>Admin</li> </>}
                                             <hr />
                                             <li className="link" onClick={onLogout}> <i className="fal fa-sign-out pr-3"></i> Log out</li>
                                         </ul>
@@ -91,13 +97,13 @@ export default function Profile(props){
                     <div className="text-center" style={{opacity: '1', marginTop: '250px', position: 'relative'}}>
                         <i className="fa-solid fa-xmark fa-3x x-mark" onClick={changeProfileImage} style={{position: 'absolute', top: '-100px', right: '400px'}}></i>
                         <input type="text" name='profile_img' placeholder='https://example.com' /><br /><br />
-                        <button className="profile--change-image-btn">Submit</button>
+                        <button className={`profile--change-image-btn ${props.darkMode ? '' : 'border-b'}`}>Submit</button>
                     </div>
                     
                 </form>
             </div>
 
-            <Timeline darkMode={props.darkMode} />
+            <Timeline darkMode={props.darkMode} userId={user_id} />
         </> 
     )
 }

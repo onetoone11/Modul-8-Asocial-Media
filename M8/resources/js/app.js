@@ -21,8 +21,18 @@ import Users from './components/Users'
 
 export default function App(props){
 
-    const [darkMode, setDarkMode] = React.useState(true)
-    
+    const [darkMode, setDarkMode] = React.useState(false)
+
+    if(globalData.user !== null){
+        React.useEffect(() => {
+            if(globalData.user.mode == 'light'){
+                setDarkMode(() => false)
+            }
+            else{
+                setDarkMode(() => true)
+            }
+        }, [])
+    }
 
     function handleClick(){
         setDarkMode((prevDarkMode) => !prevDarkMode)
@@ -113,7 +123,7 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <Users  />
+                <Users darkMode={darkMode} />
             </>
         )
     }

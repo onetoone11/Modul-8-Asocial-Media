@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default function Login(props){
-
+    console.log('hello')
     return(
         <div className="container login-body">
             
-                <div className={`card-body ${props.darkMode ? 'bg--dark' : 'bg--light'}`}>
+                <div className={`card-body test ${props.darkMode ? 'bg--dark' : 'bg--light'}`}>
                     <h2 className="card-title">Log in</h2>
                     <hr className={`${props.darkMode ? 'bg--light' : 'bg--dark'}`}/>
 
