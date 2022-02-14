@@ -1,4 +1,5 @@
 import React from 'react'
+import LikePostForm from './LikePostForm'
 export default function Start(props){
 
     const [img, setImg] = React.useState(true)
@@ -46,16 +47,21 @@ export default function Start(props){
                         <p className="post--p p-3">{props.text}</p>
                     </div>
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
-                        <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
+                        {/* <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
                         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
-                        {!globalData.user ? 
+                        <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
+                        <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>   */}
+                        <LikePostForm user_id={props.user_id} post_id={props.id} darkMode={props.darkMode} />
+
+
+                        {/* {!globalData.user ? 
                             <label onClick={onNotLogged} className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label> :
                             <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
                         }
                         {!globalData.user ? 
                             <label onClick={onNotLogged} className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> :
                             <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label>
-                        }
+                        } */}
 
                         <p className={`comments--comment`}><a href={`./thread/${props.id}`} className={props.darkMode ? 'c-white' : 'c-gray'} style={{ textDecoration: "none"}}>Comments</a></p>
 

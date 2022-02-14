@@ -1,6 +1,7 @@
 import React from 'react'
 import Comment from './Comment'
 import Logo from './logoBlack.png'
+import LikePostForm from './LikePostForm'
 export default function Thread(props) {
 
     const [img, setImg] = React.useState(false)
@@ -59,7 +60,8 @@ export default function Thread(props) {
         return (
         <div>
             {findParents(list).map(element => {
-                return <Comment darkMode={props.darkMode} key={element.id} text={element.text} id={element.id} test={
+                // return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
+                return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
@@ -103,19 +105,31 @@ export default function Thread(props) {
                 </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
-                {!globalData.user ? 
+                <LikePostForm post_id={post.id} user_id={globalData.user ? globalData.user.id : null} />
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                {/* {!globalData.user ? 
                 <div style={{display: 'inline'}}  onClick={onNotLogged}>
                     <input hidden type="radio" name="likes" id="like" value="like" />
                     <input hidden type="radio" name="likes" id="dislike" value="dislike" />
                     <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
                     <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+                    <LikePostForm post_id={post.id} user_id={globalData.user ? globalData.user.id : null} />
                 </div> :
                 <div style={{display: 'inline'}}>
                     <input hidden type="radio" name="likes" id="like" value="like" />
                     <input hidden type="radio" name="likes" id="dislike" value="dislike" />
                     <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
                     <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
-                </div>}
+                    <LikePostForm post_id={post.id} user_id={globalData.user.id ? globalData.user.id : null} />
+                </div>} */}
 
                 <p className="comments--comment">Comments</p>
 
@@ -126,7 +140,6 @@ export default function Thread(props) {
                     return <Comment key={i} darkMode={props.darkMode} id={element.id} text={element.text} />
                 })} */}
                 {toTree(comments)(comments)}
-                <Comment darkMode={props.darkMode} id={1} />
 
             </div>
         </div>

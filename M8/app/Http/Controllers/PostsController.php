@@ -118,6 +118,15 @@ class PostsController extends Controller
         return view('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Post Deleted!');
     }
 
+    public function ratePost(Request $request) {
+        $user_id = intval($request->input('user_id'));
+        $post_id = intval($request->input('post_id'));
+        $value = intval($request->input('likes'));
+
+        DB::statement("INSERT INTO post_likes (user_id, post_id, value) VALUES ($user_id, $post_id, $value) ON DUPLICATE KEY UPDATE value=$value");
+        return response()->json(['user_id' => $user_id, 'post_id' => $post_id, 'value' => $value]);
+    }
+
     public function test() {
         return view('test');
     }
