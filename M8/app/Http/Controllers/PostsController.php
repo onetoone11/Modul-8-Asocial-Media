@@ -130,8 +130,36 @@ class PostsController extends Controller
         $post_id = intval($request->input('post_id'));
         $value = intval($request->input('likes'));
 
-        DB::statement("INSERT INTO post_likes (user_id, post_id, value) VALUES ($user_id, $post_id, $value) ON DUPLICATE KEY UPDATE value=$value");
-        return response()->json(['user_id' => $user_id, 'post_id' => $post_id, 'value' => $value]);
+        $exists = DB::select("SELECT COUNT(1) FROM post_likes WHERE user_id = $user_id AND post_id = $post_id AND value=$value");
+        $exists = json_decode(json_encode($exists), true);
+        $exists = $exists[0]["COUNT(1)"];
+        if($exists == 1) {
+            DB::statement("DELETE FROM post_likes WHERE user_id = $user_id AND post_id = $post_id AND value = $value");
+        }
+        if($exists == 0) {
+            DB::statement("INSERT INTO post_likes (user_id, post_id, value) VALUES ($user_id, $post_id, $value) ON DUPLICATE KEY UPDATE value=$value");
+        }
+
+        // DB::statement("DELETE FROM post_likes WHERE user_id = ")
+        // DB::statement("IF EXISTS(SELECT * FROM post_likes WHERE user_id = $user_id AND post_id = $post_id) THEN DELETE FROM ");
+        // DB::statement("DELETE FROM post_likes WHERE user_id = $user_id AND post_id = $post_id AND value = $value");
+        
+        return response()->json(['user_id' => $user_id, 'post_id' => $post_id, 'value' => $value, 'exists' => $exists]);
+    }
+
+    public function setLiked(Request $request) {
+        $user_id = intval($request->input('user_id'));
+        $post_id = intval($request->input('post_id'));
+
+        $value = DB::select("SELECT value FROM post_likes WHERE user_id = $user_id AND post_id = $post_id LIMIT 1");
+        $value = json_decode(json_encode($value), true);
+        if(!empty($value)) {
+            $value = $value[0]["value"];
+        } else {
+            $value = null;
+        }
+
+        return response()->json(['value' => $value]);
     }
 
     public function test() {
