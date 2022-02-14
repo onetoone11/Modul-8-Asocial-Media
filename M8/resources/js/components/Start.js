@@ -15,11 +15,25 @@ export default function Start(props){
         })
     }, [img])
 
-    console.log(props.darkMode)
-
     const onNotLogged = () => {
         window.location.href = `/login`;
     }
+    
+    function doubleConsonant(text){
+        const myArray = text.split("");
+        for(let i = 0; i < myArray.length; i++){
+            if(i != (myArray.length - 1)){
+                if(myArray[i] == myArray[i + 1]){
+                    for(let j = i; j < myArray.length; j++){
+                        myArray[j] = myArray[j + 1];
+                    }
+                }
+            }
+        }
+        return myArray;
+    }
+
+    const [zoomImage, setZoomImage] = React.useState(true);
 
     return(
         // {!globalData.user ? 
@@ -40,11 +54,14 @@ export default function Start(props){
                 <div className="col-lg-3"></div>
                 <div className="col-lg-6">
                     {img && <div>
+                        {/* <img style={{maxWidth: '540px', maxHeight: '540px'}} src={props.image} alt="" /> */}
+                        <div style={{maxWidth: '540px', maxHeight: '540px'}} id="zoomImage" className={zoomImage ? 'zoomImage' : ''} ></div>
                         <img style={{maxWidth: '540px', maxHeight: '540px'}} src={props.image} alt="" />
                     </div>}
                     <div className={props.darkMode ? "bg--dark-bright" : "bg--light-bright"}> 
                         <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{props.title}</h1>
-                        <p className="post--p p-3">{props.text}</p>
+                        {/* <p className="post--p p-3">{props.text}</p> */}
+                        <p className="post--p p-3">{doubleConsonant(props.text)}</p>
                     </div>
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
                         {/* <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />

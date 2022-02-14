@@ -98,4 +98,19 @@ class PagesController extends Controller
 
     }
 
+    public function activeUser($user_id){
+
+        $user = User::find($user_id);
+        if($user->type == 'inactive'){
+            $user->type = 'user';
+            $user->save();
+        }
+        else{
+            $user->type = 'inactive';
+            $user->save();
+        }
+
+        return Redirect::to('/users')->with(["globalData" => collect(['user' => Auth::user()])]);
+    }
+
 }

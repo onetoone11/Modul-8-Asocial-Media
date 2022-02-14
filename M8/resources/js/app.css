@@ -3,6 +3,17 @@ body{
     /* height: 200vh; */
 }
 
+/* Algoritm */
+
+.zoomImage{
+    background-image: url('https://i.ibb.co/bdh1wbV/glitch.jpg');
+    width: 540px;
+    height: 200px;
+    opacity: 0.5;
+    position: absolute;
+}
+
+
 /* Colors */
 .bg--light{
     background-color: #DFDEDC;
@@ -164,6 +175,23 @@ body{
 }
 
 .btn--admin:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #333;
+    transition: 0.2s;
+}
+
+.btn--active{
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.btn--active:hover{
     cursor: pointer;
     transform: scale(1.1);
     color: #333;
