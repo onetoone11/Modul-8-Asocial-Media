@@ -2732,7 +2732,11 @@ var LikeCommentForm = function LikeCommentForm(props) {
     return function handleSubmit() {
       return _ref.apply(this, arguments);
     };
-  }();
+  }(); // const getLikes = async () => {
+  //     let formData = new FormData();
+  //     formData.append()
+  // }
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
     onClick: handleSubmit,
@@ -2798,22 +2802,68 @@ var LikePostForm = function LikePostForm(props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(props.rating),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
-      setRating = _React$useState2[1];
+      setRating = _React$useState2[1]; // const [likes, setLikes] = React.useState(props.likes);
 
-  var handleSubmit = function handleSubmit(val) {
-    return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return setLiked();
+  }, []);
+
+  var setLiked = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var formData, fetchResponse, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              formData = new FormData();
+              formData.append('user_id', props.user_id);
+              formData.append('post_id', props.post_id);
+              _context.next = 5;
+              return fetch('/isLikedPost', {
+                method: "post",
+                body: formData
+              });
+
+            case 5:
+              fetchResponse = _context.sent;
+              _context.next = 8;
+              return fetchResponse.json();
+
+            case 8:
+              data = _context.sent;
+              console.log(data.value);
+              setRating(function () {
+                return data.value;
+              });
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function setLiked() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var handleSubmit = function handleSubmit(val) {
+    return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
               if (!(props.user_id === null)) {
-                _context.next = 3;
+                _context2.next = 3;
                 break;
               }
 
               window.location.href = "/login";
-              return _context.abrupt("return");
+              return _context2.abrupt("return");
 
             case 3:
               setRating(function (prevVal) {
@@ -2823,29 +2873,33 @@ var LikePostForm = function LikePostForm(props) {
               formData.append('user_id', props.user_id);
               formData.append('post_id', props.post_id);
               formData.append('likes', val);
-              _context.next = 10;
+              _context2.next = 10;
               return fetch("/ratePost", {
                 method: "post",
                 body: formData
               });
 
             case 10:
-              fetchResponse = _context.sent;
-              _context.next = 13;
+              fetchResponse = _context2.sent;
+              _context2.next = 13;
               return fetchResponse.json();
 
             case 13:
-              data = _context.sent;
+              data = _context2.sent;
               console.log(data, val); //fetchData
 
             case 15:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee);
+      }, _callee2);
     }));
-  }; // const getDataBack = async () => {
+  }; // const getLikes = async () => {
+  //     let formData = new FormData();
+  //     formData.append('user_id', props.user_id)
+  // }
+  // const getDataBack = async () => {
   //     const response = await fetch()
   // }
 
@@ -2880,7 +2934,8 @@ var LikePostForm = function LikePostForm(props) {
 LikePostForm.defaultProps = {
   user_id: 1,
   post_id: 1,
-  rating: null
+  rating: null,
+  likes: 0
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LikePostForm);
 

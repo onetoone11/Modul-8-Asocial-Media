@@ -24,6 +24,12 @@ const LikeCommentForm = (props) => {
         console.log(data);
     }
 
+    // const getLikes = async () => {
+    //     let formData = new FormData();
+
+    //     formData.append()
+    // }
+
     return (
     <button onClick={handleSubmit} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className="fal fa-grin-hearts mr-4 fa-lg"></i></button>
     )
