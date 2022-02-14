@@ -64,5 +64,6 @@ Route::get('/changeImage/{user_id}', [PagesController::class, 'userImage']);
 
 Route::get('/deleteUser/{user_id}', [PagesController::class, 'deleteUser']);
 Route::get('/adminUser/{user_id}', [PagesController::class, 'adminUser']);
+Route::get('/activeUser/{user_id}', [PagesController::class, 'activeUser']);
 
 Auth::routes();
