@@ -122,7 +122,7 @@ class PostsController extends Controller
         }
 
         Post::find($post_id)->delete();
-        return view('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Post Deleted!');
+        return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Post Deleted!');
     }
 
     public function ratePost(Request $request) {

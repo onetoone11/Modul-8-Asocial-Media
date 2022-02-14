@@ -61,7 +61,7 @@ export default function Start(props){
                     <div className={props.darkMode ? "bg--dark-bright" : "bg--light-bright"}> 
                         <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{props.title}</h1>
                         {/* <p className="post--p p-3">{props.text}</p> */}
-                        <p className="post--p p-3">{doubleConsonant(props.text)}</p>
+                        <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{doubleConsonant(props.text)}</p>
                     </div>
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
                         {/* <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />

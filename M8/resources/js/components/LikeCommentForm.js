@@ -31,7 +31,7 @@ const LikeCommentForm = (props) => {
     // }
 
     return (
-    <button onClick={handleSubmit} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className="fal fa-grin-hearts mr-4 fa-lg"></i></button>
+    <button onClick={handleSubmit} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} fal fa-grin-hearts mr-4 fa-lg`}></i></button>
     )
 }
 

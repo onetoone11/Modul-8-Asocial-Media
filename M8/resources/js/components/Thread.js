@@ -99,7 +99,7 @@ export default function Thread(props) {
             
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
                 <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{post.title}</h1>
-                <p className="post--p p-3">{post.text}</p>
+                <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{post.text}</p>
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
                     {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>
@@ -109,7 +109,7 @@ export default function Thread(props) {
                 </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
-                <LikePostForm post_id={post.id} user_id={globalData.user ? globalData.user.id : null} />
+                <LikePostForm post_id={post.id} darkMode={props.darkMode} user_id={globalData.user ? globalData.user.id : null} />
                 
                 
                 
