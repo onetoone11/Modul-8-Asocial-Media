@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Redirect;
+use DB;
 
 class UserController extends Controller
 {

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Session;
 
 class LoginController extends Controller
 {
@@ -29,7 +31,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.login')->with(["globalData" => collect(['user' => Auth::user()])]);;
+        return view('auth.login')->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     /**
@@ -37,7 +39,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('success_message', 'Logged in!');
+    }
 
     /**
      * Create a new controller instance.
@@ -47,5 +53,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Log out account user.
+     *
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function logout()
+    {
+        Session::flush();
+        
+        Auth::logout();
+
+        return redirect('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Logged out!');
     }
 }

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Post;
 use App\Models\User;
 use Redirect;
-// use App\Http\Controllers\Auth;
-// use Auth;
-use Illuminate\Support\Facades\Auth;
+use DB;
+
 
 class PagesController extends Controller
 {

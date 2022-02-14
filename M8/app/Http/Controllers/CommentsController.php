@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Comment;
 use Redirect;
-use Illuminate\Support\Facades\Auth;
+
+use DB;
 
 class CommentsController extends Controller
 {
@@ -49,7 +50,7 @@ class CommentsController extends Controller
         $comment->parent_comment_id = $request->input('parent_id');
         $comment->save();
 
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('success_message', 'Comment Added!');
         // return view('index');
     }
 

@@ -95,10 +95,10 @@ export default function Thread(props) {
                 <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3">{post.text}</p>
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
-                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
+                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>
                 <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
-                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
+                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
                     {/* {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>} */}
                 </form>
             </div>
