@@ -33,6 +33,48 @@ export default function Start(props){
         return myArray;
     }
 
+    function lowerUpper(str) {
+        let newString = '';
+        for (let i = 0; i < str.length; i++) {
+          newString += str[i] === str[i].toUpperCase() ? str[i].toLowerCase() : str[i].toUpperCase()
+        }
+        return newString;
+    }
+
+    function scrambleMid(str){
+        // create array of words
+        let arr = str.split(' ');
+        let x = arr.length;
+        for(let i=0; i<x; i++){
+            // for each word take away first and last letter
+            let word = arr[i].split('');
+            let f = word.shift();
+            let e = word.pop();
+            while(word.length) {
+                // moves middle letters randomly
+                f+= word.splice(Math.floor(Math.random()*word.length), 1);
+            }
+            arr[i]= f+e;
+        }
+        str = arr.join(' ');
+        return str;
+    }
+
+    function scambleWords(str) {
+        // create array of words
+        let arr = str.split('');
+        let x = arr.length;
+        for(let i=0; i<x-1; i++) {
+            let j = Math.floor(Math.random() * x);
+            // moves all letters randomly
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        str = arr.join("");
+        return str;
+    }
+
     const [zoomImage, setZoomImage] = React.useState(true);
 
     return(
@@ -61,7 +103,9 @@ export default function Start(props){
                     <div className={props.darkMode ? "bg--dark-bright" : "bg--light-bright"}> 
                         <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{props.title}</h1>
                         {/* <p className="post--p p-3">{props.text}</p> */}
-                        <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{doubleConsonant(props.text)}</p>
+                        {/* <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{doubleConsonant(props.text)}</p> */}
+                        {/* <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{scrambleMid(props.text)}</p> */}
+                        <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{props.text}</p>
                     </div>
                     <div className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
                         {/* <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
