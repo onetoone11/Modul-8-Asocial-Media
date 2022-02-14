@@ -17,8 +17,8 @@ export default function Thread(props) {
         })
     }, [img])
 
-    console.log(comments);
-    console.log(post);
+    // console.log(comments);
+    // console.log(post);
 
     // const toRecursiveTree = list => {
     //     if(list === []) {
@@ -60,14 +60,18 @@ export default function Thread(props) {
         return (
         <div>
             {findParents(list).map(element => {
+                return <Comment darkMode={props.darkMode} key={element.id} text={element.text} user_id={element.user_id} id={element.id} test={
                 // return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
-                return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
+                // return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
         </div>
         )
     }
+
+    // console.log('hello')
+    // console.log(comments[5].user_id);
 
     let admin = false;
     let isOP = false;
@@ -97,10 +101,10 @@ export default function Thread(props) {
                 <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3">{post.text}</p>
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
-                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
+                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>
                 <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
-                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
+                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
                     {/* {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>} */}
                 </form>
             </div>

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -32,7 +33,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register')->with(["globalData" => collect(['user' => Auth::user()])]);;
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+        return view('auth.register')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])]);;
     }
 
     /**

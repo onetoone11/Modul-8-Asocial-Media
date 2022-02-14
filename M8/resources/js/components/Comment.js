@@ -10,14 +10,22 @@ export default function Comment(props){
     const onNotLogged = () => {
         window.location.href = `/login`;
     }
-    
+
+    let temp;
+    for(let i = 0; i < commentUser.length; i++){
+        if(commentUser[i].id == props.user_id){
+            temp = i;
+        }
+    }
 
     return(
     <div>
         <div className="row w-100">
-            <div className="comment--profile bg--white mr-3 ml-4"></div>
+            <div className="  mr-3 ml-4"><img className="comment--profile bg--white" src={commentUser[temp] != null ? commentUser[temp].img : null} alt="" /></div>
             <div> 
-                <div className={`comment ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`} style={{minWidth:"200px", maxWidth: "500px", overflowWrap: "break-word"}}>{props.text}</div> 
+                <div className={`comment ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`} style={{ minWidth:"200px", maxWidth: "500px", overflowWrap: "break-word", position: 'relative'}}>
+                    <p style={{position: 'absolute', fontSize: '8px', top: '2px'}}>{commentUser[temp] != null && commentUser[temp].name}</p>
+                {props.text}</div> 
                 {/* <input hidden type="checkbox" name="likes" id="like" value="like" />
                 <label className="like--i ml-3" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-lg"></i></label> */}
                 

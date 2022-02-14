@@ -105,7 +105,7 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <CreatePost />
+                <CreatePost darkMode={darkMode} />
             </>
         )
     }
@@ -114,7 +114,7 @@ export default function App(props){
         return(
             <>
                 <Navbar darkMode={darkMode} /> 
-                <EditPost  />
+                <EditPost darkMode={darkMode} />
             </>
         )
     }
