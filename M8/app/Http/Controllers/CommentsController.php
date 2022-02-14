@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Comment;
 use Redirect;
-use Illuminate\Support\Facades\Auth;
+
+use DB;
 
 class CommentsController extends Controller
 {
@@ -51,7 +52,7 @@ class CommentsController extends Controller
         $comment->parent_comment_id = $request->input('parent_id');
         $comment->save();
 
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts)->with('success_message', 'Comment Added!');
         // return view('index');
     }
 
@@ -89,15 +90,6 @@ class CommentsController extends Controller
     //     //
     // }
 
-    // public function like(Request $request, $comment_id) {
-    //     $comment = Comment::find($comment_id);
-    //     if()
-    // }
-
-    public function dislike(Request $request, $comment_id) {
-
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -107,5 +99,25 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    //rating
+
+    public function rateComment(Request $request) {
+        $comment_id = intval($request->input('comment_id'));
+        $user_id = intval($request->input('user_id'));
+
+        $exists = DB::select("SELECT COUNT(1) FROM comment_likes WHERE user_id = $user_id AND comment_id = $comment_id");
+        $exists = json_decode(json_encode($exists), true);
+        $exists = $exists[0]["COUNT(1)"];
+
+        if($exists == 1) {
+            DB::statement("DELETE FROM comment_likes WHERE user_id = $user_id AND comment_id = $comment_id");
+        } elseif ($exists == 0) {
+            DB::statement("INSERT INTO comment_likes (user_id, comment_id) VALUES ($user_id, $comment_id)");
+        }
+
+        return response()->json(['user_id' => $user_id, 'comment_id' => $comment_id, 'exists' => $exists]);
     }
 }

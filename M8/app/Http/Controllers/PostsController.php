@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
-use Redirect;
 use App\Models\User;
+use Redirect;
 use DB;
 
 class PostsController extends Controller
@@ -38,6 +38,9 @@ class PostsController extends Controller
 
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
 
+        if(!$request->input('post_body') || !$request->input('post_header')) {
+            return Redirect::to('/create')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Header and/or Body Text must be filled out.');
+        }
         $post = new Post;
         $post->user_id = $request->input('user_id');
         $post->image = $request->input('post_img');
@@ -49,7 +52,7 @@ class PostsController extends Controller
 
         $post_id = $post->id;
 
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts)->with('success_message', 'Post Created!');
 
     }
 
@@ -88,6 +91,9 @@ class PostsController extends Controller
      */
     public function edit(Request $request, $post_id)
     {
+        if(!$request->input('post_body') || !$request->input('post_header')) {
+            return Redirect::to('/edit/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Header and/or Body Text must be filled out.');
+        }
 
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
 
@@ -97,7 +103,7 @@ class PostsController extends Controller
         $post->text = $request->input('post_body');
         $post->save();
 
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts)->with('success_message', 'Post Updated!');
     }
 
     public function update(Request $request, $id)
@@ -116,7 +122,16 @@ class PostsController extends Controller
         }
 
         Post::find($post_id)->delete();
-        return view('/')->with(["globalData" => collect(['user' => Auth::user()])]);
+        return view('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Post Deleted!');
+    }
+
+    public function ratePost(Request $request) {
+        $user_id = intval($request->input('user_id'));
+        $post_id = intval($request->input('post_id'));
+        $value = intval($request->input('likes'));
+
+        DB::statement("INSERT INTO post_likes (user_id, post_id, value) VALUES ($user_id, $post_id, $value) ON DUPLICATE KEY UPDATE value=$value");
+        return response()->json(['user_id' => $user_id, 'post_id' => $post_id, 'value' => $value]);
     }
 
     public function test() {

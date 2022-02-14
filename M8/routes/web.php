@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\VerifyCsrfToken;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,9 @@ Route::get('/createPost', [PostsController::class, 'create']);
 // Route::post('/createPost', [PostsController::class, 'create']);
 
 Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);
+
+Route::post('rateComment', [CommentsController::class, 'rateComment'])->withoutMiddleware([VerifyCsrfToken::class]);
+Route::post('/ratePost', [PostsController::class, 'ratePost'])->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::get('/changeMode/{user_id}', [UserController::class, 'edit']);
 Route::get('/changeImage/{user_id}', [PagesController::class, 'userImage']);

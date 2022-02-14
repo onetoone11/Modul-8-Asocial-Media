@@ -196,6 +196,10 @@ body{
     position: relative;
 }
 
+.btn-active {
+    color: #FFC5D9 !important;
+}
+
 /* Navbar */
 nav{
     height: 70px;

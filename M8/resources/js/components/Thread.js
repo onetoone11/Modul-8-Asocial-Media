@@ -1,6 +1,7 @@
 import React from 'react'
 import Comment from './Comment'
 import Logo from './logoBlack.png'
+import LikePostForm from './LikePostForm'
 export default function Thread(props) {
 
     const [img, setImg] = React.useState(false)
@@ -60,6 +61,8 @@ export default function Thread(props) {
         <div>
             {findParents(list).map(element => {
                 return <Comment darkMode={props.darkMode} key={element.id} text={element.text} user_id={element.user_id} id={element.id} test={
+                // return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
+                // return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
@@ -98,27 +101,39 @@ export default function Thread(props) {
                 <h1 className={img ? "pl-3 img-text text-border" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3">{post.text}</p>
                 <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
-                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
+                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>
                 <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
-                    {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
+                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
                     {/* {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>} */}
                 </form>
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
-                {!globalData.user ? 
+                <LikePostForm post_id={post.id} user_id={globalData.user ? globalData.user.id : null} />
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                {/* {!globalData.user ? 
                 <div style={{display: 'inline'}}  onClick={onNotLogged}>
                     <input hidden type="radio" name="likes" id="like" value="like" />
                     <input hidden type="radio" name="likes" id="dislike" value="dislike" />
                     <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
                     <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
+                    <LikePostForm post_id={post.id} user_id={globalData.user ? globalData.user.id : null} />
                 </div> :
                 <div style={{display: 'inline'}}>
                     <input hidden type="radio" name="likes" id="like" value="like" />
                     <input hidden type="radio" name="likes" id="dislike" value="dislike" />
                     <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
                     <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
-                </div>}
+                    <LikePostForm post_id={post.id} user_id={globalData.user.id ? globalData.user.id : null} />
+                </div>} */}
 
                 <p className="comments--comment">Comments</p>
 
@@ -129,7 +144,6 @@ export default function Thread(props) {
                     return <Comment key={i} darkMode={props.darkMode} id={element.id} text={element.text} />
                 })} */}
                 {toTree(comments)(comments)}
-                <Comment darkMode={props.darkMode} id={1} />
 
             </div>
         </div>
