@@ -2,7 +2,6 @@ import React from 'react'
 
 const CreatePost = (props) => {
 
-    console.log(props.darkMode)
 
     function test(){
         console.log(darkMode);
@@ -16,11 +15,11 @@ const CreatePost = (props) => {
                     <hr></hr>
                     <form action='./createPost' method="get" encType='multipart/form-data'>
                         <div className="form-group">
-                            <input name="post_header" type="text" placeholder="Header" className={`form-control ${props.darkMode ? 'bg--darkgray placeholder--hover-w' : ''}`} />
+                            <input name="post_header" maxLength="100" type="text" placeholder="Header" className={`form-control ${props.darkMode ? 'bg--darkgray placeholder--hover-w' : ''}`} />
                         </div>
                         
                         <div className="form-group">
-                            <textarea name="post_body" style={{height: '100%'}} maxLength="512" placeholder="Body text" rows="5" className={`form-control ${props.darkMode && 'bg--darkgray placeholder--hover-w'}`} />
+                            <textarea name="post_body"  maxLength="512" placeholder="Body text" rows="5" className={`form-control ${props.darkMode && 'bg--darkgray placeholder--hover-w'}`} />
                         </div>
                         
                         {/* <div className="form-group">

@@ -237,7 +237,7 @@ input[type=search]:focus {
 .nav--account-img{
     height: 40px;
     width: 40px;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
     border-radius: 20px;
     display: inline-block;
     cursor: pointer;
@@ -482,4 +482,9 @@ input[type=search]:focus {
 
 .register-body {
     padding-top: 10vh;
+}
+
+.search--row:hover{
+    filter: brightness(1.4);
+    cursor: pointer;
 }

@@ -35,6 +35,9 @@ class PostsController extends Controller
 
     public function create(Request $request)
     {
+
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+
         $post = new Post;
         $post->user_id = $request->input('user_id');
         $post->image = $request->input('post_img');
@@ -46,7 +49,7 @@ class PostsController extends Controller
 
         $post_id = $post->id;
 
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts);
 
     }
 
@@ -69,9 +72,12 @@ class PostsController extends Controller
      */
     public function show($post_id)
     {
+        $user = DB::select(DB::raw("SELECT * FROM users"));
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+
         $post = Post::find($post_id);
         $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
-        return view('thread')->with('comments', $comments)->with('post', $post)->with('post_id', $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return view('thread')->with('user', $user)->with('comments', $comments)->with('post', $post)->with('posts', $posts)->with('post_id', $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     /**
@@ -83,13 +89,15 @@ class PostsController extends Controller
     public function edit(Request $request, $post_id)
     {
 
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+
         $post = Post::find($post_id);
         $post->image = $request->input('post_img');
         $post->title = $request->input('post_header');
         $post->text = $request->input('post_body');
         $post->save();
 
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts);
     }
 
     public function update(Request $request, $id)

@@ -25,7 +25,9 @@ class PagesController extends Controller
     }
 
     public function thread(){
-        return view('thread')->with(["globalData" => collect(['user' => Auth::user()])]);
+        $user = DB::select(DB::raw("SELECT * FROM users"));
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+        return view('thread')->with('user', $user)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts);
     }
 
     public function profile(){
@@ -33,6 +35,7 @@ class PagesController extends Controller
         $user_id = Auth::id();
         $user = User::find($user_id);
         $posts = DB::select(DB::raw("SELECT * FROM posts WHERE user_id = $user_id ORDER BY created_at"));
+        // $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
         $comments = array();
         foreach($posts as $post) {
             $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
@@ -41,16 +44,17 @@ class PagesController extends Controller
     }
 
     public function create(){
-        return view('create')->with(["globalData" => collect(['user' => Auth::user()])]);
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+        return view('create')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function edit($post_id){
         
         $data = Post::find($post_id);
 
-        // if(Auth::id() ==)
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
         
-        return view('edit')->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return view('edit')->with('posts', $posts)->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function test(){
@@ -68,15 +72,19 @@ class PagesController extends Controller
 
     public function users(){
 
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+
         $usersTable = DB::table('users')->get();
-        return view('users')->with(["globalData" => collect(['user' => Auth::user()])])->with('usersTable', $usersTable);
+        return view('users')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])])->with('usersTable', $usersTable);
     }
 
     public function deleteUser($user_id){
 
         User::find($user_id)->delete();
 
-        return Redirect::to('/users')->with(["globalData" => collect(['user' => Auth::user()])]);
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+
+        return Redirect::to('/users')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function adminUser($user_id){
@@ -85,7 +93,9 @@ class PagesController extends Controller
         $user->type = 'admin';
         $user->save();
 
-        return Redirect::to('/users')->with(["globalData" => collect(['user' => Auth::user()])]);
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+
+        return Redirect::to('/users')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])]);
 
     }
 

@@ -40,16 +40,18 @@ class CommentsController extends Controller
      */
     public function store(Request $request, $post_id)
     {
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+
         // $post_id = 1;
         $comment = new Comment;
         $comment->post_id = $post_id;
-        $comment->user_id = null;
+        $comment->user_id = Auth::user()['id'];
         $comment->text = $request->input('text');
         $comment->likes = "0";
         $comment->parent_comment_id = $request->input('parent_id');
         $comment->save();
 
-        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return Redirect::to('/thread/'. $post_id)->with(["globalData" => collect(['user' => Auth::user()])])->with('posts', $posts);
         // return view('index');
     }
 

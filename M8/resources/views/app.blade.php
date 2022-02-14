@@ -14,8 +14,11 @@
     
     <script>
         let globalData = {!! $globalData->toJson() !!};
+        
     </script>
-    
+    <script>
+        // let posts = {!! json_encode($posts) !!};
+    </script>
     <script src={{mix('js/app.js')}}></script>
 </body>
 </html>

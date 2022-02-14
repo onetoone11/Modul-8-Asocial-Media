@@ -3,7 +3,7 @@
 
 @section('content')
 <script>
-    let posts = {!! json_encode($posts) !!};
+    let posts = {!! json_encode($posts) !!}
     let comments = {!! json_encode($comments) !!};
 </script>
   

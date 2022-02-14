@@ -3,7 +3,7 @@
 @section('content')
     <script>
         let user = {!! json_encode($user) !!}
-        let posts = {!! json_encode($posts) !!};
+        let posts = {!! json_encode($posts) !!}
         let comments = {!! json_encode($comments) !!};
     </script>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

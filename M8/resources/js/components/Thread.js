@@ -16,8 +16,8 @@ export default function Thread(props) {
         })
     }, [img])
 
-    console.log(comments);
-    console.log(post);
+    // console.log(comments);
+    // console.log(post);
 
     // const toRecursiveTree = list => {
     //     if(list === []) {
@@ -59,13 +59,16 @@ export default function Thread(props) {
         return (
         <div>
             {findParents(list).map(element => {
-                return <Comment darkMode={props.darkMode} key={element.id} text={element.text} id={element.id} test={
+                return <Comment darkMode={props.darkMode} key={element.id} text={element.text} user_id={element.user_id} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
         </div>
         )
     }
+
+    // console.log('hello')
+    // console.log(comments[5].user_id);
 
     let admin = false;
     let isOP = false;
