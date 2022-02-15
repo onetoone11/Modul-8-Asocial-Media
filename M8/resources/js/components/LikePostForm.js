@@ -18,7 +18,7 @@ const LikePostForm = (props) => {
 
         const data = await fetchResponse.json();
 
-        console.log(data.value);
+        // console.log(data.value);
 
         setRating(() => data.value);
     }
