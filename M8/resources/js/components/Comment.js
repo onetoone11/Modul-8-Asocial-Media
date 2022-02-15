@@ -29,7 +29,7 @@ export default function Comment(props){
                 {/* <input hidden type="checkbox" name="likes" id="like" value="like" />
                 <label className="like--i ml-3" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-lg"></i></label> */}
                 
-                <LikeCommentForm user_id={props.user_id} comment_id={props.id}/>
+                <LikeCommentForm darkMode={props.darkMode} user_id={props.user_id} comment_id={props.id}/>
 
                 {/* <button className="icon-btn" onClick={() => setIsReplying(a => !a)}><i className="fal fa-reply mr-4 ml-3 fa-lg"></i></button> */}
                 

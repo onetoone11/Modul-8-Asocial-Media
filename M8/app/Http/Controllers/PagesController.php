@@ -105,7 +105,7 @@ class PagesController extends Controller
             $user->type = 'user';
             $user->save();
         }
-        else{
+        else if($user->type != 'admin'){
             $user->type = 'inactive';
             $user->save();
         }

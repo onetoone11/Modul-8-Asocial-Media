@@ -85,10 +85,10 @@ export default function Users(props){
 
                         {tempUserName.length > 0 || searchValue.search_input == '' ? <div className="">
                             <div className={`${props.darkMode && 'c-white'} row p-2`}>
-                                <div className="col-lg-2">Username</div>
-                                <div className="col-lg-2">Role</div>
+                                <div className="col-lg-3">Username</div>
+                                <div className="col-lg-3">Role</div>
                                 <div className="col-lg-2">Created</div>
-                                <div className="col-lg-6">
+                                <div className="col-lg-4">
                                     
                                 </div>
                             </div>

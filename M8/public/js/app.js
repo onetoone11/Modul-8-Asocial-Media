@@ -2380,6 +2380,7 @@ function Comment(props) {
             children: commentUser[temp] != null && commentUser[temp].name
           }), props.text]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikeCommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          darkMode: props.darkMode,
           user_id: props.user_id,
           comment_id: props.id
         }), !globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
@@ -2809,14 +2810,14 @@ var LikeCommentForm = function LikeCommentForm(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
     onClick: handleSubmit,
-    className: "like--i ".concat(rating && "btn-active"),
+    className: "like--i",
     style: {
       background: 'none',
       border: 'none',
       outline: 'none'
     },
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-      className: "fal fa-grin-hearts mr-4 fa-lg"
+      className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
     })
   });
 };
@@ -2909,12 +2910,12 @@ var LikePostForm = function LikePostForm(props) {
 
             case 10:
               data = _context.sent;
-              console.log(data.value);
+              // console.log(data.value);
               setRating(function () {
                 return data.value;
               });
 
-            case 13:
+            case 12:
             case "end":
               return _context.stop();
           }
@@ -3759,91 +3760,158 @@ function Start(props) {
     return myArray;
   }
 
+  function specialChars(text) {
+    var temp = text.split("");
+    var specialChars1 = ['.', '!', '%', '<', '/', ':', '(', "'"];
+    var specialChars2 = ['?', ',', '°', '>', '*', ';', ')', "`"];
+
+    for (var i = 0; i < temp.length; i++) {
+      for (var j = 0; j < specialChars1.length; j++) {
+        if (temp[i] == specialChars1[j]) {
+          temp[i] = specialChars2[j];
+        } else if (temp[i] == specialChars2[j]) {
+          temp[i] = specialChars1[j];
+        }
+      }
+    }
+
+    return temp;
+  }
+
+  function convSmileys(text) {
+    var smileys1 = [':)', ':(', ':|', '>:(', ';)', '<3'];
+    var smileys2 = [':(', ':)', ';)', '<3', ':|', '>:('];
+    var temp;
+
+    for (var i = 0; i < smileys1.length; i++) {
+      temp = text.replace("".concat(smileys1[i]), "".concat(smileys2[i]));
+    }
+
+    return temp;
+  }
+
+  function lowerUpper(str) {
+    var newString = '';
+
+    for (var i = 0; i < str.length; i++) {
+      newString += str[i] === str[i].toUpperCase() ? str[i].toLowerCase() : str[i].toUpperCase();
+    }
+
+    return newString;
+  }
+
+  function scrambleMid(str) {
+    // create array of words
+    var arr = str.split(' ');
+    var x = arr.length;
+
+    for (var i = 0; i < x; i++) {
+      // for each word take away first and last letter
+      var word = arr[i].split('');
+      var f = word.shift();
+      var e = word.pop();
+
+      while (word.length) {
+        // moves middle letters randomly
+        f += word.splice(Math.floor(Math.random() * word.length), 1);
+      }
+
+      arr[i] = f + e;
+    }
+
+    str = arr.join(' ');
+    return str;
+  }
+
+  function scambleWords(str) {
+    // create array of words
+    var arr = str.split('');
+    var x = arr.length;
+
+    for (var i = 0; i < x - 1; i++) {
+      var j = Math.floor(Math.random() * x); // moves all letters randomly
+
+      var temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+
+    str = arr.join("");
+    return str;
+  }
+
   var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       zoomImage = _React$useState4[0],
       setZoomImage = _React$useState4[1];
 
-  return (
-    /*#__PURE__*/
-    // {!globalData.user ? 
-    //     <div style={{display: 'inline'}} onClick={onNotLogged} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
-    //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
-    //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
-    //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-    //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
-    //     </div> :
-    //     <div style={{display: 'inline'}} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
-    //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
-    //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
-    //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-    //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
-    //     </div>}
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "container mt-5",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "col-lg-3"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "container mt-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "col-lg-3"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "col-lg-6",
+        children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            style: {
+              maxWidth: '540px',
+              maxHeight: '540px'
+            },
+            id: "zoomImage",
+            className: zoomImage ? 'zoomImage' : ''
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            style: {
+              maxWidth: '540px',
+              maxHeight: '540px'
+            },
+            src: props.image,
+            alt: ""
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "col-lg-6",
-          children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            className: img ? "pl-3 img-text text-border c-white" : "pl-3",
+            children: props.title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "post--p p-3",
+            style: {
+              wordBreak: 'break-all'
+            },
+            children: convSmileys(props.text)
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikePostForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            user_id: props.user_id,
+            post_id: props.id,
+            darkMode: props.darkMode
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "comments--comment",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              href: "./thread/".concat(props.id),
+              className: props.darkMode ? 'c-white' : 'c-gray',
               style: {
-                maxWidth: '540px',
-                maxHeight: '540px'
+                textDecoration: "none"
               },
-              id: "zoomImage",
-              className: zoomImage ? 'zoomImage' : ''
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-              style: {
-                maxWidth: '540px',
-                maxHeight: '540px'
-              },
-              src: props.image,
-              alt: ""
-            })]
+              children: "Comments"
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-              className: img ? "pl-3 img-text text-border c-white" : "pl-3",
-              children: props.title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-              className: "post--p p-3",
-              children: doubleConsonant(props.text)
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikePostForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              user_id: props.user_id,
-              post_id: props.id,
-              darkMode: props.darkMode
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-              className: "comments--comment",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-                href: "./thread/".concat(props.id),
-                className: props.darkMode ? 'c-white' : 'c-gray',
-                style: {
-                  textDecoration: "none"
-                },
-                children: "Comments"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-                children: props.comment1
-              }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-                children: props.comment2
-              })]
+            children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+              children: props.comment1
+            }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+              children: props.comment2
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "col-lg-3"
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "col-lg-3"
+      })]
     })
-  );
+  });
 }
 
 /***/ }),
@@ -3956,7 +4024,7 @@ function Thread(props) {
         children: findParents(list).map(function (element) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
             darkMode: props.darkMode,
-            text: element.text,
+            text: element.user_id == null ? "Removed" : element.text,
             user_id: element.user_id,
             id: element.id,
             test: toTree(findChildren(list1)(element.id))(list1)
@@ -4017,6 +4085,9 @@ function Thread(props) {
         children: post.title
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
         className: "post--p p-3",
+        style: {
+          wordBreak: 'break-all'
+        },
         children: post.text
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
         style: {
@@ -4042,6 +4113,7 @@ function Thread(props) {
       className: "".concat(props.darkMode ? 'bg--dark' : 'bg--light', " comments-sm p-3 post--end"),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LikePostForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
         post_id: post.id,
+        darkMode: props.darkMode,
         user_id: globalData.user ? globalData.user.id : null
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
@@ -4166,15 +4238,17 @@ function User(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      onClick: activeUser,
-      className: "".concat(props.darkMode && 'bg--darkgray', " row users--row bg--light p-2 mt-2"),
+      className: "".concat(props.darkMode ? props.role == 'inactive' ? 'border-r bg--darkgray' : 'bg--darkgray' : props.role == 'inactive' ? 'border-r' : '', " row users--row bg--light p-2 mt-2"),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        onClick: activeUser,
         className: "col-lg-3",
         children: props.userName
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        onClick: activeUser,
         className: "col-lg-3",
         children: props.role
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        onClick: activeUser,
         className: "col-lg-2",
         children: props.created
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -4364,16 +4438,16 @@ function Users(props) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "".concat(props.darkMode && 'c-white', " row p-2"),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "col-lg-2",
+                className: "col-lg-3",
                 children: "Username"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "col-lg-2",
+                className: "col-lg-3",
                 children: "Role"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "col-lg-2",
                 children: "Created"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "col-lg-6"
+                className: "col-lg-4"
               })]
             })
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
