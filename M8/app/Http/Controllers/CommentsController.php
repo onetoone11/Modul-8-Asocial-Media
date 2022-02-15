@@ -120,4 +120,21 @@ class CommentsController extends Controller
 
         return response()->json(['user_id' => $user_id, 'comment_id' => $comment_id, 'exists' => $exists]);
     }
+
+    public function setLikedComment(Request $request) {
+        $comment_id = intval($request->input('comment_id'));
+        $user_id = intval($request->input('user_id'));
+
+        $exists = DB::select("SELECT COUNT(1) FROM comment_likes WHERE user_id = $user_id AND comment_id = $comment_id");
+        $exists = json_decode(json_encode($exists), true);
+        $exists = $exists[0]["COUNT(1)"];
+
+        if($exists == 1) {
+            return response()->json(['exists' => true]);
+        }
+        if($exists == 0) {
+            return response()->json(['exists' => false]);
+        }
+
+    }
 }

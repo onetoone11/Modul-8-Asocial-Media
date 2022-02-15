@@ -4,7 +4,9 @@ import Logo from './logoBlack.png'
 import LikePostForm from './LikePostForm'
 export default function Thread(props) {
 
-    const [img, setImg] = React.useState(false)
+    const [img, setImg] = React.useState(false);
+
+    const [isReplying, setIsReplying] = React.useState(false);
 
     React.useEffect(() => {
         setImg(() => {
@@ -61,13 +63,19 @@ export default function Thread(props) {
         <div>
             {findParents(list).map(element => {
                 return <Comment darkMode={props.darkMode} key={element.id} text={element.text} user_id={element.user_id} id={element.id} test={
-                // return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
-                // return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
         </div>
         )
+    }
+
+    const replyCheck = () => {
+        if(globalData.user == null) {
+            window.location.href = `/login`;
+            return;
+        }
+        setIsReplying(a => !a);
     }
 
     // console.log('hello')
@@ -135,7 +143,7 @@ export default function Thread(props) {
                     <LikePostForm post_id={post.id} user_id={globalData.user.id ? globalData.user.id : null} />
                 </div>} */}
 
-                <p className="comments--comment">Comments</p>
+                <button onClick={() => replyCheck()} style={{background: 'none', border: 'none', outline: 'none'}} className="comments--comment"><p className="comments--comment">Comments</p></button>
 
                 {/* Need to convert a list of nodes of comments with parent pointers
                 to a recursive tree
@@ -143,6 +151,20 @@ export default function Thread(props) {
                 {/* {comments.map((element,i) => {
                     return <Comment key={i} darkMode={props.darkMode} id={element.id} text={element.text} />
                 })} */}
+                {isReplying &&
+                <div className={`ml-4 pl-4`}>
+                <form className="row w-100" action={`/comment/${post_id}`} method="get">
+                    {/* <div className="comment--profile bg--white mr-3 ml-4"></div> */}
+                    <div>
+                        <input type="hidden" id="parent_id" name="parent_id" value={null} />
+                        <textarea id="text" name="text" className={`comment ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`} maxLength="256" cols="100" rows="3" style={{width: "100%", overflowWrap: "break-word"}} />
+
+                        <button className="icon-btn"><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </div>    
+                </form>
+            </div>
+        }
+
                 {toTree(comments)(comments)}
 
             </div>

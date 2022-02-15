@@ -56,6 +56,7 @@ Route::get('/editPost/{post_id}', [PostsController::class, 'edit']);
 Route::post('rateComment', [CommentsController::class, 'rateComment'])->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/ratePost', [PostsController::class, 'ratePost'])->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/isLikedPost', [PostsController::class, 'setLiked'])->withoutMiddleware([VerifyCsrfToken::class]);
+Route::post('/setLikedComment', [CommentsController::class, 'setLikedComment'])->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::get('/changeMode/{user_id}', [UserController::class, 'edit']);
 Route::get('/changeImage/{user_id}', [PagesController::class, 'userImage']);

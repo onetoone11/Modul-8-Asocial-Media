@@ -6,6 +6,9 @@ const LikePostForm = (props) => {
     useEffect(() => setLiked(), []);
 
     const setLiked = async () => {
+        if(globalData.user === null) {
+            return;
+        }
         let formData = new FormData();
 
         formData.append('user_id', props.user_id);

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const LikeCommentForm = (props) => {
     const [rating, setRating] = React.useState(false);
 
+    useEffect(() => setLiked(), []);
+
     const handleSubmit = async () => {
-        if(props.user_id === null) {
+        if(globalData.user === null) {
             window.location.href = `/login`;
             return;
         }
@@ -12,7 +14,7 @@ const LikeCommentForm = (props) => {
 
         let formData = new FormData();
 
-        formData.append('user_id', props.user_id);
+        formData.append('user_id', globalData.user.id);
         formData.append('comment_id', props.comment_id);
 
         const fetchResponse = await fetch(`/rateComment`, {
@@ -24,11 +26,24 @@ const LikeCommentForm = (props) => {
         console.log(data);
     }
 
-    // const getLikes = async () => {
-    //     let formData = new FormData();
+    const setLiked = async () => {
+        if(globalData.user === null) {
+            return;
+        }
+        let formData = new FormData();
 
-    //     formData.append()
-    // }
+        formData.append('user_id', globalData.user.id);
+        formData.append('comment_id', props.comment_id);
+
+        const fetchResponse = await fetch('/setLikedComment', {
+            method: "post",
+            body: formData
+        });
+
+        const data = await fetchResponse.json();
+
+        setRating(() => data.exists);
+    }
 
     return (
     <button onClick={handleSubmit} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className="fal fa-grin-hearts mr-4 fa-lg"></i></button>

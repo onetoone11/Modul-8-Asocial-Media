@@ -2705,6 +2705,10 @@ var LikeCommentForm = function LikeCommentForm(props) {
       rating = _React$useState2[0],
       setRating = _React$useState2[1];
 
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return setLiked();
+  }, []);
+
   var handleSubmit = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var formData, fetchResponse, data;
@@ -2712,7 +2716,7 @@ var LikeCommentForm = function LikeCommentForm(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!(props.user_id === null)) {
+              if (!(globalData.user === null)) {
                 _context.next = 3;
                 break;
               }
@@ -2725,7 +2729,7 @@ var LikeCommentForm = function LikeCommentForm(props) {
                 return !oldRating;
               });
               formData = new FormData();
-              formData.append('user_id', props.user_id);
+              formData.append('user_id', globalData.user.id);
               formData.append('comment_id', props.comment_id);
               _context.next = 9;
               return fetch("/rateComment", {
@@ -2753,11 +2757,55 @@ var LikeCommentForm = function LikeCommentForm(props) {
     return function handleSubmit() {
       return _ref.apply(this, arguments);
     };
-  }(); // const getLikes = async () => {
-  //     let formData = new FormData();
-  //     formData.append()
-  // }
+  }();
 
+  var setLiked = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (!(globalData.user === null)) {
+                _context2.next = 2;
+                break;
+              }
+
+              return _context2.abrupt("return");
+
+            case 2:
+              formData = new FormData();
+              formData.append('user_id', globalData.user.id);
+              formData.append('comment_id', props.comment_id);
+              _context2.next = 7;
+              return fetch('/setLikedComment', {
+                method: "post",
+                body: formData
+              });
+
+            case 7:
+              fetchResponse = _context2.sent;
+              _context2.next = 10;
+              return fetchResponse.json();
+
+            case 10:
+              data = _context2.sent;
+              setRating(function () {
+                return data.exists;
+              });
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function setLiked() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
     onClick: handleSubmit,
@@ -2837,28 +2885,36 @@ var LikePostForm = function LikePostForm(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              if (!(globalData.user === null)) {
+                _context.next = 2;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 2:
               formData = new FormData();
               formData.append('user_id', props.user_id);
               formData.append('post_id', props.post_id);
-              _context.next = 5;
+              _context.next = 7;
               return fetch('/isLikedPost', {
                 method: "post",
                 body: formData
               });
 
-            case 5:
+            case 7:
               fetchResponse = _context.sent;
-              _context.next = 8;
+              _context.next = 10;
               return fetchResponse.json();
 
-            case 8:
+            case 10:
               data = _context.sent;
               console.log(data.value);
               setRating(function () {
                 return data.value;
               });
 
-            case 11:
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -3832,6 +3888,11 @@ function Thread(props) {
       img = _React$useState2[0],
       setImg = _React$useState2[1];
 
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      isReplying = _React$useState4[0],
+      setIsReplying = _React$useState4[1];
+
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     setImg(function () {
       if (post.image == null) {
@@ -3898,13 +3959,22 @@ function Thread(props) {
             text: element.text,
             user_id: element.user_id,
             id: element.id,
-            test: // return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
-            // return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
-            toTree(findChildren(list1)(element.id))(list1)
+            test: toTree(findChildren(list1)(element.id))(list1)
           }, element.id);
         })
       });
     };
+  };
+
+  var replyCheck = function replyCheck() {
+    if (globalData.user == null) {
+      window.location.href = "/login";
+      return;
+    }
+
+    setIsReplying(function (a) {
+      return !a;
+    });
   }; // console.log('hello')
   // console.log(comments[5].user_id);
 
@@ -3973,9 +4043,52 @@ function Thread(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LikePostForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
         post_id: post.id,
         user_id: globalData.user ? globalData.user.id : null
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        onClick: function onClick() {
+          return replyCheck();
+        },
+        style: {
+          background: 'none',
+          border: 'none',
+          outline: 'none'
+        },
         className: "comments--comment",
-        children: "Comments"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          className: "comments--comment",
+          children: "Comments"
+        })
+      }), isReplying && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ml-4 pl-4",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+          className: "row w-100",
+          action: "/comment/".concat(post_id),
+          method: "get",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "hidden",
+              id: "parent_id",
+              name: "parent_id",
+              value: null
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+              id: "text",
+              name: "text",
+              className: "comment ".concat(props.darkMode ? 'bg--darkgray' : 'bg--white'),
+              maxLength: "256",
+              cols: "100",
+              rows: "3",
+              style: {
+                width: "100%",
+                overflowWrap: "break-word"
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              className: "icon-btn",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                className: "fa fa-paper-plane",
+                "aria-hidden": "true"
+              })
+            })]
+          })
+        })
       }), toTree(comments)(comments)]
     })]
   });
