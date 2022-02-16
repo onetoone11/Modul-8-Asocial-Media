@@ -1,6 +1,18 @@
 import React from 'react'
 
 const LikeCommentForm = (props) => {
+    let inactive = false;
+    if(!globalData.user) {
+    } else {
+        if(globalData.user.type === 'inactive') {
+            inactive = true;
+        }
+    }
+
+    const onInactive = () => {
+        window.location.href = `/inactive`;
+    }
+
     const [rating, setRating] = React.useState(false);
 
     const handleSubmit = async () => {
@@ -31,8 +43,14 @@ const LikeCommentForm = (props) => {
     // }
 
     return (
-    <button onClick={handleSubmit} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} fal fa-grin-hearts mr-4 fa-lg`}></i></button>
-    )
+        <>
+        {inactive == true ?
+            <button onClick={onInactive} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} fal fa-grin-hearts mr-4 fa-lg`}></i></button>
+            :
+            <button onClick={handleSubmit} className={`like--i ${rating && "btn-active"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} fal fa-grin-hearts mr-4 fa-lg`}></i></button>
+        }
+        </>
+        )
 }
 
 LikeCommentForm.defaultProps = {

@@ -113,7 +113,14 @@ class PostsController extends Controller
 
     public function destroy($post_id)
     {
-
+        $data = Post::find($post_id);
+        $type = Auth::user()->type;
+        if($data->user_id != Auth::user()->id) {
+            return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Post was not deleted. You are not the author of this post.');
+        }
+        if($type == 'inactive') {
+            return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'You are an inactive user. You cannot delete posts.');
+        }
         $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
 
         foreach($comments as $comment){

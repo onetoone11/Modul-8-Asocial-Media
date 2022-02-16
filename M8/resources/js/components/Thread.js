@@ -75,12 +75,14 @@ export default function Thread(props) {
 
     let admin = false;
     let isOP = false;
+    let inactive = false;
     if(!globalData.user) {
     } else {
         if(!(globalData.user.type === 'admin')) {
             admin = false;
-        } else {
-            admin = true;
+        }
+        if(globalData.user.type === 'inactive') {
+            inactive = true;
         }
         if(post.user_id == globalData.user.id) {
             isOP = true;
@@ -100,13 +102,13 @@ export default function Thread(props) {
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
                 <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{post.title}</h1>
                 <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{post.text}</p>
-                <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
-                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
-                </form>
-                <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
+                {inactive ? '' : <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
+                     {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
+                </form> }
+                {inactive ? '' : <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
                     {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
                     {/* {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>} */}
-                </form>
+                </form> }
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
                 <LikePostForm post_id={post.id} darkMode={props.darkMode} user_id={globalData.user ? globalData.user.id : null} />
