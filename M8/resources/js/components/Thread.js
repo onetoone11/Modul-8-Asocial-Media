@@ -180,13 +180,13 @@ export default function Thread(props) {
         return str;
     }
 
-    function skånska(str) {
+    function skanska(str) {
 
         const replace = (str) => {
 
         }
 
-        const skånskDictionary = {
+        const skanskDictionary = {
             "skottkärra": "rullebör",
             "ja": "jao",
             "mat": "mad",
@@ -231,7 +231,50 @@ export default function Thread(props) {
 
         }
         
-        let a = Object.entries(skånskDictionary);
+        let a = Object.entries(skanskDictionary);
+        
+
+        for(let i = 0; i < a.length; i++) {
+            str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+        }
+        return str;
+    }
+
+    function wrongSpell(str) {
+
+        const dictionary = {
+            "the": 'teh',
+            "bestämt": 'bestämmt',
+            "cykel": 'cyckel',
+            "definitivt": 'defenetivt',
+            "fåtölj": 'fotölj',
+            "egentligen": 'igentligen',
+            "konferens": 'konferans',
+            "lugnt": 'lungt',
+            "alltid": 'altid',
+            "gamla": 'gammla',
+            "aldrig": 'alldrig',
+            "faktiskt": 'faktist',
+            "koncentrera": 'konsentrera',
+            "alltså": 'asså',
+            "kunde": 'kunnde',
+            "öppettider": 'öppetider',
+            "tyvärr": 'tyvär',
+            "test": 'tesst',
+            "testar": 'tetsar',
+            "annorlunda": 'anorlunda',
+            "okej": 'ok',
+            "inlägg": 'inläg',
+            "this": 'thiss',
+            "is": 'i',
+            "är": 'ä',
+            "Max": 'Maximos',
+            "Matilda": 'Mathilda',
+            "Ella": 'Elias'
+
+        }
+        
+        let a = Object.entries(dictionary);
         
 
         for(let i = 0; i < a.length; i++) {
@@ -290,7 +333,8 @@ const [zoomImage, setZoomImage] = React.useState(true);
         'lowerUpper': lowerUpper, 
         'scrambleMid': scrambleMid, 
         'scambleWords': scambleWords,
-        'skanska': skånska
+        'skanska': skanska,
+        'wrongSpell': wrongSpell
     };
 
     const [sortOfAl, setSortOfAl] = React.useState('none');

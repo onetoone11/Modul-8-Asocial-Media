@@ -3987,7 +3987,34 @@ function Start(props) {
 
   function wrongSpell(str) {
     var dictionary = {
-      "the": 'teh'
+      "the": 'teh',
+      "bestämt": 'bestämmt',
+      "cykel": 'cyckel',
+      "definitivt": 'defenetivt',
+      "fåtölj": 'fotölj',
+      "egentligen": 'igentligen',
+      "konferens": 'konferans',
+      "lugnt": 'lungt',
+      "alltid": 'altid',
+      "gamla": 'gammla',
+      "aldrig": 'alldrig',
+      "faktiskt": 'faktist',
+      "koncentrera": 'konsentrera',
+      "alltså": 'asså',
+      "kunde": 'kunnde',
+      "öppettider": 'öppetider',
+      "tyvärr": 'tyvär',
+      "test": 'tesst',
+      "testar": 'tetsar',
+      "annorlunda": 'anorlunda',
+      "okej": 'ok',
+      "inlägg": 'inläg',
+      "this": 'thiss',
+      "is": 'i',
+      "är": 'ä',
+      "Max": 'Maximos',
+      "Matilda": 'Mathilda',
+      "Ella": 'Elias'
     };
     var a = Object.entries(dictionary);
 
@@ -4058,7 +4085,8 @@ function Start(props) {
     'lowerUpper': lowerUpper,
     'scrambleMid': scrambleMid,
     'scambleWords': scambleWords,
-    'skanska': skanska
+    'skanska': skanska,
+    'wrongSpell': wrongSpell
   };
 
   var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState('none'),
@@ -4387,10 +4415,10 @@ function Thread(props) {
     return str;
   }
 
-  function skånska(str) {
+  function skanska(str) {
     var replace = function replace(str) {};
 
-    var skånskDictionary = {
+    var skanskDictionary = {
       "skottkärra": "rullebör",
       "ja": "jao",
       "mat": "mad",
@@ -4432,7 +4460,47 @@ function Thread(props) {
       "blöt": "blydded",
       "våt": "blydded"
     };
-    var a = Object.entries(skånskDictionary);
+    var a = Object.entries(skanskDictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
+    return str;
+  }
+
+  function wrongSpell(str) {
+    var dictionary = {
+      "the": 'teh',
+      "bestämt": 'bestämmt',
+      "cykel": 'cyckel',
+      "definitivt": 'defenetivt',
+      "fåtölj": 'fotölj',
+      "egentligen": 'igentligen',
+      "konferens": 'konferans',
+      "lugnt": 'lungt',
+      "alltid": 'altid',
+      "gamla": 'gammla',
+      "aldrig": 'alldrig',
+      "faktiskt": 'faktist',
+      "koncentrera": 'konsentrera',
+      "alltså": 'asså',
+      "kunde": 'kunnde',
+      "öppettider": 'öppetider',
+      "tyvärr": 'tyvär',
+      "test": 'tesst',
+      "testar": 'tetsar',
+      "annorlunda": 'anorlunda',
+      "okej": 'ok',
+      "inlägg": 'inläg',
+      "this": 'thiss',
+      "is": 'i',
+      "är": 'ä',
+      "Max": 'Maximos',
+      "Matilda": 'Mathilda',
+      "Ella": 'Elias'
+    };
+    var a = Object.entries(dictionary);
 
     for (var i = 0; i < a.length; i++) {
       str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
@@ -4497,7 +4565,8 @@ function Thread(props) {
     'lowerUpper': lowerUpper,
     'scrambleMid': scrambleMid,
     'scambleWords': scambleWords,
-    'skanska': skånska
+    'skanska': skanska,
+    'wrongSpell': wrongSpell
   };
 
   var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState('none'),

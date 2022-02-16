@@ -160,7 +160,34 @@ export default function Start(props){
 
         const dictionary = {
             "the": 'teh',
-            
+            "bestämt": 'bestämmt',
+            "cykel": 'cyckel',
+            "definitivt": 'defenetivt',
+            "fåtölj": 'fotölj',
+            "egentligen": 'igentligen',
+            "konferens": 'konferans',
+            "lugnt": 'lungt',
+            "alltid": 'altid',
+            "gamla": 'gammla',
+            "aldrig": 'alldrig',
+            "faktiskt": 'faktist',
+            "koncentrera": 'konsentrera',
+            "alltså": 'asså',
+            "kunde": 'kunnde',
+            "öppettider": 'öppetider',
+            "tyvärr": 'tyvär',
+            "test": 'tesst',
+            "testar": 'tetsar',
+            "annorlunda": 'anorlunda',
+            "okej": 'ok',
+            "inlägg": 'inläg',
+            "this": 'thiss',
+            "is": 'i',
+            "är": 'ä',
+            "Max": 'Maximos',
+            "Matilda": 'Mathilda',
+            "Ella": 'Elias'
+
         }
         
         let a = Object.entries(dictionary);
@@ -229,7 +256,8 @@ const [zoomImage, setZoomImage] = React.useState(true);
         'lowerUpper': lowerUpper, 
         'scrambleMid': scrambleMid, 
         'scambleWords': scambleWords,
-        'skanska': skanska
+        'skanska': skanska,
+        'wrongSpell': wrongSpell
     };
 
     const [sortOfAl, setSortOfAl] = React.useState('none');
