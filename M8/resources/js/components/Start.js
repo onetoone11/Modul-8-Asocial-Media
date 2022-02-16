@@ -268,7 +268,7 @@ const [zoomImage, setZoomImage] = React.useState(true);
             <div className="row">
                 <div className="col-lg-3"></div>
                 <div className="col-lg-6">
-                    {img && <div>
+                    {img && <div className={`text-center ${props.darkMode ? 'bg--dark' : 'bg--light'}`}>
                         {globalData.user != null ? <img style={{maxWidth: '540px', maxHeight: '540px'}} className={path != index ? ((sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id) ? `${postUser[temp]['algorithm']}` : '') : ''} src={props.image} alt="" /> :
                         <img style={{maxWidth: '540px', maxHeight: '540px'}} className={path != index ? (sortOfAl == 'image' ? `${postUser[temp]['algorithm']}` : '') : ''} src={props.image} alt="" />}
                     </div>}

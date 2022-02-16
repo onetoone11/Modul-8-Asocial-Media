@@ -61,8 +61,6 @@ const LikePostForm = (props) => {
         });
         const data = await fetchResponse.json();
 
-        
-
         console.log(data, val);
         getLikes();
     }

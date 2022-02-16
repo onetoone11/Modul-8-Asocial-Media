@@ -119,8 +119,8 @@ class RegisterController extends Controller
         'wrongSpell' => 14
     ];
 
-    $randomIm = rand(1, 16);
-    $randomAl = rand(0, 14);
+    $randomIm = rand(0, 16);
+    $randomAl = rand(1, 14);
     $profilePicture = array_search($randomIm, $profilePictures);
     $algorithm = array_search($randomAl, $algorithms);
 

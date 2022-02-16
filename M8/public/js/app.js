@@ -4176,6 +4176,7 @@ function Start(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "col-lg-6",
         children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "text-center ".concat(props.darkMode ? 'bg--dark' : 'bg--light'),
           children: globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
             style: {
               maxWidth: '540px',
@@ -4652,7 +4653,26 @@ function Thread(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "text-center ".concat(props.darkMode ? 'bg--dark-img' : 'bg--light'),
+      children: globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+        style: {
+          maxWidth: '1100px',
+          maxHeight: '500px'
+        },
+        className: sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id ? "".concat(postUser[temp]['algorithm']) : '',
+        src: post.image,
+        alt: ""
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+        style: {
+          maxWidth: '1100px',
+          maxHeight: '500px'
+        },
+        className: sortOfAl == 'image' ? "".concat(postUser[temp]['algorithm']) : '',
+        src: post.image,
+        alt: ""
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top",
       children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
         className: img ? "pl-3 img-text text-border c-white" : "pl-3",
@@ -4707,7 +4727,7 @@ function Thread(props) {
           border: 'none',
           outline: 'none'
         },
-        className: "comments--comment",
+        className: "comments--comment ".concat(props.darkMode ? 'c-white' : ''),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
           className: "comments--comment",
           children: "Comments"
