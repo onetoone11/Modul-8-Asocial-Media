@@ -27,7 +27,7 @@ class PostsController extends Controller
     {
         \DB::statement("SET SQL_MODE=''");
         // $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
-        $posts = DB::select(DB::raw("SELECT COUNT(post_likes.post_id) AS 'likes', posts.* FROM post_likes RIGHT JOIN posts ON posts.id = post_likes.post_id GROUP BY posts.id ORDER BY `posts`.`id` ASC"));
+        $posts = DB::select(DB::raw("SELECT COUNT(post_likes.post_id) AS 'likes', posts.* FROM post_likes RIGHT JOIN posts ON posts.id = post_likes.post_id GROUP BY posts.id ORDER BY likes DESC"));
         $postUser = User::all();
         $comments = array();
         foreach($posts as $post) {
