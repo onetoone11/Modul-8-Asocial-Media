@@ -2932,8 +2932,7 @@ var LikePostForm = function LikePostForm(props) {
   var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(0),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       dislikes = _React$useState6[0],
-      setDislikes = _React$useState6[1]; // const [likes, setLikes] = React.useState(props.likes);
-
+      setDislikes = _React$useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     return setLiked();
@@ -3041,25 +3040,20 @@ var LikePostForm = function LikePostForm(props) {
 
   var getLikes = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var formData, fetchResponse, data;
+      var res, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              formData = new FormData();
-              formData.append('post_id', props.post_id);
-              _context3.next = 4;
-              return fetch('/postLikes', {
-                method: "post",
-                body: formData
-              });
+              _context3.next = 2;
+              return fetch("/postLikes/".concat(props.post_id));
 
-            case 4:
-              fetchResponse = _context3.sent;
-              _context3.next = 7;
-              return fetchResponse.json();
+            case 2:
+              res = _context3.sent;
+              _context3.next = 5;
+              return res.json();
 
-            case 7:
+            case 5:
               data = _context3.sent;
               setLikes(function () {
                 return data.likes;
@@ -3068,7 +3062,7 @@ var LikePostForm = function LikePostForm(props) {
                 return data.dislikes;
               });
 
-            case 10:
+            case 8:
             case "end":
               return _context3.stop();
           }

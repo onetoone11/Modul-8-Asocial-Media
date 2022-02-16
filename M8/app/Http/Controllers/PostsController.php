@@ -20,7 +20,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'postLikes']]);
     }
 
     public function index()
@@ -169,9 +169,19 @@ class PostsController extends Controller
         return view('test');
     }
 
-    public function postLikes(Request $request) {
-        $post_id = intval($request->input("post_id"));
+    // public function postLikes(Request $request) {
+    //     $post_id = intval($request->input("post_id"));
 
+    //     $likes = DB::select("SELECT COUNT(*) FROM post_likes WHERE post_id=$post_id AND value=1");
+    //     $dislikes = DB::select("SELECT COUNT(*) FROM post_likes WHERE post_id=$post_id AND value=0");
+
+    //     $likes = json_decode(json_encode($likes), true)[0]["COUNT(*)"];
+    //     $dislikes = json_decode(json_encode($dislikes), true)[0]["COUNT(*)"];
+
+    //     return response()->json(['likes' => $likes, 'dislikes' => $dislikes]);
+    // }
+
+    public function postLikes($post_id) {
         $likes = DB::select("SELECT COUNT(*) FROM post_likes WHERE post_id=$post_id AND value=1");
         $dislikes = DB::select("SELECT COUNT(*) FROM post_likes WHERE post_id=$post_id AND value=0");
 
@@ -179,5 +189,7 @@ class PostsController extends Controller
         $dislikes = json_decode(json_encode($dislikes), true)[0]["COUNT(*)"];
 
         return response()->json(['likes' => $likes, 'dislikes' => $dislikes]);
+
+        // return response()->json(['post_id' => 1]);
     }
 }
