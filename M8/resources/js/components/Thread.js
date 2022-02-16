@@ -88,6 +88,8 @@ export default function Thread(props) {
     } else {
         if(!(globalData.user.type === 'admin')) {
             admin = false;
+        } else {
+            admin = true;
         }
         if(globalData.user.type === 'inactive') {
             inactive = true;
@@ -343,6 +345,11 @@ const [zoomImage, setZoomImage] = React.useState(true);
 
     return (
         <div className="container">
+
+            {img && <div className={`text-center ${props.darkMode ? 'bg--dark-img' : 'bg--light'}`}>
+                {globalData.user != null ? <img style={{maxWidth: '1100px', maxHeight: '500px'}} className={(sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id) ? `${postUser[temp]['algorithm']}` : ''} src={post.image} alt="" /> : 
+                <img style={{maxWidth: '1100px', maxHeight: '500px'}} className={sortOfAl == 'image' ? `${postUser[temp]['algorithm']}` : ''} src={post.image} alt="" />}
+            </div>}
             
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
 
@@ -360,7 +367,7 @@ const [zoomImage, setZoomImage] = React.useState(true);
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
                 <LikePostForm post_id={post.id} darkMode={props.darkMode} user_id={globalData.user ? globalData.user.id : null} />
 
-                <button onClick={() => replyCheck()} style={{background: 'none', border: 'none', outline: 'none'}} className="comments--comment"><p className="comments--comment">Comments</p></button>
+                <button onClick={() => replyCheck()} style={{background: 'none', border: 'none', outline: 'none'}} className={`comments--comment ${props.darkMode ? 'c-white' : ''}`}><p className="comments--comment">Comments</p></button>
 
                 {isReplying &&
                 <div className={`ml-4 pl-4`}>
