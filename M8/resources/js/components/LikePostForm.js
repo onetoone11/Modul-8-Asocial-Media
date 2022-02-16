@@ -1,6 +1,18 @@
 import React, { useEffect } from 'react'
 
 const LikePostForm = (props) => {
+    let inactive = false;
+    if(!globalData.user) {
+    } else {
+        if(globalData.user.type === 'inactive') {
+            inactive = true;
+        }
+    }
+
+    const onInactive = () => {
+        window.location.href = `/inactive`;
+    }
+
     const [rating, setRating] = React.useState(props.rating);
     const [likes, setLikes] = React.useState(0);
     const [dislikes, setDislikes] = React.useState(0);
@@ -64,8 +76,16 @@ const LikePostForm = (props) => {
 
     return (
         <>
-            <button onClick={handleSubmit(1)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-grin-hearts mr-4 fa-xl ${(rating === 1) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + likes}</i></button>
-            <button onClick={handleSubmit(0)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-sad-cry mr-4 fa-xl ${(rating === 0) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + dislikes}</i></button>
+            {inactive == true ?
+                <button onClick={onInactive} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-grin-hearts mr-4 fa-xl ${(rating === 1) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + likes}</i></button> 
+            :
+                <button onClick={handleSubmit(1)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-grin-hearts mr-4 fa-xl ${(rating === 1) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + likes}</i></button>
+            }
+            {inactive == true ?
+                <button onClick={onInactive} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-sad-cry mr-4 fa-xl ${(rating === 0) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + dislikes}</i></button>
+            :
+                <button onClick={handleSubmit(0)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-sad-cry mr-4 fa-xl ${(rating === 0) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + dislikes}</i></button>
+            }
         </>
     )
 }

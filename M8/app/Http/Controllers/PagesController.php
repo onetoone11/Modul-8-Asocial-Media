@@ -44,7 +44,13 @@ class PagesController extends Controller
 
     public function create(){
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
-        return view('create')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])]);
+        $type = Auth::user()->type;
+
+        if($type == 'inactive') {
+            return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'You are an inactive user. Please use another account to access this page.');
+        } else {
+            return view('create')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])]);
+        }
     }
 
     public function edit($post_id){
@@ -52,8 +58,17 @@ class PagesController extends Controller
         $data = Post::find($post_id);
 
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
-        
-        return view('edit')->with('posts', $posts)->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
+        $type = Auth::user()->type;
+
+        if($data->user_id != Auth::user()->id) {
+            return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'You are not the author of this post.');
+        }
+
+        if($type == 'inactive') {
+            return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'You are an inactive user. Please use another account to access this page.');
+        } else {
+            return view('edit')->with('posts', $posts)->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
+        }
     }
 
     public function test(){
@@ -76,7 +91,13 @@ class PagesController extends Controller
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
 
         $usersTable = DB::table('users')->get();
-        return view('users')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])])->with('usersTable', $usersTable);
+        $type = Auth::user()->type;
+
+        if($type == 'inactive' || $type == 'user') {
+            return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'You are not an admin. Please use another account to access this page.');
+        } else {
+            return view('users')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])])->with('usersTable', $usersTable);
+        }
     }
 
     public function deleteUser($user_id){
@@ -113,6 +134,10 @@ class PagesController extends Controller
         }
 
         return Redirect::to('/users')->with(["globalData" => collect(['user' => Auth::user()])]);
+    }
+
+    public function inactive(){
+        return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'You are an inactive user. Please use another account to like/dislike.');
     }
 
 }

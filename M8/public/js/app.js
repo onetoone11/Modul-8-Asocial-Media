@@ -2344,6 +2344,18 @@ function Comment(props) {
     window.location.href = "/login";
   };
 
+  var onInactive = function onInactive() {
+    window.location.href = "/inactive";
+  };
+
+  var inactive = false;
+
+  if (!globalData.user) {} else {
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
+    }
+  }
+
   var temp;
 
   for (var i = 0; i < commentUser.length; i++) {
@@ -2383,21 +2395,20 @@ function Comment(props) {
           darkMode: props.darkMode,
           user_id: props.user_id,
           comment_id: props.id
-        }), !globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: "icon-btn",
-          onClick: onNotLogged,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-            className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
-          })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: "icon-btn",
-          onClick: function onClick() {
-            return setIsReplying(function (a) {
-              return !a;
-            });
+        }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          style: {
+            display: 'inline'
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-            className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
+          children: globalData.user !== null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "icon-btn",
+            onClick: function onClick() {
+              return setIsReplying(function (a) {
+                return !a;
+              });
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+              className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
+            })
           })
         }), props.test && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           className: "icon-btn",
@@ -2701,7 +2712,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var LikeCommentForm = function LikeCommentForm(props) {
+  var inactive = false;
+
+  if (!globalData.user) {} else {
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
+    }
+  }
+
+  var onInactive = function onInactive() {
+    window.location.href = "/inactive";
+  };
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
@@ -2858,17 +2882,30 @@ var LikeCommentForm = function LikeCommentForm(props) {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
-    onClick: handleSubmit,
-    className: "like--i ".concat(props.darkMode && "c-white"),
-    style: {
-      background: 'none',
-      border: 'none',
-      outline: 'none'
-    },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-      className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
-    }), likes]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+      onClick: onInactive,
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
+      }), likes]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+      onClick: handleSubmit,
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
+      }), likes]
+    })
   });
 };
 
@@ -2919,6 +2956,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var LikePostForm = function LikePostForm(props) {
+  var inactive = false;
+
+  if (!globalData.user) {} else {
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
+    }
+  }
+
+  var onInactive = function onInactive() {
+    window.location.href = "/inactive";
+  };
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(props.rating),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
@@ -3076,7 +3125,19 @@ var LikePostForm = function LikePostForm(props) {
   }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    children: [inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      onClick: onInactive,
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + likes
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: handleSubmit(1),
       style: {
         background: 'none',
@@ -3088,7 +3149,19 @@ var LikePostForm = function LikePostForm(props) {
         className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white"),
         children: " " + likes
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    }), inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      onClick: onInactive,
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + dislikes
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: handleSubmit(0),
       style: {
         background: 'none',
@@ -3981,7 +4054,34 @@ function Start(props) {
 
   function wrongSpell(str) {
     var dictionary = {
-      "the": 'teh'
+      "the": 'teh',
+      "bestämt": 'bestämmt',
+      "cykel": 'cyckel',
+      "definitivt": 'defenetivt',
+      "fåtölj": 'fotölj',
+      "egentligen": 'igentligen',
+      "konferens": 'konferans',
+      "lugnt": 'lungt',
+      "alltid": 'altid',
+      "gamla": 'gammla',
+      "aldrig": 'alldrig',
+      "faktiskt": 'faktist',
+      "koncentrera": 'konsentrera',
+      "alltså": 'asså',
+      "kunde": 'kunnde',
+      "öppettider": 'öppetider',
+      "tyvärr": 'tyvär',
+      "test": 'tesst',
+      "testar": 'tetsar',
+      "annorlunda": 'anorlunda',
+      "okej": 'ok',
+      "inlägg": 'inläg',
+      "this": 'thiss',
+      "is": 'i',
+      "är": 'ä',
+      "Max": 'Maximos',
+      "Matilda": 'Mathilda',
+      "Ella": 'Elias'
     };
     var a = Object.entries(dictionary);
 
@@ -4052,7 +4152,8 @@ function Start(props) {
     'lowerUpper': lowerUpper,
     'scrambleMid': scrambleMid,
     'scambleWords': scambleWords,
-    'skanska': skanska
+    'skanska': skanska,
+    'wrongSpell': wrongSpell
   };
 
   var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState('none'),
@@ -4275,12 +4376,15 @@ function Thread(props) {
 
   var admin = false;
   var isOP = false;
+  var inactive = false;
 
   if (!globalData.user) {} else {
     if (!(globalData.user.type === 'admin')) {
       admin = false;
-    } else {
-      admin = true;
+    }
+
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
     }
 
     if (post.user_id == globalData.user.id) {
@@ -4381,10 +4485,10 @@ function Thread(props) {
     return str;
   }
 
-  function skånska(str) {
+  function skanska(str) {
     var replace = function replace(str) {};
 
-    var skånskDictionary = {
+    var skanskDictionary = {
       "skottkärra": "rullebör",
       "ja": "jao",
       "mat": "mad",
@@ -4426,7 +4530,47 @@ function Thread(props) {
       "blöt": "blydded",
       "våt": "blydded"
     };
-    var a = Object.entries(skånskDictionary);
+    var a = Object.entries(skanskDictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
+    return str;
+  }
+
+  function wrongSpell(str) {
+    var dictionary = {
+      "the": 'teh',
+      "bestämt": 'bestämmt',
+      "cykel": 'cyckel',
+      "definitivt": 'defenetivt',
+      "fåtölj": 'fotölj',
+      "egentligen": 'igentligen',
+      "konferens": 'konferans',
+      "lugnt": 'lungt',
+      "alltid": 'altid',
+      "gamla": 'gammla',
+      "aldrig": 'alldrig',
+      "faktiskt": 'faktist',
+      "koncentrera": 'konsentrera',
+      "alltså": 'asså',
+      "kunde": 'kunnde',
+      "öppettider": 'öppetider',
+      "tyvärr": 'tyvär',
+      "test": 'tesst',
+      "testar": 'tetsar',
+      "annorlunda": 'anorlunda',
+      "okej": 'ok',
+      "inlägg": 'inläg',
+      "this": 'thiss',
+      "is": 'i',
+      "är": 'ä',
+      "Max": 'Maximos',
+      "Matilda": 'Mathilda',
+      "Ella": 'Elias'
+    };
+    var a = Object.entries(dictionary);
 
     for (var i = 0; i < a.length; i++) {
       str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
@@ -4491,7 +4635,8 @@ function Thread(props) {
     'lowerUpper': lowerUpper,
     'scrambleMid': scrambleMid,
     'scambleWords': scambleWords,
-    'skanska': skånska
+    'skanska': skanska,
+    'wrongSpell': wrongSpell
   };
 
   var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState('none'),
@@ -4501,26 +4646,7 @@ function Thread(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
-    children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "text-center ".concat(props.darkMode ? 'bg--dark-img' : 'bg--light'),
-      children: globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        style: {
-          maxWidth: '1100px',
-          maxHeight: '500px'
-        },
-        className: sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id ? "".concat(postUser[temp]['algorithm']) : '',
-        src: post.image,
-        alt: ""
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        style: {
-          maxWidth: '1100px',
-          maxHeight: '500px'
-        },
-        className: sortOfAl == 'image' ? "".concat(postUser[temp]['algorithm']) : '',
-        src: post.image,
-        alt: ""
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top",
       children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
         className: img ? "pl-3 img-text text-border c-white" : "pl-3",
@@ -4540,7 +4666,7 @@ function Thread(props) {
           wordBreak: 'break-all'
         },
         children: sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], post.text) : post.text
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+      }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
         style: {
           display: 'contents'
         },
@@ -4550,7 +4676,7 @@ function Thread(props) {
           className: "btn--deletePost border-r c-red border-1_5",
           children: "Delete"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+      }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
         style: {
           display: 'contents'
         },
@@ -4582,7 +4708,7 @@ function Thread(props) {
         })
       }), isReplying && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "ml-4 pl-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+        children: inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
           className: "row w-100",
           action: "/comment/".concat(post_id),
           method: "get",

@@ -70,3 +70,5 @@ Route::get('/adminUser/{user_id}', [PagesController::class, 'adminUser']);
 Route::get('/activeUser/{user_id}', [PagesController::class, 'activeUser']);
 
 Auth::routes();
+
+Route::get('/inactive', [PagesController::class, 'inactive']);
