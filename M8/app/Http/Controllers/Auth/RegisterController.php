@@ -115,7 +115,7 @@ class RegisterController extends Controller
         'lowerUpper' => 10, 
         'scrambleMid' => 11, 
         'scambleWords' => 12,
-        'skansk' => 13,
+        'skanska' => 13,
         'wrongSpell' => 14
     ];
 

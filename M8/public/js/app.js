@@ -3799,9 +3799,391 @@ var Register = function Register(props) {
 /*!******************************************!*\
   !*** ./resources/js/components/Start.js ***!
   \******************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\resources\\js\\components\\Start.js: Identifier 'zoomImage' has already been declared. (221:11)\n\n  219 |     const [sortOfAl, setSortOfAl] = React.useState('none');\n  220 |\n> 221 |     const [zoomImage, setZoomImage] = React.useState(true);\n      |            ^\n  222 |\n  223 |     return(\n  224 |\n    at Object._raise (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:506:17)\n    at Object.raiseWithData (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:499:17)\n    at Object.raise (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:460:17)\n    at ScopeHandler.checkRedeclarationInScope (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:1668:12)\n    at ScopeHandler.declareName (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:1634:12)\n    at Object.checkLVal (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:11481:24)\n    at Object.checkLVal (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:11507:18)\n    at Object.parseVarId (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:14680:10)\n    at Object.parseVar (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:14651:12)\n    at Object.parseVarStatement (C:\\Users\\max.hansen\\Downloads\\Projekt\\Modul 8, Asocial Media(working version)\\Modul-8-Asocial-Media\\M8\\node_modules\\@babel\\parser\\lib\\index.js:14458:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Start)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LikePostForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LikePostForm */ "./resources/js/components/LikePostForm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function Start(props) {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      img = _React$useState2[0],
+      setImg = _React$useState2[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setImg(function () {
+      if (props.image == null) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }, [img]);
+
+  var onNotLogged = function onNotLogged() {
+    window.location.href = "/login";
+  };
+
+  function doubleConsonant(text) {
+    // Splits whole post into an array
+    var myArray = text.split(""); // For each item in the myarray
+
+    for (var i = 0; i < myArray.length; i++) {
+      // We dont need to check the last letter
+      if (i != myArray.length - 1) {
+        // if letter 1 = letter 2, it means there is 2 letters
+        if (myArray[i] == myArray[i + 1]) {
+          // Deletes one of the double letters
+          for (var j = i; j < myArray.length; j++) {
+            myArray[j] = myArray[j + 1];
+          }
+        }
+      }
+    }
+
+    return myArray;
+  }
+
+  function specialChars(text) {
+    var temp = text.split("");
+    var specialChars1 = ['.', '!', '%', '<', '/', ':', '(', "'"];
+    var specialChars2 = ['?', ',', '°', '>', '*', ';', ')', "`"]; // for each character
+
+    for (var i = 0; i < temp.length; i++) {
+      // Check if the character matches one of the special characters
+      for (var j = 0; j < specialChars1.length; j++) {
+        // If true, change special character
+        if (temp[i] == specialChars1[j]) {
+          temp[i] = specialChars2[j];
+        } else if (temp[i] == specialChars2[j]) {
+          temp[i] = specialChars1[j];
+        }
+      }
+    }
+
+    return temp;
+  }
+
+  function convSmileys(text) {
+    var smileys1 = [':)', ':(', ':|', '>:(', ';)', '<3'];
+    var smileys2 = [':(', ':)', ';)', '<3', ':|', '>:('];
+    var temp;
+
+    for (var i = 0; i < smileys1.length; i++) {
+      // if text holds a smiley, replace it with another smiley
+      temp = text.replace("".concat(smileys1[i]), "".concat(smileys2[i]));
+    }
+
+    return temp;
+  }
+
+  function lowerUpper(str) {
+    var newString = '';
+
+    for (var i = 0; i < str.length; i++) {
+      newString += str[i] === str[i].toUpperCase() ? str[i].toLowerCase() : str[i].toUpperCase();
+    }
+
+    return newString;
+  }
+
+  function scrambleMid(str) {
+    // create array of words
+    var arr = str.split(' ');
+    var x = arr.length;
+
+    for (var i = 0; i < x; i++) {
+      // for each word take away first and last letter
+      var word = arr[i].split('');
+      var f = word.shift();
+      var e = word.pop();
+
+      while (word.length) {
+        // moves middle letters randomly
+        f += word.splice(Math.floor(Math.random() * word.length), 1);
+      }
+
+      arr[i] = f + e;
+    }
+
+    str = arr.join(' ');
+    return str;
+  }
+
+  function skanska(str) {
+    // const replace = (str) => {
+    // }
+    var skanskDictionary = {
+      "skottkärra": "rullebör",
+      "ja": "jao",
+      "mat": "mad",
+      "potatis": "päror",
+      "är": "e",
+      "huvud": "hue",
+      "lite": "litta",
+      "konstigt": "konstid",
+      "på": "po",
+      "hemma": "himma",
+      "viset": "vised",
+      "lat": "slashas",
+      "avundsjuk": "förtröden",
+      "nyfiken": "förveden",
+      "farfar": "faffa",
+      "fattas": "fallerar",
+      "saknas": "felar",
+      "apparat": "mackapär",
+      "hjälm": "störtkruka",
+      "morfar": "måffar",
+      "mycket": "mö",
+      "skit": "mög",
+      "smutsig": "mögig",
+      "väderkvarn": "mölla",
+      "ohygienisk": "mögtocke",
+      "päron": "pära",
+      "pojke": "påg",
+      "flicka": "tös",
+      "sömnig": "pömsig",
+      "retas": "tetas",
+      "kivas": "tetas",
+      "flera år": "åravis",
+      "kaka": "kaga",
+      "tand": "bissing",
+      "tänder": "bissingar",
+      "stirra": "bliga",
+      "titta": "bliga",
+      "blöda": "bloa",
+      "blöt": "blydded",
+      "våt": "blydded"
+    };
+    var a = Object.entries(skanskDictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
+    return str;
+  }
+
+  function wrongSpell(str) {
+    var dictionary = {
+      "skottkärra": "rullebör",
+      "ja": "jao",
+      "mat": "mad",
+      "potatis": "päror",
+      "är": "e",
+      "huvud": "hue",
+      "lite": "litta",
+      "konstigt": "konstid",
+      "på": "po",
+      "hemma": "himma",
+      "viset": "vised",
+      "lat": "slashas",
+      "avundsjuk": "förtröden",
+      "nyfiken": "förveden",
+      "farfar": "faffa",
+      "fattas": "fallerar",
+      "saknas": "felar",
+      "apparat": "mackapär",
+      "hjälm": "störtkruka",
+      "morfar": "måffar",
+      "mycket": "mö",
+      "skit": "mög",
+      "smutsig": "mögig",
+      "väderkvarn": "mölla",
+      "ohygienisk": "mögtocke",
+      "päron": "pära",
+      "pojke": "påg",
+      "flicka": "tös",
+      "sömnig": "pömsig",
+      "retas": "tetas",
+      "kivas": "tetas",
+      "flera år": "åravis",
+      "kaka": "kaga",
+      "tand": "bissing",
+      "tänder": "bissingar",
+      "stirra": "bliga",
+      "titta": "bliga",
+      "blöda": "bloa",
+      "blöt": "blydded",
+      "våt": "blydded"
+    };
+    var a = Object.entries(dictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
+    return str;
+  }
+
+  function scambleWords(str) {
+    // create array of words
+    var arr = str.split('');
+    var x = arr.length;
+
+    for (var i = 0; i < x - 1; i++) {
+      var j = Math.floor(Math.random() * x); // moves all letters randomly
+
+      var _temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = _temp;
+    }
+
+    str = arr.join("");
+    return str;
+  }
+
+  var index = '/profile';
+  var path = window.location.pathname;
+  var temp;
+
+  for (var i = 0; i < postUser.length; i++) {
+    if (postUser[i]['id'] == props.post_user_id) {
+      temp = i;
+    }
+  }
+
+  if (path != index) {
+    var sort;
+    react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+      if (postUser[temp]['algorithm'] == 'doubleConsonant' || postUser[temp]['algorithm'] == 'specialChars' || postUser[temp]['algorithm'] == 'convSmileys' || postUser[temp]['algorithm'] == 'lowerUpper' || postUser[temp]['algorithm'] == 'scrambleMid' || postUser[temp]['algorithm'] == 'scambleWords') {
+        sort = 'text';
+      } else {
+        sort = 'image';
+      }
+
+      setSortOfAl(function () {
+        return sort;
+      });
+    }, []);
+  }
+
+  function setText(functionName, param) {
+    if (functionName != 0) {
+      return text_algorithms[functionName](param);
+    }
+  }
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      zoomImage = _React$useState4[0],
+      setZoomImage = _React$useState4[1];
+
+  var text_algorithms = {
+    'doubleConsonant': doubleConsonant,
+    'specialChars': specialChars,
+    'convSmileys': convSmileys,
+    'lowerUpper': lowerUpper,
+    'scrambleMid': scrambleMid,
+    'scambleWords': scambleWords,
+    'skanska': skanska
+  };
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState('none'),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sortOfAl = _React$useState6[0],
+      setSortOfAl = _React$useState6[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "container mt-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "col-lg-3"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "col-lg-6",
+        children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          children: globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            style: {
+              maxWidth: '540px',
+              maxHeight: '540px'
+            },
+            className: path != index ? sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id ? "".concat(postUser[temp]['algorithm']) : '' : '',
+            src: props.image,
+            alt: ""
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            style: {
+              maxWidth: '540px',
+              maxHeight: '540px'
+            },
+            className: path != index ? sortOfAl == 'image' ? "".concat(postUser[temp]['algorithm']) : '' : '',
+            src: props.image,
+            alt: ""
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
+          children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            className: img ? "pl-3 img-text text-border c-white" : "pl-3",
+            children: path != index ? sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], props.title) : props.title : props.title
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            className: img ? "pl-3 img-text text-border c-white" : "pl-3",
+            children: path != index ? sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], props.title) : props.title : props.title
+          }), globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "post--p p-3",
+            style: {
+              wordBreak: 'break-all'
+            },
+            children: path != index ? sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], props.text) : props.text : props.text
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "post--p p-3",
+            style: {
+              wordBreak: 'break-all'
+            },
+            children: path != index ? sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], props.text) : props.text : props.text
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikePostForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            user_id: props.user_id,
+            post_id: props.id,
+            darkMode: props.darkMode
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "comments--comment",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              href: "./thread/".concat(props.id),
+              className: props.darkMode ? 'c-white' : 'c-gray',
+              style: {
+                textDecoration: "none"
+              },
+              children: "Comments"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+              children: props.comment1
+            }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+              children: props.comment2
+            })]
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "col-lg-3"
+      })]
+    })
+  });
+}
 
 /***/ }),
 

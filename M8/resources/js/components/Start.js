@@ -96,13 +96,13 @@ export default function Start(props){
         return str;
     }
 
-    function skånska(str) {
+    function skanska(str) {
 
-        const replace = (str) => {
+        // const replace = (str) => {
 
-        }
+        // }
 
-        const skånskDictionary = {
+        const skanskDictionary = {
             "skottkärra": "rullebör",
             "ja": "jao",
             "mat": "mad",
@@ -147,7 +147,61 @@ export default function Start(props){
 
         }
         
-        let a = Object.entries(skånskDictionary);
+        let a = Object.entries(skanskDictionary);
+        
+
+        for(let i = 0; i < a.length; i++) {
+            str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+        }
+        return str;
+    }
+
+    function wrongSpell(str) {
+
+        const dictionary = {
+            "skottkärra": "rullebör",
+            "ja": "jao",
+            "mat": "mad",
+            "potatis": "päror",
+            "är": "e",
+            "huvud": "hue",
+            "lite": "litta",
+            "konstigt": "konstid",
+            "på": "po",
+            "hemma": "himma",
+            "viset": "vised",
+            "lat": "slashas",
+            "avundsjuk": "förtröden",
+            "nyfiken": "förveden",
+            "farfar": "faffa",
+            "fattas": "fallerar",
+            "saknas": "felar",
+            "apparat": "mackapär",
+            "hjälm": "störtkruka",
+            "morfar": "måffar",
+            "mycket": "mö",
+            "skit": "mög",
+            "smutsig": "mögig",
+            "väderkvarn": "mölla",
+            "ohygienisk": "mögtocke",
+            "päron": "pära",
+            "pojke": "påg",
+            "flicka": "tös",
+            "sömnig": "pömsig",
+            "retas": "tetas",
+            "kivas": "tetas",
+            "flera år": "åravis",
+            "kaka": "kaga",
+            "tand": "bissing",
+            "tänder": "bissingar",
+            "stirra": "bliga",
+            "titta": "bliga",
+            "blöda": "bloa",
+            "blöt": "blydded",
+            "våt": "blydded",
+        }
+        
+        let a = Object.entries(dictionary);
         
 
         for(let i = 0; i < a.length; i++) {
@@ -213,12 +267,10 @@ const [zoomImage, setZoomImage] = React.useState(true);
         'lowerUpper': lowerUpper, 
         'scrambleMid': scrambleMid, 
         'scambleWords': scambleWords,
-        'skanska': skånska
+        'skanska': skanska
     };
 
     const [sortOfAl, setSortOfAl] = React.useState('none');
-
-    const [zoomImage, setZoomImage] = React.useState(true);
 
     return(
 
