@@ -137,4 +137,13 @@ class CommentsController extends Controller
         }
 
     }
+
+    public function getCommentLikes(Request $request) {
+        $comment_id = intval($request->input('comment_id'));
+
+        $data = DB::select("SELECT COUNT(*) FROM comment_likes WHERE comment_id=$comment_id");
+        $data = json_decode(json_encode($data), true);
+        // $data = $data["data"]["COUNT(*)"];
+        return response()->json(["value" => $data[0]["COUNT(*)"]]);
+    }
 }

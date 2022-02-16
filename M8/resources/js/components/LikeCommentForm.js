@@ -3,7 +3,10 @@ import React, { useEffect } from 'react'
 const LikeCommentForm = (props) => {
     const [rating, setRating] = React.useState(false);
 
+    const [likes, setLikes] = React.useState(0);
+
     useEffect(() => setLiked(), []);
+    useEffect(() => getLikes(), []);
 
     const handleSubmit = async () => {
         if(globalData.user === null) {
@@ -24,6 +27,7 @@ const LikeCommentForm = (props) => {
         const data = await fetchResponse.json();
 
         console.log(data);
+        getLikes()
     }
 
     const setLiked = async () => {
@@ -45,8 +49,25 @@ const LikeCommentForm = (props) => {
         setRating(() => data.exists);
     }
 
+    const getLikes = async () => {
+        let formData = new FormData();
+
+        formData.append('comment_id', props.comment_id);
+
+        const fetchResponse = await fetch('/getCommentLikes', {
+            method: "post",
+            body: formData,
+        });
+
+        const data = await fetchResponse.json();
+
+        setLikes(() => data.value);
+
+        console.log(props.comment_id, data);
+    }
+
     return (
-    <button onClick={handleSubmit} className={`like--i`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} ${rating && "btn-active"} fal fa-grin-hearts mr-4 fa-lg`}></i></button>
+    <button onClick={handleSubmit} className={`like--i ${props.darkMode && "c-white"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} ${rating && "btn-active"} fal fa-grin-hearts mr-4 fa-lg`}></i>{likes}</button>
     )
 }
 

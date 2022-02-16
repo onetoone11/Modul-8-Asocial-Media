@@ -2700,14 +2700,23 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var LikeCommentForm = function LikeCommentForm(props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
       setRating = _React$useState2[1];
 
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(0),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      likes = _React$useState4[0],
+      setLikes = _React$useState4[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     return setLiked();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return getLikes();
   }, []);
 
   var handleSubmit = /*#__PURE__*/function () {
@@ -2746,8 +2755,9 @@ var LikeCommentForm = function LikeCommentForm(props) {
             case 12:
               data = _context.sent;
               console.log(data);
+              getLikes();
 
-            case 14:
+            case 15:
             case "end":
               return _context.stop();
           }
@@ -2808,17 +2818,57 @@ var LikeCommentForm = function LikeCommentForm(props) {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+  var getLikes = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              formData = new FormData();
+              formData.append('comment_id', props.comment_id);
+              _context3.next = 4;
+              return fetch('/getCommentLikes', {
+                method: "post",
+                body: formData
+              });
+
+            case 4:
+              fetchResponse = _context3.sent;
+              _context3.next = 7;
+              return fetchResponse.json();
+
+            case 7:
+              data = _context3.sent;
+              setLikes(function () {
+                return data.value;
+              });
+              console.log(props.comment_id, data);
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function getLikes() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
     onClick: handleSubmit,
-    className: "like--i",
+    className: "like--i ".concat(props.darkMode && "c-white"),
     style: {
       background: 'none',
       border: 'none',
       outline: 'none'
     },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
       className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
-    })
+    }), likes]
   });
 };
 
@@ -2872,11 +2922,24 @@ var LikePostForm = function LikePostForm(props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(props.rating),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
-      setRating = _React$useState2[1]; // const [likes, setLikes] = React.useState(props.likes);
+      setRating = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(0),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      likes = _React$useState4[0],
+      setLikes = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(0),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      dislikes = _React$useState6[0],
+      setDislikes = _React$useState6[1]; // const [likes, setLikes] = React.useState(props.likes);
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     return setLiked();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return getLikes();
   }, []);
 
   var setLiked = /*#__PURE__*/function () {
@@ -2964,23 +3027,59 @@ var LikePostForm = function LikePostForm(props) {
 
             case 13:
               data = _context2.sent;
-              console.log(data, val); //fetchData
+              console.log(data, val);
+              getLikes();
 
-            case 15:
+            case 16:
             case "end":
               return _context2.stop();
           }
         }
       }, _callee2);
     }));
-  }; // const getLikes = async () => {
-  //     let formData = new FormData();
-  //     formData.append('user_id', props.user_id)
-  // }
-  // const getDataBack = async () => {
-  //     const response = await fetch()
-  // }
+  };
 
+  var getLikes = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              formData = new FormData();
+              formData.append('post_id', props.post_id);
+              _context3.next = 4;
+              return fetch('/postLikes', {
+                method: "post",
+                body: formData
+              });
+
+            case 4:
+              fetchResponse = _context3.sent;
+              _context3.next = 7;
+              return fetchResponse.json();
+
+            case 7:
+              data = _context3.sent;
+              setLikes(function () {
+                return data.likes;
+              });
+              setDislikes(function () {
+                return data.dislikes;
+              });
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function getLikes() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
@@ -2990,9 +3089,10 @@ var LikePostForm = function LikePostForm(props) {
         border: 'none',
         outline: 'none'
       },
-      className: "like--i",
+      className: "like--i ".concat(props.darkMode && "c-white"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white")
+        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + likes
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: handleSubmit(0),
@@ -3001,9 +3101,10 @@ var LikePostForm = function LikePostForm(props) {
         border: 'none',
         outline: 'none'
       },
-      className: "like--i",
+      className: "like--i ".concat(props.darkMode && "c-white"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white")
+        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + dislikes
       })
     })]
   });
@@ -3837,6 +3938,60 @@ function Start(props) {
     }
 
     str = arr.join("");
+    return str;
+  }
+
+  function skånska(str) {
+    var replace = function replace(str) {};
+
+    var skånskDictionary = {
+      "skottkärra": "rullebör",
+      "ja": "jao",
+      "mat": "mad",
+      "potatis": "päror",
+      "är": "e",
+      "huvud": "hue",
+      "lite": "litta",
+      "konstigt": "konstid",
+      "på": "po",
+      "hemma": "himma",
+      "viset": "vised",
+      "lat": "slashas",
+      "avundsjuk": "förtröden",
+      "nyfiken": "förveden",
+      "farfar": "faffa",
+      "fattas": "fallerar",
+      "saknas": "felar",
+      "apparat": "mackapär",
+      "hjälm": "störtkruka",
+      "morfar": "måffar",
+      "mycket": "mö",
+      "skit": "mög",
+      "smutsig": "mögig",
+      "väderkvarn": "mölla",
+      "ohygienisk": "mögtocke",
+      "päron": "pära",
+      "pojke": "påg",
+      "flicka": "tös",
+      "sömnig": "pömsig",
+      "retas": "tetas",
+      "kivas": "tetas",
+      "flera år": "åravis",
+      "kaka": "kaga",
+      "tand": "bissing",
+      "tänder": "bissingar",
+      "stirra": "bliga",
+      "titta": "bliga",
+      "blöda": "bloa",
+      "blöt": "blydded",
+      "våt": "blydded"
+    };
+    var a = Object.entries(skånskDictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
     return str;
   }
 
