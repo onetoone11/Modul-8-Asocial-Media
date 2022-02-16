@@ -320,7 +320,7 @@ const [zoomImage, setZoomImage] = React.useState(true);
 
                 {isReplying &&
                 <div className={`ml-4 pl-4`}>
-                <form className="row w-100" action={`/comment/${post_id}`} method="get">
+                {inactive ? '' : <form className="row w-100" action={`/comment/${post_id}`} method="get">
                     {/* <div className="comment--profile bg--white mr-3 ml-4"></div> */}
                     <div>
                         <input type="hidden" id="parent_id" name="parent_id" value={null} />
@@ -328,7 +328,7 @@ const [zoomImage, setZoomImage] = React.useState(true);
 
                         <button className="icon-btn"><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </div>    
-                </form>
+                </form>}
                 </div>}
 
                 {toTree(comments)(comments)}
