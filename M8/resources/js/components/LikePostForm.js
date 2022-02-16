@@ -17,7 +17,6 @@ const LikePostForm = (props) => {
     const [likes, setLikes] = React.useState(0);
     const [dislikes, setDislikes] = React.useState(0);
 
-    // const [likes, setLikes] = React.useState(props.likes);
     useEffect(() => setLiked(), []);
     useEffect(() => getLikes(), []);
 
@@ -68,15 +67,8 @@ const LikePostForm = (props) => {
     }
 
     const getLikes = async () => {
-        let formData = new FormData();
-
-        formData.append('post_id', props.post_id);
-
-        const fetchResponse = await fetch('/postLikes', {
-            method: "post",
-            body: formData
-        });
-        const data = await fetchResponse.json();
+        const res = await fetch(`/postLikes/${props.post_id}`);
+        const data = await res.json();
 
         setLikes(() => data.likes);
         setDislikes(() => data.dislikes);
