@@ -83,6 +83,10 @@ body{
     background-color: #555555;
 }
 
+.bg--transparent{
+    background-color: transparent;
+}
+
 .c-gray{
     color: #707070 !important;
 }

@@ -57,6 +57,7 @@ Route::post('rateComment', [CommentsController::class, 'rateComment'])->withoutM
 Route::post('/ratePost', [PostsController::class, 'ratePost'])->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/isLikedPost', [PostsController::class, 'setLiked'])->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/setLikedComment', [CommentsController::class, 'setLikedComment'])->withoutMiddleware([VerifyCsrfToken::class]);
+Route::post('/deleteComment', [CommentsController::class, 'deleteComment'])->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/getCommentLikes', [CommentsController::class, 'getCommentLikes'])->withoutMiddleware([VerifyCsrfToken::class]);
 Route::get('/postLikes/{id}', [PostsController::class, 'postLikes']);
 
