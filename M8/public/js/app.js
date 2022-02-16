@@ -2344,6 +2344,18 @@ function Comment(props) {
     window.location.href = "/login";
   };
 
+  var onInactive = function onInactive() {
+    window.location.href = "/inactive";
+  };
+
+  var inactive = false;
+
+  if (!globalData.user) {} else {
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
+    }
+  }
+
   var temp;
 
   for (var i = 0; i < commentUser.length; i++) {
@@ -2383,21 +2395,20 @@ function Comment(props) {
           darkMode: props.darkMode,
           user_id: props.user_id,
           comment_id: props.id
-        }), !globalData.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: "icon-btn",
-          onClick: onNotLogged,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-            className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
-          })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: "icon-btn",
-          onClick: function onClick() {
-            return setIsReplying(function (a) {
-              return !a;
-            });
+        }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          style: {
+            display: 'inline'
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-            className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
+          children: globalData.user !== null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "icon-btn",
+            onClick: function onClick() {
+              return setIsReplying(function (a) {
+                return !a;
+              });
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+              className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
+            })
           })
         }), props.test && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           className: "icon-btn",
@@ -2701,7 +2712,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var LikeCommentForm = function LikeCommentForm(props) {
+  var inactive = false;
+
+  if (!globalData.user) {} else {
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
+    }
+  }
+
+  var onInactive = function onInactive() {
+    window.location.href = "/inactive";
+  };
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
@@ -2858,17 +2882,30 @@ var LikeCommentForm = function LikeCommentForm(props) {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
-    onClick: handleSubmit,
-    className: "like--i ".concat(props.darkMode && "c-white"),
-    style: {
-      background: 'none',
-      border: 'none',
-      outline: 'none'
-    },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-      className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
-    }), likes]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+      onClick: onInactive,
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
+      }), likes]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
+      onClick: handleSubmit,
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
+      }), likes]
+    })
   });
 };
 
@@ -2919,6 +2956,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var LikePostForm = function LikePostForm(props) {
+  var inactive = false;
+
+  if (!globalData.user) {} else {
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
+    }
+  }
+
+  var onInactive = function onInactive() {
+    window.location.href = "/inactive";
+  };
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(props.rating),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
@@ -3082,7 +3131,19 @@ var LikePostForm = function LikePostForm(props) {
   }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    children: [inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      onClick: onInactive,
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + likes
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: handleSubmit(1),
       style: {
         background: 'none',
@@ -3094,7 +3155,19 @@ var LikePostForm = function LikePostForm(props) {
         className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white"),
         children: " " + likes
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    }), inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      onClick: onInactive,
+      style: {
+        background: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      className: "like--i ".concat(props.darkMode && "c-white"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + dislikes
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: handleSubmit(0),
       style: {
         background: 'none',
@@ -4309,12 +4382,15 @@ function Thread(props) {
 
   var admin = false;
   var isOP = false;
+  var inactive = false;
 
   if (!globalData.user) {} else {
     if (!(globalData.user.type === 'admin')) {
       admin = false;
-    } else {
-      admin = true;
+    }
+
+    if (globalData.user.type === 'inactive') {
+      inactive = true;
     }
 
     if (post.user_id == globalData.user.id) {
@@ -4576,26 +4652,7 @@ function Thread(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
-    children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "text-center ".concat(props.darkMode ? 'bg--dark-img' : 'bg--light'),
-      children: globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        style: {
-          maxWidth: '1100px',
-          maxHeight: '500px'
-        },
-        className: sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id ? "".concat(postUser[temp]['algorithm']) : '',
-        src: post.image,
-        alt: ""
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        style: {
-          maxWidth: '1100px',
-          maxHeight: '500px'
-        },
-        className: sortOfAl == 'image' ? "".concat(postUser[temp]['algorithm']) : '',
-        src: post.image,
-        alt: ""
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top",
       children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
         className: img ? "pl-3 img-text text-border c-white" : "pl-3",
@@ -4615,7 +4672,7 @@ function Thread(props) {
           wordBreak: 'break-all'
         },
         children: sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], post.text) : post.text
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+      }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
         style: {
           display: 'contents'
         },
@@ -4625,7 +4682,7 @@ function Thread(props) {
           className: "btn--deletePost border-r c-red border-1_5",
           children: "Delete"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+      }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
         style: {
           display: 'contents'
         },
@@ -4657,7 +4714,7 @@ function Thread(props) {
         })
       }), isReplying && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "ml-4 pl-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+        children: inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
           className: "row w-100",
           action: "/comment/".concat(post_id),
           method: "get",
@@ -54880,7 +54937,7 @@ module.exports = function (list, options) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\matilda.jonsson4\\\\Desktop\\\\M8\\\\Modul-8-Asocial-Media\\\\M8"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Users\\\\matilda.jonsson4\\\\Desktop\\\\M8\\\\Modul-8-Asocial-Media\\\\M8","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Projects\\\\Project8\\\\Modul-8-Asocial-Media\\\\M8"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Projects\\\\Project8\\\\Modul-8-Asocial-Media\\\\M8","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

@@ -83,12 +83,14 @@ export default function Thread(props) {
 
     let admin = false;
     let isOP = false;
+    let inactive = false;
     if(!globalData.user) {
     } else {
         if(!(globalData.user.type === 'admin')) {
             admin = false;
-        } else {
-            admin = true;
+        }
+        if(globalData.user.type === 'inactive') {
+            inactive = true;
         }
         if(post.user_id == globalData.user.id) {
             isOP = true;
@@ -341,23 +343,19 @@ const [zoomImage, setZoomImage] = React.useState(true);
 
     return (
         <div className="container">
-            {img && <div className={`text-center ${props.darkMode ? 'bg--dark-img' : 'bg--light'}`}>
-                {globalData.user != null ? <img style={{maxWidth: '1100px', maxHeight: '500px'}} className={(sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id) ? `${postUser[temp]['algorithm']}` : ''} src={post.image} alt="" /> : 
-                <img style={{maxWidth: '1100px', maxHeight: '500px'}} className={sortOfAl == 'image' ? `${postUser[temp]['algorithm']}` : ''} src={post.image} alt="" />}
-            </div>}
             
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
+
                 {globalData.user != null ? <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{(sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (post.title)) : post.title}</h1> :
                 <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (post.title)) : post.title}</h1>}
                 {globalData.user != null ? <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{(sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (post.text)) : post.text}</p> :
                 <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (post.text)) : post.text}</p>}
-                <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
+                {inactive ? '' : <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">
                     {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
-                </form>
-                <form style={{display: 'contents'}} action={`/edit/${post.id}`}>
+                </form>}
+                {inactive ? '' :<form style={{display: 'contents'}} action={`/edit/${post.id}`}>
                     {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
-                    {/* {admin == true || globalData.user !== null && globalData.user.id == `${post.user_id}` && <button className="btn--editPost border-w c-white mr-3">Edit</button>} */}
-                </form>
+                </form>}
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>
                 <LikePostForm post_id={post.id} darkMode={props.darkMode} user_id={globalData.user ? globalData.user.id : null} />
@@ -366,7 +364,7 @@ const [zoomImage, setZoomImage] = React.useState(true);
 
                 {isReplying &&
                 <div className={`ml-4 pl-4`}>
-                <form className="row w-100" action={`/comment/${post_id}`} method="get">
+                {inactive ? '' : <form className="row w-100" action={`/comment/${post_id}`} method="get">
                     {/* <div className="comment--profile bg--white mr-3 ml-4"></div> */}
                     <div>
                         <input type="hidden" id="parent_id" name="parent_id" value={null} />
@@ -374,9 +372,8 @@ const [zoomImage, setZoomImage] = React.useState(true);
 
                         <button className="icon-btn"><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </div>    
-                </form>
-            </div>
-        }
+                </form>}
+                </div>}
 
                 {toTree(comments)(comments)}
 

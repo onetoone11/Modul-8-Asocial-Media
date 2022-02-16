@@ -11,6 +11,18 @@ export default function Comment(props){
         window.location.href = `/login`;
     }
 
+    const onInactive = () => {
+        window.location.href = `/inactive`;
+    }
+
+    let inactive = false;
+    if(!globalData.user) {
+    } else {
+        if(globalData.user.type === 'inactive') {
+            inactive = true;
+        }
+    }
+
     let temp;
     for(let i = 0; i < commentUser.length; i++){
         if(commentUser[i].id == props.user_id){
@@ -44,10 +56,10 @@ export default function Comment(props){
                 <button className="icon-btn" onClick={() => setIsReplying(a => !a)}><i className={`${props.darkMode && 'c-white'} fal fa-reply mr-4 ml-3 fa-lg`}></i></button> */}
 
                 {/* ------------------------------ */}
-                {!globalData.user ?
-                 <button className="icon-btn" onClick={onNotLogged}><i className={`${props.darkMode && 'c-white'} fal fa-reply mr-4 ml-3 fa-lg`}></i></button>
-                :
+                {inactive ? '' : <div style={{display: 'inline'}}>
+                {globalData.user !== null &&
                 <button className="icon-btn" onClick={() => setIsReplying(a => !a)}><i className={`${props.darkMode && 'c-white'} fal fa-reply mr-4 ml-3 fa-lg`}></i></button>}
+                </div>}
                 {/* ------------------------------ */}
 
                 {props.test && 

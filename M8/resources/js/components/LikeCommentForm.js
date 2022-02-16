@@ -1,6 +1,18 @@
 import React, { useEffect } from 'react'
 
 const LikeCommentForm = (props) => {
+    let inactive = false;
+    if(!globalData.user) {
+    } else {
+        if(globalData.user.type === 'inactive') {
+            inactive = true;
+        }
+    }
+
+    const onInactive = () => {
+        window.location.href = `/inactive`;
+    }
+
     const [rating, setRating] = React.useState(false);
 
     const [likes, setLikes] = React.useState(0);
@@ -67,7 +79,14 @@ const LikeCommentForm = (props) => {
     }
 
     return (
-    <button onClick={handleSubmit} className={`like--i ${props.darkMode && "c-white"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} ${rating && "btn-active"} fal fa-grin-hearts mr-4 fa-lg`}></i>{likes}</button>
+        <>
+        {inactive == true ?
+            <button onClick={onInactive} className={`like--i ${props.darkMode && "c-white"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} ${rating && "btn-active"} fal fa-grin-hearts mr-4 fa-lg`}></i>{likes}</button>
+            :
+            <button onClick={handleSubmit} className={`like--i ${props.darkMode && "c-white"}`} style={{background: 'none', border: 'none', outline: 'none'}}><i className={`${props.darkMode && "c-white"} ${rating && "btn-active"} fal fa-grin-hearts mr-4 fa-lg`}></i>{likes}</button>
+        }
+        </>
+    
     )
 }
 
