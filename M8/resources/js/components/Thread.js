@@ -88,6 +88,8 @@ export default function Thread(props) {
     } else {
         if(!(globalData.user.type === 'admin')) {
             admin = false;
+        } else {
+            admin = true;
         }
         if(globalData.user.type === 'inactive') {
             inactive = true;
