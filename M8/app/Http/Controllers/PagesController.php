@@ -57,7 +57,9 @@ class PagesController extends Controller
     }
 
     public function test(){
-        return view('test')->with(["globalData" => collect(['user' => Auth::user()])]);
+  
+        $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+        return view('test')->with('posts', $posts)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function userImage(Request $request, $user_id){

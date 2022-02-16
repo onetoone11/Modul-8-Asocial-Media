@@ -7,6 +7,7 @@ var post_id = {!! json_encode($post_id) !!}
 var commentUser = {!! json_encode($user) !!}
 var post = {!! json_encode($post) !!}
 var posts = {!! json_encode($posts) !!}
+let postUser = {!! json_encode($postUser) !!}
 </script>
 @section('content')
     @if(session()->has('success_message'))

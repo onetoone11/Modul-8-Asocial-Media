@@ -26,11 +26,12 @@ class PostsController extends Controller
     public function index()
     {
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
+        $postUser = User::all();
         $comments = array();
         foreach($posts as $post) {
             $comments[] = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post->id ORDER BY likes LIMIT 2"));
         }
-        return view('index')->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return view('index')->with('postUser', $postUser)->with('posts', $posts)->with('comments', $comments)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     public function create(Request $request)
@@ -78,9 +79,11 @@ class PostsController extends Controller
         $user = DB::select(DB::raw("SELECT * FROM users"));
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
 
+        $postUser = User::all();
+
         $post = Post::find($post_id);
         $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
-        return view('thread')->with('user', $user)->with('comments', $comments)->with('post', $post)->with('posts', $posts)->with('post_id', $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
+        return view('thread')->with('postUser', $postUser)->with('user', $user)->with('comments', $comments)->with('post', $post)->with('posts', $posts)->with('post_id', $post_id)->with(["globalData" => collect(['user' => Auth::user()])]);
     }
 
     /**

@@ -26,6 +26,7 @@
 <script>
     let posts = {!! json_encode($posts) !!}
     let comments = {!! json_encode($comments) !!};
+    let postUser = {!! json_encode($postUser) !!};
     console.log({!! json_encode($globalData) !!});
     $('.alert').alert();
 </script>
