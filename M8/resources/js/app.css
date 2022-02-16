@@ -5,7 +5,7 @@ body{
 
 /* Algoritm */
 
-.zoomImage{
+.algorithm--zoomImage{
     background-image: url('https://i.ibb.co/bdh1wbV/glitch.jpg');
     width: 540px;
     height: 200px;
@@ -13,6 +13,31 @@ body{
     position: absolute;
 }
 
+.algorithm--brightness{
+    filter: brightness(3);  
+}
+
+.algorithm--filter-red{
+    background-color: red;
+    background-blend-mode: screen;
+    mix-blend-mode: color;
+}
+
+.algorithm--mix-blend-difference{
+    mix-blend-mode: difference;
+}
+
+.algorithm--scale-x{
+   transform: scaleX(-0.5); 
+}
+
+.algorithm--blur{
+    filter: blur(10px);
+}
+
+.algorithm--hue{
+    filter: hue-rotate(90deg);
+}
 
 /* Colors */
 .bg--light{

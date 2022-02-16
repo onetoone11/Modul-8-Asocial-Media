@@ -2712,6 +2712,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var LikeCommentForm = function LikeCommentForm(props) {
   var inactive = false;
 
@@ -2730,6 +2731,18 @@ var LikeCommentForm = function LikeCommentForm(props) {
       rating = _React$useState2[0],
       setRating = _React$useState2[1];
 
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(0),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      likes = _React$useState4[0],
+      setLikes = _React$useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return setLiked();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return getLikes();
+  }, []);
+
   var handleSubmit = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var formData, fetchResponse, data;
@@ -2737,7 +2750,7 @@ var LikeCommentForm = function LikeCommentForm(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!(props.user_id === null)) {
+              if (!(globalData.user === null)) {
                 _context.next = 3;
                 break;
               }
@@ -2750,7 +2763,7 @@ var LikeCommentForm = function LikeCommentForm(props) {
                 return !oldRating;
               });
               formData = new FormData();
-              formData.append('user_id', props.user_id);
+              formData.append('user_id', globalData.user.id);
               formData.append('comment_id', props.comment_id);
               _context.next = 9;
               return fetch("/rateComment", {
@@ -2766,8 +2779,9 @@ var LikeCommentForm = function LikeCommentForm(props) {
             case 12:
               data = _context.sent;
               console.log(data);
+              getLikes();
 
-            case 14:
+            case 15:
             case "end":
               return _context.stop();
           }
@@ -2778,35 +2792,119 @@ var LikeCommentForm = function LikeCommentForm(props) {
     return function handleSubmit() {
       return _ref.apply(this, arguments);
     };
-  }(); // const getLikes = async () => {
-  //     let formData = new FormData();
-  //     formData.append()
-  // }
+  }();
 
+  var setLiked = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (!(globalData.user === null)) {
+                _context2.next = 2;
+                break;
+              }
+
+              return _context2.abrupt("return");
+
+            case 2:
+              formData = new FormData();
+              formData.append('user_id', globalData.user.id);
+              formData.append('comment_id', props.comment_id);
+              _context2.next = 7;
+              return fetch('/setLikedComment', {
+                method: "post",
+                body: formData
+              });
+
+            case 7:
+              fetchResponse = _context2.sent;
+              _context2.next = 10;
+              return fetchResponse.json();
+
+            case 10:
+              data = _context2.sent;
+              setRating(function () {
+                return data.exists;
+              });
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function setLiked() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var getLikes = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              formData = new FormData();
+              formData.append('comment_id', props.comment_id);
+              _context3.next = 4;
+              return fetch('/getCommentLikes', {
+                method: "post",
+                body: formData
+              });
+
+            case 4:
+              fetchResponse = _context3.sent;
+              _context3.next = 7;
+              return fetchResponse.json();
+
+            case 7:
+              data = _context3.sent;
+              setLikes(function () {
+                return data.value;
+              });
+              console.log(props.comment_id, data);
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function getLikes() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    children: inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
       onClick: onInactive,
-      className: "like--i ".concat(rating && "btn-active"),
+      className: "like--i ".concat(props.darkMode && "c-white"),
       style: {
         background: 'none',
         border: 'none',
         outline: 'none'
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "".concat(props.darkMode && "c-white", " fal fa-grin-hearts mr-4 fa-lg")
-      })
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
+      }), likes]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
       onClick: handleSubmit,
-      className: "like--i ".concat(rating && "btn-active"),
+      className: "like--i ".concat(props.darkMode && "c-white"),
       style: {
         background: 'none',
         border: 'none',
         outline: 'none'
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "".concat(props.darkMode && "c-white", " fal fa-grin-hearts mr-4 fa-lg")
-      })
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "".concat(props.darkMode && "c-white", " ").concat(rating && "btn-active", " fal fa-grin-hearts mr-4 fa-lg")
+      }), likes]
     })
   });
 };
@@ -2873,11 +2971,24 @@ var LikePostForm = function LikePostForm(props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(props.rating),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       rating = _React$useState2[0],
-      setRating = _React$useState2[1]; // const [likes, setLikes] = React.useState(props.likes);
+      setRating = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(0),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      likes = _React$useState4[0],
+      setLikes = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(0),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      dislikes = _React$useState6[0],
+      setDislikes = _React$useState6[1]; // const [likes, setLikes] = React.useState(props.likes);
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     return setLiked();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    return getLikes();
   }, []);
 
   var setLiked = /*#__PURE__*/function () {
@@ -2887,28 +2998,36 @@ var LikePostForm = function LikePostForm(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              if (!(globalData.user === null)) {
+                _context.next = 2;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 2:
               formData = new FormData();
               formData.append('user_id', props.user_id);
               formData.append('post_id', props.post_id);
-              _context.next = 5;
+              _context.next = 7;
               return fetch('/isLikedPost', {
                 method: "post",
                 body: formData
               });
 
-            case 5:
+            case 7:
               fetchResponse = _context.sent;
-              _context.next = 8;
+              _context.next = 10;
               return fetchResponse.json();
 
-            case 8:
+            case 10:
               data = _context.sent;
-              console.log(data.value);
+              // console.log(data.value);
               setRating(function () {
                 return data.value;
               });
 
-            case 11:
+            case 12:
             case "end":
               return _context.stop();
           }
@@ -2957,23 +3076,59 @@ var LikePostForm = function LikePostForm(props) {
 
             case 13:
               data = _context2.sent;
-              console.log(data, val); //fetchData
+              console.log(data, val);
+              getLikes();
 
-            case 15:
+            case 16:
             case "end":
               return _context2.stop();
           }
         }
       }, _callee2);
     }));
-  }; // const getLikes = async () => {
-  //     let formData = new FormData();
-  //     formData.append('user_id', props.user_id)
-  // }
-  // const getDataBack = async () => {
-  //     const response = await fetch()
-  // }
+  };
 
+  var getLikes = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              formData = new FormData();
+              formData.append('post_id', props.post_id);
+              _context3.next = 4;
+              return fetch('/postLikes', {
+                method: "post",
+                body: formData
+              });
+
+            case 4:
+              fetchResponse = _context3.sent;
+              _context3.next = 7;
+              return fetchResponse.json();
+
+            case 7:
+              data = _context3.sent;
+              setLikes(function () {
+                return data.likes;
+              });
+              setDislikes(function () {
+                return data.dislikes;
+              });
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function getLikes() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
@@ -2983,9 +3138,10 @@ var LikePostForm = function LikePostForm(props) {
         border: 'none',
         outline: 'none'
       },
-      className: "like--i",
+      className: "like--i ".concat(props.darkMode && "c-white"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white")
+        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + likes
       })
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: handleSubmit(1),
@@ -2994,9 +3150,10 @@ var LikePostForm = function LikePostForm(props) {
         border: 'none',
         outline: 'none'
       },
-      className: "like--i",
+      className: "like--i ".concat(props.darkMode && "c-white"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white")
+        className: "fal fa-grin-hearts mr-4 fa-xl ".concat(rating === 1 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + likes
       })
     }), inactive == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: onInactive,
@@ -3005,9 +3162,10 @@ var LikePostForm = function LikePostForm(props) {
         border: 'none',
         outline: 'none'
       },
-      className: "like--i",
+      className: "like--i ".concat(props.darkMode && "c-white"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white")
+        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + dislikes
       })
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       onClick: handleSubmit(0),
@@ -3016,9 +3174,10 @@ var LikePostForm = function LikePostForm(props) {
         border: 'none',
         outline: 'none'
       },
-      className: "like--i",
+      className: "like--i ".concat(props.darkMode && "c-white"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white")
+        className: "fal fa-sad-cry mr-4 fa-xl ".concat(rating === 0 && "btn-active", " ").concat(props.darkMode && "c-white"),
+        children: " " + dislikes
       })
     })]
   });
@@ -3760,11 +3919,15 @@ function Start(props) {
   };
 
   function doubleConsonant(text) {
-    var myArray = text.split("");
+    // Splits whole post into an array
+    var myArray = text.split(""); // For each item in the myarray
 
     for (var i = 0; i < myArray.length; i++) {
+      // We dont need to check the last letter
       if (i != myArray.length - 1) {
+        // if letter 1 = letter 2, it means there is 2 letters
         if (myArray[i] == myArray[i + 1]) {
+          // Deletes one of the double letters
           for (var j = i; j < myArray.length; j++) {
             myArray[j] = myArray[j + 1];
           }
@@ -3773,6 +3936,39 @@ function Start(props) {
     }
 
     return myArray;
+  }
+
+  function specialChars(text) {
+    var temp = text.split("");
+    var specialChars1 = ['.', '!', '%', '<', '/', ':', '(', "'"];
+    var specialChars2 = ['?', ',', '°', '>', '*', ';', ')', "`"]; // for each character
+
+    for (var i = 0; i < temp.length; i++) {
+      // Check if the character matches one of the special characters
+      for (var j = 0; j < specialChars1.length; j++) {
+        // If true, change special character
+        if (temp[i] == specialChars1[j]) {
+          temp[i] = specialChars2[j];
+        } else if (temp[i] == specialChars2[j]) {
+          temp[i] = specialChars1[j];
+        }
+      }
+    }
+
+    return temp;
+  }
+
+  function convSmileys(text) {
+    var smileys1 = [':)', ':(', ':|', '>:(', ';)', '<3'];
+    var smileys2 = [':(', ':)', ';)', '<3', ':|', '>:('];
+    var temp;
+
+    for (var i = 0; i < smileys1.length; i++) {
+      // if text holds a smiley, replace it with another smiley
+      temp = text.replace("".concat(smileys1[i]), "".concat(smileys2[i]));
+    }
+
+    return temp;
   }
 
   function lowerUpper(str) {
@@ -3808,6 +4004,73 @@ function Start(props) {
     return str;
   }
 
+  function skanska(str) {
+    // const replace = (str) => {
+    // }
+    var skanskDictionary = {
+      "skottkärra": "rullebör",
+      "ja": "jao",
+      "mat": "mad",
+      "potatis": "päror",
+      "är": "e",
+      "huvud": "hue",
+      "lite": "litta",
+      "konstigt": "konstid",
+      "på": "po",
+      "hemma": "himma",
+      "viset": "vised",
+      "lat": "slashas",
+      "avundsjuk": "förtröden",
+      "nyfiken": "förveden",
+      "farfar": "faffa",
+      "fattas": "fallerar",
+      "saknas": "felar",
+      "apparat": "mackapär",
+      "hjälm": "störtkruka",
+      "morfar": "måffar",
+      "mycket": "mö",
+      "skit": "mög",
+      "smutsig": "mögig",
+      "väderkvarn": "mölla",
+      "ohygienisk": "mögtocke",
+      "päron": "pära",
+      "pojke": "påg",
+      "flicka": "tös",
+      "sömnig": "pömsig",
+      "retas": "tetas",
+      "kivas": "tetas",
+      "flera år": "åravis",
+      "kaka": "kaga",
+      "tand": "bissing",
+      "tänder": "bissingar",
+      "stirra": "bliga",
+      "titta": "bliga",
+      "blöda": "bloa",
+      "blöt": "blydded",
+      "våt": "blydded"
+    };
+    var a = Object.entries(skanskDictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
+    return str;
+  }
+
+  function wrongSpell(str) {
+    var dictionary = {
+      "the": 'teh'
+    };
+    var a = Object.entries(dictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
+    return str;
+  }
+
   function scambleWords(str) {
     // create array of words
     var arr = str.split('');
@@ -3816,13 +4079,44 @@ function Start(props) {
     for (var i = 0; i < x - 1; i++) {
       var j = Math.floor(Math.random() * x); // moves all letters randomly
 
-      var temp = arr[i];
+      var _temp = arr[i];
       arr[i] = arr[j];
-      arr[j] = temp;
+      arr[j] = _temp;
     }
 
     str = arr.join("");
     return str;
+  }
+
+  var index = '/profile';
+  var path = window.location.pathname;
+  var temp;
+
+  for (var i = 0; i < postUser.length; i++) {
+    if (postUser[i]['id'] == props.post_user_id) {
+      temp = i;
+    }
+  }
+
+  if (path != index) {
+    var sort;
+    react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+      if (postUser[temp]['algorithm'] == 'doubleConsonant' || postUser[temp]['algorithm'] == 'specialChars' || postUser[temp]['algorithm'] == 'convSmileys' || postUser[temp]['algorithm'] == 'lowerUpper' || postUser[temp]['algorithm'] == 'scrambleMid' || postUser[temp]['algorithm'] == 'scambleWords') {
+        sort = 'text';
+      } else {
+        sort = 'image';
+      }
+
+      setSortOfAl(function () {
+        return sort;
+      });
+    }, []);
+  }
+
+  function setText(functionName, param) {
+    if (functionName != 0) {
+      return text_algorithms[functionName](param);
+    }
   }
 
   var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
@@ -3830,89 +4124,99 @@ function Start(props) {
       zoomImage = _React$useState4[0],
       setZoomImage = _React$useState4[1];
 
-  return (
-    /*#__PURE__*/
-    // {!globalData.user ? 
-    //     <div style={{display: 'inline'}} onClick={onNotLogged} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
-    //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
-    //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
-    //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-    //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
-    //     </div> :
-    //     <div style={{display: 'inline'}} className={props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end"}>
-    //         <input hidden type="radio" name="likes" id="like" className="likeInput" value="like" />
-    //         <input hidden type="radio" name="likes" id="dislike" className="likeInput" value="dislike" />
-    //         <label className="like--i" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-xl"></i></label>
-    //         <label className="like--i" htmlFor="dislike"><i className="fal fa-sad-cry fa-xl"></i></label> 
-    //     </div>}
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "container mt-5",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "col-lg-3"
+  var text_algorithms = {
+    'doubleConsonant': doubleConsonant,
+    'specialChars': specialChars,
+    'convSmileys': convSmileys,
+    'lowerUpper': lowerUpper,
+    'scrambleMid': scrambleMid,
+    'scambleWords': scambleWords,
+    'skanska': skanska
+  };
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState('none'),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sortOfAl = _React$useState6[0],
+      setSortOfAl = _React$useState6[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "container mt-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "col-lg-3"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "col-lg-6",
+        children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          children: globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            style: {
+              maxWidth: '540px',
+              maxHeight: '540px'
+            },
+            className: path != index ? sortOfAl == 'image' && postUser[temp]['id'] != globalData.user.id ? "".concat(postUser[temp]['algorithm']) : '' : '',
+            src: props.image,
+            alt: ""
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            style: {
+              maxWidth: '540px',
+              maxHeight: '540px'
+            },
+            className: path != index ? sortOfAl == 'image' ? "".concat(postUser[temp]['algorithm']) : '' : '',
+            src: props.image,
+            alt: ""
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "col-lg-6",
-          children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
+          children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            className: img ? "pl-3 img-text text-border c-white" : "pl-3",
+            children: path != index ? sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], props.title) : props.title : props.title
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            className: img ? "pl-3 img-text text-border c-white" : "pl-3",
+            children: path != index ? sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], props.title) : props.title : props.title
+          }), globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "post--p p-3",
+            style: {
+              wordBreak: 'break-all'
+            },
+            children: path != index ? sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], props.text) : props.text : props.text
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "post--p p-3",
+            style: {
+              wordBreak: 'break-all'
+            },
+            children: path != index ? sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], props.text) : props.text : props.text
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikePostForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            user_id: props.user_id,
+            post_id: props.id,
+            darkMode: props.darkMode
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "comments--comment",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              href: "./thread/".concat(props.id),
+              className: props.darkMode ? 'c-white' : 'c-gray',
               style: {
-                maxWidth: '540px',
-                maxHeight: '540px'
+                textDecoration: "none"
               },
-              id: "zoomImage",
-              className: zoomImage ? 'zoomImage' : ''
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-              style: {
-                maxWidth: '540px',
-                maxHeight: '540px'
-              },
-              src: props.image,
-              alt: ""
-            })]
+              children: "Comments"
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-              className: img ? "pl-3 img-text text-border c-white" : "pl-3",
-              children: props.title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-              className: "post--p p-3",
-              style: {
-                wordBreak: 'break-all'
-              },
-              children: props.text
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: props.darkMode ? "bg--dark comments-sm p-3 post--end" : "c-gray bg--light comments-sm p-3 post--end",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikePostForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              user_id: props.user_id,
-              post_id: props.id,
-              darkMode: props.darkMode
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-              className: "comments--comment",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-                href: "./thread/".concat(props.id),
-                className: props.darkMode ? 'c-white' : 'c-gray',
-                style: {
-                  textDecoration: "none"
-                },
-                children: "Comments"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-                children: props.comment1
-              }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
-                children: props.comment2
-              })]
+            children: [props.comment1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+              children: props.comment1
+            }), props.comment2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: props.darkMode ? "comment bg--darkgray" : "comment bg--white",
+              children: props.comment2
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "col-lg-3"
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "col-lg-3"
+      })]
     })
-  );
+  });
 }
 
 /***/ }),
@@ -3956,6 +4260,11 @@ function Thread(props) {
       _React$useState2 = _slicedToArray(_React$useState, 2),
       img = _React$useState2[0],
       setImg = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      isReplying = _React$useState4[0],
+      setIsReplying = _React$useState4[1];
 
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     setImg(function () {
@@ -4020,16 +4329,25 @@ function Thread(props) {
         children: findParents(list).map(function (element) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
             darkMode: props.darkMode,
-            text: element.text,
+            text: element.user_id == null ? "Removed" : element.text,
             user_id: element.user_id,
             id: element.id,
-            test: // return <Comment user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
-            // return <Comment darkMode={props.darkMode} user_id={globalData.user && globalData.user.id} key={element.id} text={element.text} id={element.id} test={
-            toTree(findChildren(list1)(element.id))(list1)
+            test: toTree(findChildren(list1)(element.id))(list1)
           }, element.id);
         })
       });
     };
+  };
+
+  var replyCheck = function replyCheck() {
+    if (globalData.user == null) {
+      window.location.href = "/login";
+      return;
+    }
+
+    setIsReplying(function (a) {
+      return !a;
+    });
   }; // console.log('hello')
   // console.log(comments[5].user_id);
 
@@ -4054,31 +4372,237 @@ function Thread(props) {
 
   var onNotLogged = function onNotLogged() {
     window.location.href = "/login";
+  }; // Algorithms
+
+
+  function doubleConsonant(text) {
+    // Splits whole post into an array
+    var myArray = text.split(""); // For each item in the myarray
+
+    for (var i = 0; i < myArray.length; i++) {
+      // We dont need to check the last letter
+      if (i != myArray.length - 1) {
+        // if letter 1 = letter 2, it means there is 2 letters
+        if (myArray[i] == myArray[i + 1]) {
+          // Deletes one of the double letters
+          for (var j = i; j < myArray.length; j++) {
+            myArray[j] = myArray[j + 1];
+          }
+        }
+      }
+    }
+
+    return myArray;
+  }
+
+  function specialChars(text) {
+    var temp = text.split("");
+    var specialChars1 = ['.', '!', '%', '<', '/', ':', '(', "'"];
+    var specialChars2 = ['?', ',', '°', '>', '*', ';', ')', "`"]; // for each character
+
+    for (var i = 0; i < temp.length; i++) {
+      // Check if the character matches one of the special characters
+      for (var j = 0; j < specialChars1.length; j++) {
+        // If true, change special character
+        if (temp[i] == specialChars1[j]) {
+          temp[i] = specialChars2[j];
+        } else if (temp[i] == specialChars2[j]) {
+          temp[i] = specialChars1[j];
+        }
+      }
+    }
+
+    return temp;
+  }
+
+  function convSmileys(text) {
+    var smileys1 = [':)', ':(', ':|', '>:(', ';)', '<3'];
+    var smileys2 = [':(', ':)', ';)', '<3', ':|', '>:('];
+    var temp;
+
+    for (var i = 0; i < smileys1.length; i++) {
+      // if text holds a smiley, replace it with another smiley
+      temp = text.replace("".concat(smileys1[i]), "".concat(smileys2[i]));
+    }
+
+    return temp;
+  }
+
+  function lowerUpper(str) {
+    console.log('hej');
+    console.log(str);
+    var newString = '';
+
+    for (var i = 0; i < str.length; i++) {
+      newString += str[i] === str[i].toUpperCase() ? str[i].toLowerCase() : str[i].toUpperCase();
+    }
+
+    return newString;
+  }
+
+  function scrambleMid(str) {
+    // create array of words
+    var arr = str.split(' ');
+    var x = arr.length;
+
+    for (var i = 0; i < x; i++) {
+      // for each word take away first and last letter
+      var word = arr[i].split('');
+      var f = word.shift();
+      var e = word.pop();
+
+      while (word.length) {
+        // moves middle letters randomly
+        f += word.splice(Math.floor(Math.random() * word.length), 1);
+      }
+
+      arr[i] = f + e;
+    }
+
+    str = arr.join(' ');
+    return str;
+  }
+
+  function skånska(str) {
+    var replace = function replace(str) {};
+
+    var skånskDictionary = {
+      "skottkärra": "rullebör",
+      "ja": "jao",
+      "mat": "mad",
+      "potatis": "päror",
+      "är": "e",
+      "huvud": "hue",
+      "lite": "litta",
+      "konstigt": "konstid",
+      "på": "po",
+      "hemma": "himma",
+      "viset": "vised",
+      "lat": "slashas",
+      "avundsjuk": "förtröden",
+      "nyfiken": "förveden",
+      "farfar": "faffa",
+      "fattas": "fallerar",
+      "saknas": "felar",
+      "apparat": "mackapär",
+      "hjälm": "störtkruka",
+      "morfar": "måffar",
+      "mycket": "mö",
+      "skit": "mög",
+      "smutsig": "mögig",
+      "väderkvarn": "mölla",
+      "ohygienisk": "mögtocke",
+      "päron": "pära",
+      "pojke": "påg",
+      "flicka": "tös",
+      "sömnig": "pömsig",
+      "retas": "tetas",
+      "kivas": "tetas",
+      "flera år": "åravis",
+      "kaka": "kaga",
+      "tand": "bissing",
+      "tänder": "bissingar",
+      "stirra": "bliga",
+      "titta": "bliga",
+      "blöda": "bloa",
+      "blöt": "blydded",
+      "våt": "blydded"
+    };
+    var a = Object.entries(skånskDictionary);
+
+    for (var i = 0; i < a.length; i++) {
+      str = str.replace(new RegExp(a[i][0], "g"), " " + a[i][1]);
+    }
+
+    return str;
+  }
+
+  function scambleWords(str) {
+    // create array of words
+    var arr = str.split('');
+    var x = arr.length;
+
+    for (var i = 0; i < x - 1; i++) {
+      var j = Math.floor(Math.random() * x); // moves all letters randomly
+
+      var _temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = _temp;
+    }
+
+    str = arr.join("");
+    return str;
+  }
+
+  var temp = 0;
+
+  for (var i = 0; i < postUser.length; i++) {
+    if (postUser[i]['id'] == post.user_id) {
+      temp = i;
+    }
+  }
+
+  var sort;
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    if (postUser[temp]['algorithm'] == 'doubleConsonant' || postUser[temp]['algorithm'] == 'specialChars' || postUser[temp]['algorithm'] == 'convSmileys' || postUser[temp]['algorithm'] == 'lowerUpper' || postUser[temp]['algorithm'] == 'scrambleMid' || postUser[temp]['algorithm'] == 'scambleWords') {
+      sort = 'text';
+    } else {
+      sort = 'image';
+    }
+
+    setSortOfAl(function () {
+      return sort;
+    });
+  }, []);
+
+  function setText(functionName, param) {
+    if (functionName != 0) {
+      return text_algorithms[functionName](param);
+    }
+  }
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(true),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      zoomImage = _React$useState6[0],
+      setZoomImage = _React$useState6[1];
+
+  var text_algorithms = {
+    'doubleConsonant': doubleConsonant,
+    'specialChars': specialChars,
+    'convSmileys': convSmileys,
+    'lowerUpper': lowerUpper,
+    'scrambleMid': scrambleMid,
+    'scambleWords': scambleWords,
+    'skanska': skånska
   };
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState('none'),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      sortOfAl = _React$useState8[0],
+      setSortOfAl = _React$useState8[1];
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
-    children: [img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "text-center ".concat(props.darkMode ? 'bg--dark-img' : 'bg--light'),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        style: {
-          maxWidth: '1100px',
-          maxHeight: '500px'
-        },
-        src: post.image,
-        alt: ""
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+      children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
         className: img ? "pl-3 img-text text-border c-white" : "pl-3",
-        children: post.title
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        children: sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], post.title) : post.title
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+        className: img ? "pl-3 img-text text-border c-white" : "pl-3",
+        children: sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], post.title) : post.title
+      }), globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
         className: "post--p p-3",
         style: {
           wordBreak: 'break-all'
         },
-        children: post.text
+        children: sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], post.text) : post.text
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        className: "post--p p-3",
+        style: {
+          wordBreak: 'break-all'
+        },
+        children: sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], post.text) : post.text
       }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
         style: {
           display: 'contents'
@@ -4105,9 +4629,52 @@ function Thread(props) {
         post_id: post.id,
         darkMode: props.darkMode,
         user_id: globalData.user ? globalData.user.id : null
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        onClick: function onClick() {
+          return replyCheck();
+        },
+        style: {
+          background: 'none',
+          border: 'none',
+          outline: 'none'
+        },
         className: "comments--comment",
-        children: "Comments"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          className: "comments--comment",
+          children: "Comments"
+        })
+      }), isReplying && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ml-4 pl-4",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+          className: "row w-100",
+          action: "/comment/".concat(post_id),
+          method: "get",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "hidden",
+              id: "parent_id",
+              name: "parent_id",
+              value: null
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+              id: "text",
+              name: "text",
+              className: "comment ".concat(props.darkMode ? 'bg--darkgray' : 'bg--white'),
+              maxLength: "256",
+              cols: "100",
+              rows: "3",
+              style: {
+                width: "100%",
+                overflowWrap: "break-word"
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              className: "icon-btn",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                className: "fa fa-paper-plane",
+                "aria-hidden": "true"
+              })
+            })]
+          })
+        })
       }), toTree(comments)(comments)]
     })]
   });
@@ -4142,6 +4709,7 @@ var Timeline = function Timeline(props) {
         image: element.image,
         title: element.title,
         id: element.id,
+        post_user_id: element.user_id,
         user_id: globalData.user ? globalData.user.id : null,
         text: element.text,
         darkMode: props.darkMode
@@ -4590,7 +5158,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Algoritm */\r\n\r\n.zoomImage{\r\n    background-image: url('https://i.ibb.co/bdh1wbV/glitch.jpg');\r\n    width: 540px;\r\n    height: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n}\r\n\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161 !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.bg--darkmode{\r\n    background-color: #474747;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D; \r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-bright-op{\r\n    background-color: rgba(125, 125, 125, 0.7);\r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-img{\r\n    background-color: #555555;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070 !important;\r\n}\r\n\r\n.c-white{\r\n    color: #fff !important;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border: 1px solid;\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.border-none{\r\n    border: none;\r\n}\r\n\r\n.border-1_5{\r\n    border-width: 1.5px;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;\r\n}\r\n\r\n.x-mark:hover{\r\n    cursor: pointer;\r\n    color: #FF8C8C;\r\n}\r\n\r\n.placeholder--hover-w::-moz-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w:-ms-input-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w::placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 120px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    /* background-color: #FF8C8C; */\r\n    /* color: #fff; */\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--create-post:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.btn--profile-settings:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n    z-index: 1000;\r\n}\r\n\r\n.profile--change-image-btn{\r\n    height: 40px;\r\n    padding: 5px 20px;\r\n    border-radius: 20px;\r\n    border: none;\r\n}\r\n\r\n.profile--change-image-btn:hover{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n.btn-active {\r\n    color: #FFC5D9 !important;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    /* border: 1px solid #333; */\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n    cursor: pointer;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n    cursor: pointer;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n    cursor: pointer;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n.none{\r\n    display: none;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    position: relative;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.likeInput:active ~ label {\r\n    filter:brightness(100);\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--img-cover{\r\n    width: 400px;\r\n    height: 400px;\r\n    border-radius: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 85px;\r\n    background: linear-gradient(180deg, #616161 70%, #333 30%);\r\n}\r\n\r\n.profile--image-upload{\r\n    height: 50px; \r\n    width: 400px;\r\n    bottom: 50px;\r\n    position: absolute;\r\n    padding: 10px 40px 0px 40px;\r\n    border-radius: 0 0 200px 200px;\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.profile--settings-dropdown{\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 70px;\r\n    right: 0px;\r\n    padding: 20px;\r\n    border-radius: 20px;\r\n}\r\n\r\n.profile--settings-dropdown li:hover{\r\n    filter: brightness(0.8);\r\n}\r\n\r\n.profile--change-image{\r\n    height: 100vh;\r\n    width: 100%;\r\n    position: absolute;\r\n    z-index: 10002;\r\n    top: 0px;\r\n    position: fixed;\r\n}\r\n\r\n.link{\r\n    text-decoration: none;\r\n    font-size: 20px;\r\n    /* padding: 20px; */\r\n}\r\n\r\n.link:hover{\r\n    text-decoration: none;\r\n\r\n\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    /* border: 1px solid #707070; */\r\n    border-radius: 25px;\r\n    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.3);\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.4rem;\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.login-btn:hover{\r\n    transform: scale(1.1);\r\n    filter: brightness(1.1);\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}\r\n\r\n.search--row:hover{\r\n    filter: brightness(1.4);\r\n    cursor: pointer;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Algoritm */\r\n\r\n.algorithm--zoomImage{\r\n    background-image: url('https://i.ibb.co/bdh1wbV/glitch.jpg');\r\n    width: 540px;\r\n    height: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n}\r\n\r\n.algorithm--brightness{\r\n    filter: brightness(3);  \r\n}\r\n\r\n.algorithm--filter-red{\r\n    background-color: red;\r\n    background-blend-mode: screen;\r\n    mix-blend-mode: color;\r\n}\r\n\r\n.algorithm--mix-blend-difference{\r\n    mix-blend-mode: difference;\r\n}\r\n\r\n.algorithm--scale-x{\r\n   transform: scaleX(-0.5); \r\n}\r\n\r\n.algorithm--blur{\r\n    filter: blur(10px);\r\n}\r\n\r\n.algorithm--hue{\r\n    filter: hue-rotate(90deg);\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161 !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.bg--darkmode{\r\n    background-color: #474747;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D; \r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-bright-op{\r\n    background-color: rgba(125, 125, 125, 0.7);\r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-img{\r\n    background-color: #555555;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070 !important;\r\n}\r\n\r\n.c-white{\r\n    color: #fff !important;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border: 1px solid;\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.border-none{\r\n    border: none;\r\n}\r\n\r\n.border-1_5{\r\n    border-width: 1.5px;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;\r\n}\r\n\r\n.x-mark:hover{\r\n    cursor: pointer;\r\n    color: #FF8C8C;\r\n}\r\n\r\n.placeholder--hover-w::-moz-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w:-ms-input-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w::placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 120px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    /* background-color: #FF8C8C; */\r\n    /* color: #fff; */\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--create-post:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.btn--profile-settings:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n    z-index: 1000;\r\n}\r\n\r\n.profile--change-image-btn{\r\n    height: 40px;\r\n    padding: 5px 20px;\r\n    border-radius: 20px;\r\n    border: none;\r\n}\r\n\r\n.profile--change-image-btn:hover{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n.btn-active {\r\n    color: #FFC5D9 !important;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    /* border: 1px solid #333; */\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n    cursor: pointer;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n    cursor: pointer;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n    cursor: pointer;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n.none{\r\n    display: none;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    position: relative;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.likeInput:active ~ label {\r\n    filter:brightness(100);\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--img-cover{\r\n    width: 400px;\r\n    height: 400px;\r\n    border-radius: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 85px;\r\n    background: linear-gradient(180deg, #616161 70%, #333 30%);\r\n}\r\n\r\n.profile--image-upload{\r\n    height: 50px; \r\n    width: 400px;\r\n    bottom: 50px;\r\n    position: absolute;\r\n    padding: 10px 40px 0px 40px;\r\n    border-radius: 0 0 200px 200px;\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.profile--settings-dropdown{\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 70px;\r\n    right: 0px;\r\n    padding: 20px;\r\n    border-radius: 20px;\r\n}\r\n\r\n.profile--settings-dropdown li:hover{\r\n    filter: brightness(0.8);\r\n}\r\n\r\n.profile--change-image{\r\n    height: 100vh;\r\n    width: 100%;\r\n    position: absolute;\r\n    z-index: 10002;\r\n    top: 0px;\r\n    position: fixed;\r\n}\r\n\r\n.link{\r\n    text-decoration: none;\r\n    font-size: 20px;\r\n    /* padding: 20px; */\r\n}\r\n\r\n.link:hover{\r\n    text-decoration: none;\r\n\r\n\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    /* border: 1px solid #707070; */\r\n    border-radius: 25px;\r\n    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.3);\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.4rem;\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.login-btn:hover{\r\n    transform: scale(1.1);\r\n    filter: brightness(1.1);\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}\r\n\r\n.search--row:hover{\r\n    filter: brightness(1.4);\r\n    cursor: pointer;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

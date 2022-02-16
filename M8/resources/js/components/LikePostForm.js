@@ -14,10 +14,17 @@ const LikePostForm = (props) => {
     }
 
     const [rating, setRating] = React.useState(props.rating);
+    const [likes, setLikes] = React.useState(0);
+    const [dislikes, setDislikes] = React.useState(0);
+
     // const [likes, setLikes] = React.useState(props.likes);
     useEffect(() => setLiked(), []);
+    useEffect(() => getLikes(), []);
 
     const setLiked = async () => {
+        if(globalData.user === null) {
+            return;
+        }
         let formData = new FormData();
 
         formData.append('user_id', props.user_id);
@@ -30,7 +37,7 @@ const LikePostForm = (props) => {
 
         const data = await fetchResponse.json();
 
-        console.log(data.value);
+        // console.log(data.value);
 
         setRating(() => data.value);
     }
@@ -57,31 +64,35 @@ const LikePostForm = (props) => {
         
 
         console.log(data, val);
-        //fetchData
+        getLikes();
     }
 
-    // const getLikes = async () => {
-    //     let formData = new FormData();
+    const getLikes = async () => {
+        let formData = new FormData();
 
-    //     formData.append('user_id', props.user_id)
-    // }
+        formData.append('post_id', props.post_id);
 
-    // const getDataBack = async () => {
-    //     const response = await fetch()
+        const fetchResponse = await fetch('/postLikes', {
+            method: "post",
+            body: formData
+        });
+        const data = await fetchResponse.json();
 
-    // }
+        setLikes(() => data.likes);
+        setDislikes(() => data.dislikes);
+    }
 
     return (
         <>
             {inactive == true ?
-                <button onClick={onInactive} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i`}><i className={`fal fa-grin-hearts mr-4 fa-xl ${(rating === 1) && "btn-active"} ${props.darkMode && "c-white"}`}></i></button> 
-                :
-                <button onClick={handleSubmit(1)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i`}><i className={`fal fa-grin-hearts mr-4 fa-xl ${(rating === 1) && "btn-active"} ${props.darkMode && "c-white"}`}></i></button>
+                <button onClick={onInactive} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-grin-hearts mr-4 fa-xl ${(rating === 1) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + likes}</i></button> 
+            :
+                <button onClick={handleSubmit(1)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-grin-hearts mr-4 fa-xl ${(rating === 1) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + likes}</i></button>
             }
             {inactive == true ?
-                <button onClick={onInactive} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i`}><i className={`fal fa-sad-cry mr-4 fa-xl ${(rating === 0) && "btn-active"} ${props.darkMode && "c-white"}`}></i></button>
-                :
-                <button onClick={handleSubmit(0)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i`}><i className={`fal fa-sad-cry mr-4 fa-xl ${(rating === 0) && "btn-active"} ${props.darkMode && "c-white"}`}></i></button>
+                <button onClick={onInactive} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-sad-cry mr-4 fa-xl ${(rating === 0) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + dislikes}</i></button>
+            :
+                <button onClick={handleSubmit(0)} style={{background: 'none', border: 'none', outline: 'none'}} className={`like--i ${props.darkMode && "c-white"}`}><i className={`fal fa-sad-cry mr-4 fa-xl ${(rating === 0) && "btn-active"} ${props.darkMode && "c-white"}`}>{" " + dislikes}</i></button>
             }
         </>
     )
