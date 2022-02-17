@@ -60,7 +60,9 @@ export default function Comment(props){
                 <div className={`comment ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`} style={{ minWidth:"200px", maxWidth: "500px", overflowWrap: "break-word", position: 'relative'}}>
                    {userId != null && <p style={{position: 'absolute', fontSize: '8px', top: '2px'}}>{commentUser[temp] != null && commentUser[temp].name}</p>}
                 {userId == null ? "Removed" : props.text}
-                {(userId != null) && (globalData.user != null && globalData.user.id == props.user_id || globalData.user.type == 'admin' && <button onClick={deleteComment} style={{float: 'right'}} className={`bg--transparent c-red border-none`}><i className="fa-solid fa-xmark x-mark pl-3 pt-1" style={{}}></i></button>)}
+                {/* {userId != null && globalData.user.type == 'admin' ? <button onClick={deleteComment} style={{float: 'right'}} className={`bg--transparent c-red border-none`}><i className="fa-solid fa-xmark x-mark pl-3 pt-1" style={{}}></i></button> :  */}
+                {userId != null && globalData.user != null && globalData.user.type == 'admin' ? <button onClick={deleteComment} style={{float: 'right'}} className={`bg--transparent c-red border-none`}><i className="fa-solid fa-xmark x-mark pl-3 pt-1" style={{}}></i></button> : 
+                (userId != null) && (globalData.user != null && globalData.user.id == props.user_id && <button onClick={deleteComment} style={{float: 'right'}} className={`bg--transparent c-red border-none`}><i className="fa-solid fa-xmark x-mark pl-3 pt-1" style={{}}></i></button>)}
                 </div> 
                 {/* <input hidden type="checkbox" name="likes" id="like" value="like" />
                 <label className="like--i ml-3" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-lg"></i></label> */}
