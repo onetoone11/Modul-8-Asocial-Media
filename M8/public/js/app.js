@@ -4278,9 +4278,15 @@ function Start(props) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: props.darkMode ? "bg--dark-bright" : "bg--light-bright",
           children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            style: {
+              wordBreak: 'break-all'
+            },
             className: img ? "pl-3 img-text text-border c-white" : "pl-3",
             children: path != index ? sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], props.title) : props.title : props.title
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+            style: {
+              wordBreak: 'break-all'
+            },
             className: img ? "pl-3 img-text text-border c-white" : "pl-3",
             children: path != index ? sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], props.title) : props.title : props.title
           }), globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
@@ -4754,9 +4760,15 @@ function Thread(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top",
       children: [globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+        style: {
+          wordBreak: 'break-all'
+        },
         className: img ? "pl-3 img-text text-border c-white" : "pl-3",
         children: sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id ? setText(postUser[temp]['algorithm'], post.title) : post.title
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+        style: {
+          wordBreak: 'break-all'
+        },
         className: img ? "pl-3 img-text text-border c-white" : "pl-3",
         children: sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], post.title) : post.title
       }), globalData.user != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {

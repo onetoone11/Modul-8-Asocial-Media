@@ -348,8 +348,8 @@ const [zoomImage, setZoomImage] = React.useState(true);
             
             <div className={props.darkMode ? 'bg--dark-bright post--top' : "bg--light-bright post--top"}>
 
-                {globalData.user != null ? <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{(sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (post.title)) : post.title}</h1> :
-                <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (post.title)) : post.title}</h1>}
+                {globalData.user != null ? <h1 style={{wordBreak: 'break-all'}} className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{(sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (post.title)) : post.title}</h1> :
+                <h1 style={{wordBreak: 'break-all'}} className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (post.title)) : post.title}</h1>}
                 {globalData.user != null ? <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{(sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (post.text)) : post.text}</p> :
                 <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (post.text)) : post.text}</p>}
                 {inactive ? '' : <form style={{display: 'contents'}} action={`/deletePost/${post.id}`} method="get">

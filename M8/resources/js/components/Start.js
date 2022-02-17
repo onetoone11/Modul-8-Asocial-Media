@@ -273,8 +273,8 @@ const [zoomImage, setZoomImage] = React.useState(true);
                         <img style={{maxWidth: '540px', maxHeight: '540px'}} className={path != index ? (sortOfAl == 'image' ? `${postUser[temp]['algorithm']}` : '') : ''} src={props.image} alt="" />}
                     </div>}
                     <div className={props.darkMode ? "bg--dark-bright" : "bg--light-bright"}> 
-                        {globalData.user != null ? <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{path != index ? ((sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (props.title)) : props.title) : props.title}</h1> :
-                        <h1 className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{path != index ? (sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (props.title)) : props.title) : props.title}</h1>}
+                        {globalData.user != null ? <h1 style={{wordBreak: 'break-all'}} className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{path != index ? ((sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (props.title)) : props.title) : props.title}</h1> :
+                        <h1 style={{wordBreak: 'break-all'}} className={img ? "pl-3 img-text text-border c-white" : "pl-3"}>{path != index ? (sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (props.title)) : props.title) : props.title}</h1>}
 
                         {globalData.user != null ? <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{path != index ? ((sortOfAl == 'text' && postUser[temp]['id'] != globalData.user.id) ? setText(postUser[temp]['algorithm'], (props.text)) : props.text) : props.text}</p> : 
                         <p className="post--p p-3" style={{wordBreak: 'break-all'}}>{path != index ? (sortOfAl == 'text' ? setText(postUser[temp]['algorithm'], (props.text)) : props.text) : props.text}</p>}
