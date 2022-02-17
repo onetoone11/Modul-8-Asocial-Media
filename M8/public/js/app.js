@@ -2310,9 +2310,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Comment)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _LikeCommentForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LikeCommentForm */ "./resources/js/components/LikeCommentForm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LikeCommentForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LikeCommentForm */ "./resources/js/components/LikeCommentForm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2330,12 +2338,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Comment(props) {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       showToggle = _React$useState2[0],
       setShowToggle = _React$useState2[1];
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(false),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       isReplying = _React$useState4[0],
       setIsReplying = _React$useState4[1];
@@ -2364,18 +2372,71 @@ function Comment(props) {
     }
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(props.user_id),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      userId = _React$useState6[0],
+      setUserId = _React$useState6[1];
+
+  var deleteComment = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var formData, fetchResponse, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setUserId(function () {
+                return null;
+              });
+
+              if (!(globalData.user === null)) {
+                _context.next = 3;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 3:
+              formData = new FormData();
+              formData.append('comment_id', props.id);
+              _context.next = 7;
+              return fetch('/deleteComment', {
+                method: "post",
+                body: formData
+              });
+
+            case 7:
+              fetchResponse = _context.sent;
+              _context.next = 10;
+              return fetchResponse.json();
+
+            case 10:
+              data = _context.sent;
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function deleteComment() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "row w-100",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "  mr-3 ml-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+        children: userId != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
           className: "comment--profile bg--white",
           src: commentUser[temp] != null ? commentUser[temp].img : null,
           alt: ""
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "comment ".concat(props.darkMode ? 'bg--darkgray' : 'bg--white'),
           style: {
             minWidth: "200px",
@@ -2383,41 +2444,68 @@ function Comment(props) {
             overflowWrap: "break-word",
             position: 'relative'
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: [userId != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
             style: {
               position: 'absolute',
               fontSize: '8px',
               top: '2px'
             },
             children: commentUser[temp] != null && commentUser[temp].name
-          }), props.text]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_LikeCommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          }), userId == null ? "Removed" : props.text, userId != null && globalData.user != null && globalData.user.type == 'admin' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            onClick: deleteComment,
+            style: {
+              "float": 'right'
+            },
+            className: "bg--transparent c-red border-none",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+              className: "fa-solid fa-xmark x-mark pl-3 pt-1",
+              style: {}
+            })
+          }) : userId != null && globalData.user != null && globalData.user.id == props.user_id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            onClick: deleteComment,
+            style: {
+              "float": 'right'
+            },
+            className: "bg--transparent c-red border-none",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+              className: "fa-solid fa-xmark x-mark pl-3 pt-1",
+              style: {}
+            })
+          })]
+        }), userId != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_LikeCommentForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
           darkMode: props.darkMode,
           user_id: props.user_id,
           comment_id: props.id
-        }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          style: {
+            padding: '10px 0 10px 0'
+          }
+        }), inactive ? '' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           style: {
             display: 'inline'
           },
-          children: globalData.user !== null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: globalData.user !== null && userId != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "icon-btn",
             onClick: function onClick() {
               return setIsReplying(function (a) {
                 return !a;
               });
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
               className: "".concat(props.darkMode && 'c-white', " fal fa-reply mr-4 ml-3 fa-lg")
             })
           })
-        }), props.test && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), props.test && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          style: {
+            padding: '0 0 10px 0'
+          },
           className: "icon-btn",
           onClick: function onClick() {
             return setShowToggle(function (prevShowToggle) {
               return !prevShowToggle;
             });
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             style: {
               transition: "0.2s",
               transform: "rotate3d(0, 0, 1, ".concat(showToggle ? "-180deg" : "0deg", ")")
@@ -2426,21 +2514,21 @@ function Comment(props) {
           })
         })]
       })]
-    }), isReplying && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), isReplying && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "ml-4 pl-4 border",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
         className: "row w-100",
         action: "/comment/".concat(post_id),
         method: "get",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "comment--profile bg--white mr-3 ml-4"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "hidden",
             id: "parent_id",
             name: "parent_id",
             value: props.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
             id: "text",
             name: "text",
             className: "comment ".concat(props.darkMode ? 'bg--darkgray' : 'bg--white'),
@@ -2451,16 +2539,16 @@ function Comment(props) {
               width: "100%",
               overflowWrap: "break-word"
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "icon-btn",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
               className: "fa fa-paper-plane",
               "aria-hidden": "true"
             })
           })]
         })]
       })
-    }), props.test && showToggle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), props.test && showToggle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "ml-4 pl-4",
       children: props.test
     })]
@@ -2778,10 +2866,10 @@ var LikeCommentForm = function LikeCommentForm(props) {
 
             case 12:
               data = _context.sent;
-              console.log(data);
+              // console.log(data);
               getLikes();
 
-            case 15:
+            case 14:
             case "end":
               return _context.stop();
           }
@@ -2866,10 +2954,9 @@ var LikeCommentForm = function LikeCommentForm(props) {
               data = _context3.sent;
               setLikes(function () {
                 return data.value;
-              });
-              console.log(props.comment_id, data);
+              }); // console.log(props.comment_id, data);
 
-            case 10:
+            case 9:
             case "end":
               return _context3.stop();
           }
@@ -4352,7 +4439,7 @@ function Thread(props) {
         children: findParents(list).map(function (element) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
             darkMode: props.darkMode,
-            text: element.user_id == null ? "Removed" : element.text,
+            text: element.text,
             user_id: element.user_id,
             id: element.id,
             test: toTree(findChildren(list1)(element.id))(list1)
@@ -4371,9 +4458,7 @@ function Thread(props) {
     setIsReplying(function (a) {
       return !a;
     });
-  }; // console.log('hello')
-  // console.log(comments[5].user_id);
-
+  };
 
   var admin = false;
   var isOP = false;
@@ -4454,8 +4539,6 @@ function Thread(props) {
   }
 
   function lowerUpper(str) {
-    console.log('hej');
-    console.log(str);
     var newString = '';
 
     for (var i = 0; i < str.length; i++) {
@@ -5243,7 +5326,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Algoritm */\r\n\r\n.algorithm--zoomImage{\r\n    background-image: url('https://i.ibb.co/bdh1wbV/glitch.jpg');\r\n    width: 540px;\r\n    height: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n}\r\n\r\n.algorithm--brightness{\r\n    filter: brightness(3);  \r\n}\r\n\r\n.algorithm--filter-red{\r\n    background-color: red;\r\n    background-blend-mode: screen;\r\n    mix-blend-mode: color;\r\n}\r\n\r\n.algorithm--mix-blend-difference{\r\n    mix-blend-mode: difference;\r\n}\r\n\r\n.algorithm--scale-x{\r\n   transform: scaleX(-0.5); \r\n}\r\n\r\n.algorithm--blur{\r\n    filter: blur(10px);\r\n}\r\n\r\n.algorithm--hue{\r\n    filter: hue-rotate(90deg);\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161 !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.bg--darkmode{\r\n    background-color: #474747;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D; \r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-bright-op{\r\n    background-color: rgba(125, 125, 125, 0.7);\r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-img{\r\n    background-color: #555555;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070 !important;\r\n}\r\n\r\n.c-white{\r\n    color: #fff !important;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border: 1px solid;\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.border-none{\r\n    border: none;\r\n}\r\n\r\n.border-1_5{\r\n    border-width: 1.5px;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;\r\n}\r\n\r\n.x-mark:hover{\r\n    cursor: pointer;\r\n    color: #FF8C8C;\r\n}\r\n\r\n.placeholder--hover-w::-moz-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w:-ms-input-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w::placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 120px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    /* background-color: #FF8C8C; */\r\n    /* color: #fff; */\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--create-post:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.btn--profile-settings:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n    z-index: 1000;\r\n}\r\n\r\n.profile--change-image-btn{\r\n    height: 40px;\r\n    padding: 5px 20px;\r\n    border-radius: 20px;\r\n    border: none;\r\n}\r\n\r\n.profile--change-image-btn:hover{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n.btn-active {\r\n    color: #FFC5D9 !important;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    /* border: 1px solid #333; */\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n    cursor: pointer;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n    cursor: pointer;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n    cursor: pointer;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n.none{\r\n    display: none;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    position: relative;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.likeInput:active ~ label {\r\n    filter:brightness(100);\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--img-cover{\r\n    width: 400px;\r\n    height: 400px;\r\n    border-radius: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 85px;\r\n    background: linear-gradient(180deg, #616161 70%, #333 30%);\r\n}\r\n\r\n.profile--image-upload{\r\n    height: 50px; \r\n    width: 400px;\r\n    bottom: 50px;\r\n    position: absolute;\r\n    padding: 10px 40px 0px 40px;\r\n    border-radius: 0 0 200px 200px;\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.profile--settings-dropdown{\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 70px;\r\n    right: 0px;\r\n    padding: 20px;\r\n    border-radius: 20px;\r\n}\r\n\r\n.profile--settings-dropdown li:hover{\r\n    filter: brightness(0.8);\r\n}\r\n\r\n.profile--change-image{\r\n    height: 100vh;\r\n    width: 100%;\r\n    position: absolute;\r\n    z-index: 10002;\r\n    top: 0px;\r\n    position: fixed;\r\n}\r\n\r\n.link{\r\n    text-decoration: none;\r\n    font-size: 20px;\r\n    /* padding: 20px; */\r\n}\r\n\r\n.link:hover{\r\n    text-decoration: none;\r\n\r\n\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    /* border: 1px solid #707070; */\r\n    border-radius: 25px;\r\n    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.3);\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.4rem;\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.login-btn:hover{\r\n    transform: scale(1.1);\r\n    filter: brightness(1.1);\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}\r\n\r\n.search--row:hover{\r\n    filter: brightness(1.4);\r\n    cursor: pointer;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n    padding: 100px 0 100px 0;\r\n    /* height: 200vh; */\r\n}\r\n\r\n/* Algoritm */\r\n\r\n.algorithm--zoomImage{\r\n    background-image: url('https://i.ibb.co/bdh1wbV/glitch.jpg');\r\n    width: 540px;\r\n    height: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n}\r\n\r\n.algorithm--brightness{\r\n    filter: brightness(3);  \r\n}\r\n\r\n.algorithm--filter-red{\r\n    background-color: red;\r\n    background-blend-mode: screen;\r\n    mix-blend-mode: color;\r\n}\r\n\r\n.algorithm--mix-blend-difference{\r\n    mix-blend-mode: difference;\r\n}\r\n\r\n.algorithm--scale-x{\r\n   transform: scaleX(-0.5); \r\n}\r\n\r\n.algorithm--blur{\r\n    filter: blur(10px);\r\n}\r\n\r\n.algorithm--hue{\r\n    filter: hue-rotate(90deg);\r\n}\r\n\r\n/* Colors */\r\n.bg--light{\r\n    background-color: #DFDEDC;\r\n    color: #707070;\r\n}\r\n\r\n.bg--dark{\r\n    background-color: #6D6D6D;\r\n    color: #fff;\r\n}\r\n\r\n.bg--white{\r\n    background-color: #fff;\r\n    color: #333;\r\n}\r\n\r\n.bg--darkgray{\r\n    background-color: #616161 !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.bg--darkmode{\r\n    background-color: #474747;\r\n    color: #fff;\r\n}\r\n\r\n.bg--light-bright{\r\n    background-color: rgba(223, 222, 220, 0.7);\r\n}\r\n\r\n.bg--dark-bright{\r\n    background-color: #7D7D7D; \r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-bright-op{\r\n    background-color: rgba(125, 125, 125, 0.7);\r\n    color: #fff;\r\n}\r\n\r\n.bg--dark-img{\r\n    background-color: #555555;\r\n}\r\n\r\n.bg--transparent{\r\n    background-color: transparent;\r\n}\r\n\r\n.c-gray{\r\n    color: #707070 !important;\r\n}\r\n\r\n.c-white{\r\n    color: #fff !important;\r\n}\r\n\r\n.c-red{\r\n    color: #FF8C8C;\r\n}\r\n\r\n.border-w{\r\n    border: 1px solid;\r\n    border-color: #fff;\r\n}\r\n\r\n.border-b{\r\n    border: 1px solid;\r\n    border-color: #333;\r\n}\r\n\r\n.border-r{\r\n    border: 1px solid #FF8C8C;\r\n}\r\n\r\n.border-none{\r\n    border: none;\r\n}\r\n\r\n.border-1_5{\r\n    border-width: 1.5px;\r\n}\r\n\r\n.text-border {\r\n    text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;\r\n}\r\n\r\n.x-mark:hover{\r\n    cursor: pointer;\r\n    color: #FF8C8C;\r\n}\r\n\r\n.placeholder--hover-w::-moz-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w:-ms-input-placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n.placeholder--hover-w::placeholder{\r\n    color: #fff !important;\r\n    filter: brightness(0.7);\r\n}\r\n\r\n/* btn */\r\n\r\n.btn--deletePost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deletePost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost{\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 120px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--editPost:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    /* background-color: #FF8C8C; */\r\n    /* color: #fff; */\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--deleteUser:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    background-color: #FF8C8C;\r\n    color: #fff;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--admin:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active{\r\n    top: 20px;\r\n    right: 20px;\r\n    background-color: transparent;\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--active:hover{\r\n    cursor: pointer;\r\n    transform: scale(1.1);\r\n    color: #333;\r\n    transition: 0.2s;\r\n}\r\n\r\n.btn--create-post:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n}\r\n\r\n.btn--profile-settings:hover{\r\n    filter: brightness(105%);\r\n    cursor: pointer;\r\n    z-index: 1000;\r\n}\r\n\r\n.profile--change-image-btn{\r\n    height: 40px;\r\n    padding: 5px 20px;\r\n    border-radius: 20px;\r\n    border: none;\r\n}\r\n\r\n.profile--change-image-btn:hover{\r\n    cursor: pointer;\r\n}\r\n\r\n.post--top{\r\n    position: relative;\r\n}\r\n\r\n.btn-active {\r\n    color: #FFC5D9 !important;\r\n}\r\n\r\n/* Navbar */\r\nnav{\r\n    height: 70px;\r\n    width: 100%;\r\n    position: fixed !important;\r\n    box-shadow: 0px 4px 10px #888888;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.search-icon {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 10px;\r\n    height: 100%;\r\n    border: none;\r\n    background: none;\r\n}\r\n\r\ninput[type=search] {\r\n    width: 100%;\r\n    height: 40px;\r\n    border-color: black;\r\n    border-radius: 50px;\r\n    border-width: 2px;\r\n    padding-left:20px;\r\n    padding-right: 40px;\r\n}\r\n\r\ninput[type=search]:focus {\r\n    outline: none;\r\n}\r\n\r\n.nav--logo{\r\n    height: 100%;\r\n    width: auto;\r\n}\r\n\r\n.nav--account-img{\r\n    height: 40px;\r\n    width: 40px;\r\n    /* border: 1px solid #333; */\r\n    border-radius: 20px;\r\n    display: inline-block;\r\n    cursor: pointer;\r\n}\r\n\r\n.nav--account-name{\r\n    display: inline-block;\r\n    margin-right: 20px;\r\n    padding: 0;\r\n    margin-bottom: 0;\r\n    cursor: pointer;\r\n}\r\n\r\n.logo--image {\r\n    height: 100%;\r\n    cursor: pointer;\r\n}\r\n\r\n/* .nav--account{ */\r\n    /* position: absolute;\r\n    right: 20px;\r\n    top: 15px; */\r\n/* } */\r\n\r\n.btn-login{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn-register{\r\n    height: 40px;\r\n    width: 100px;\r\n    border-radius: 20px;\r\n    border-color: #333;\r\n    /* color: #333;\r\n    background-color: #fff;  ----------------------------------------------------------------------------------------- */\r\n    cursor: pointer;\r\n}\r\n\r\n.none{\r\n    display: none;\r\n}\r\n\r\n/* Comments */\r\n\r\n.post--p{\r\n    margin: 0;\r\n}\r\n\r\n.img-text {\r\n    \r\n    transform: translateY(-30px);\r\n}\r\n\r\n.comments--comment{\r\n    /* display: inline-block; */\r\n    float: right;\r\n    cursor: pointer;\r\n}\r\n\r\n.comment{\r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------------*/\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    margin: 10px 0;\r\n    border: 1px solid ;\r\n}\r\n\r\n.comment--profile{ \r\n    /* background-color: #fff; ----------------------------------------------------------------------------------------- */\r\n    height: 46px;\r\n    width: 50px;\r\n    border-radius: 23px;\r\n    border: 1px solid #333;\r\n    margin: 10px 0;\r\n    position: relative;\r\n    /* display: inline-block; */\r\n    /* float: left; */\r\n}\r\n\r\n.icon-btn {\r\n    cursor: pointer; \r\n    outline: none;\r\n    background: transparent;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.icon-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.like--i{\r\n    cursor: pointer;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.likeInput:active ~ label {\r\n    filter:brightness(100);\r\n}\r\n\r\n.post--end{\r\n    border-radius: 0 0 20px 20px;\r\n}\r\n\r\n/* Profile */\r\n\r\n.profile--img{\r\n    width: 400px;\r\n    height: 400px;\r\n    border: 1px solid #333;\r\n    border-radius: 200px;\r\n    margin: auto;\r\n    /* background-image: url('../components/findus.png'); */\r\n}\r\n\r\n.profile--img-cover{\r\n    width: 400px;\r\n    height: 400px;\r\n    border-radius: 200px;\r\n    opacity: 0.5;\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 85px;\r\n    background: linear-gradient(180deg, #616161 70%, #333 30%);\r\n}\r\n\r\n.profile--image-upload{\r\n    height: 50px; \r\n    width: 400px;\r\n    bottom: 50px;\r\n    position: absolute;\r\n    padding: 10px 40px 0px 40px;\r\n    border-radius: 0 0 200px 200px;\r\n}\r\n\r\n.profile--create-post{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--settings{\r\n    height: 60px;\r\n    border: 1px solid #707070;\r\n}\r\n\r\n.profile--create-post-text{\r\n    margin-top: 10px;\r\n}\r\n\r\n.profile--settings-dropdown{\r\n    position: absolute;\r\n    width: 200px;\r\n    top: 70px;\r\n    right: 0px;\r\n    padding: 20px;\r\n    border-radius: 20px;\r\n}\r\n\r\n.profile--settings-dropdown li:hover{\r\n    filter: brightness(0.8);\r\n}\r\n\r\n.profile--change-image{\r\n    height: 100vh;\r\n    width: 100%;\r\n    position: absolute;\r\n    z-index: 10002;\r\n    top: 0px;\r\n    position: fixed;\r\n}\r\n\r\n.link{\r\n    text-decoration: none;\r\n    font-size: 20px;\r\n    /* padding: 20px; */\r\n}\r\n\r\n.link:hover{\r\n    text-decoration: none;\r\n\r\n\r\n}\r\n\r\n.settings--i{\r\n    text-align: center;\r\n    margin-top: 8px;\r\n}\r\n\r\n/* Login */\r\n.login-body {\r\n    width: 25%;\r\n    padding-top: 20vh;\r\n    border: none;\r\n}\r\n\r\n.login-body .card-body {\r\n    /* background-color: #DFDEDC; ----------------------------------------------------------------------------------------- */\r\n    /* color: #707070; */\r\n    padding-right: 5%;\r\n    padding-left: 5%;\r\n    /* border: 1px solid #707070; */\r\n    border-radius: 25px;\r\n    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.3);\r\n}\r\n\r\n.login-body .card form {\r\n    padding-top: 2%;\r\n}\r\n\r\n.form-group {\r\n    padding: 1% 0;\r\n}\r\n\r\n.login-inputs {\r\n    padding: 3% 0;\r\n}\r\n\r\n.login-btn {\r\n    padding: 0.8% 7%;\r\n    border-radius: 25px;\r\n    font-size: 1.4rem;\r\n    border: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.login-btn:hover{\r\n    transform: scale(1.1);\r\n    filter: brightness(1.1);\r\n}\r\n\r\n/* Create and Edit forms */\r\n\r\n.post-create-body {\r\n    width: 50%;\r\n}\r\n\r\n/* Register */\r\n\r\n.register-body {\r\n    padding-top: 10vh;\r\n}\r\n\r\n.search--row:hover{\r\n    filter: brightness(1.4);\r\n    cursor: pointer;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

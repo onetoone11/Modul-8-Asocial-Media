@@ -38,7 +38,7 @@ const LikeCommentForm = (props) => {
         });
         const data = await fetchResponse.json();
 
-        console.log(data);
+        // console.log(data);
         getLikes()
     }
 
@@ -75,7 +75,7 @@ const LikeCommentForm = (props) => {
 
         setLikes(() => data.value);
 
-        console.log(props.comment_id, data);
+        // console.log(props.comment_id, data);
     }
 
     return (
