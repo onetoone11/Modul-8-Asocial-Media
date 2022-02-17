@@ -30,18 +30,42 @@ export default function Comment(props){
         }
     }
 
+    const [userId, setUserId] = React.useState(props.user_id);
+
+    const deleteComment = async () => {
+        setUserId(() => null);
+        if(globalData.user === null) {
+            return;
+        }
+        let formData = new FormData();
+
+        formData.append('comment_id', props.id);
+
+        const fetchResponse = await fetch('/deleteComment', {
+            method: "post",
+            body: formData
+        });
+
+        const data = await fetchResponse.json();
+        
+    }
+
+
+
     return(
     <div>
         <div className="row w-100">
-            <div className="  mr-3 ml-4"><img className="comment--profile bg--white" src={commentUser[temp] != null ? commentUser[temp].img : null} alt="" /></div>
+            <div className="  mr-3 ml-4">{userId != null && <img className="comment--profile bg--white" src={commentUser[temp] != null ? commentUser[temp].img : null} alt="" />}</div>
             <div> 
                 <div className={`comment ${props.darkMode ? 'bg--darkgray' : 'bg--white'}`} style={{ minWidth:"200px", maxWidth: "500px", overflowWrap: "break-word", position: 'relative'}}>
-                    <p style={{position: 'absolute', fontSize: '8px', top: '2px'}}>{commentUser[temp] != null && commentUser[temp].name}</p>
-                {props.text}</div> 
+                   {userId != null && <p style={{position: 'absolute', fontSize: '8px', top: '2px'}}>{commentUser[temp] != null && commentUser[temp].name}</p>}
+                {userId == null ? "Removed" : props.text}
+                {(userId != null) && (globalData.user != null && globalData.user.id == props.user_id || globalData.user.type == 'admin' && <button onClick={deleteComment} style={{float: 'right'}} className={`bg--transparent c-red border-none`}><i className="fa-solid fa-xmark x-mark pl-3 pt-1" style={{}}></i></button>)}
+                </div> 
                 {/* <input hidden type="checkbox" name="likes" id="like" value="like" />
                 <label className="like--i ml-3" htmlFor="like"><i className="fal fa-grin-hearts mr-4 fa-lg"></i></label> */}
                 
-                <LikeCommentForm darkMode={props.darkMode} user_id={props.user_id} comment_id={props.id}/>
+                {userId != null ? <LikeCommentForm darkMode={props.darkMode} user_id={props.user_id} comment_id={props.id}/> : <div style={{padding: '10px 0 10px 0'}}></div>}
 
                 {/* <button className="icon-btn" onClick={() => setIsReplying(a => !a)}><i className="fal fa-reply mr-4 ml-3 fa-lg"></i></button> */}
                 
@@ -57,13 +81,13 @@ export default function Comment(props){
 
                 {/* ------------------------------ */}
                 {inactive ? '' : <div style={{display: 'inline'}}>
-                {globalData.user !== null &&
+                {globalData.user !== null && userId != null &&
                 <button className="icon-btn" onClick={() => setIsReplying(a => !a)}><i className={`${props.darkMode && 'c-white'} fal fa-reply mr-4 ml-3 fa-lg`}></i></button>}
                 </div>}
                 {/* ------------------------------ */}
 
                 {props.test && 
-                <button className="icon-btn" onClick={() => setShowToggle((prevShowToggle) => !prevShowToggle)}><i style={{transition: "0.2s", transform: `rotate3d(0, 0, 1, ${showToggle ? "-180deg" : "0deg"})`}} className={`${props.darkMode && 'c-white'} fal fa-chevron-down fa-lg ml-3`}></i></button>}
+                <button  style={{padding: '0 0 10px 0'}} className="icon-btn" onClick={() => setShowToggle((prevShowToggle) => !prevShowToggle)}><i style={{transition: "0.2s", transform: `rotate3d(0, 0, 1, ${showToggle ? "-180deg" : "0deg"})`}} className={`${props.darkMode && 'c-white'} fal fa-chevron-down fa-lg ml-3`}></i></button>}
             </div>    
         </div> 
         {isReplying && 

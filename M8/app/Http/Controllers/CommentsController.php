@@ -138,6 +138,17 @@ class CommentsController extends Controller
 
     }
 
+    public function deleteComment(Request $request){
+
+        $comment_id = intval($request->input('comment_id'));
+
+        $comment = Comment::find($comment_id);
+        $comment->user_id = null;
+        $comment->save();
+
+        return response()->json(['exists' => false]);
+    }
+
     public function getCommentLikes(Request $request) {
         $comment_id = intval($request->input('comment_id'));
 

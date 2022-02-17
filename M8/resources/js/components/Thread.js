@@ -62,7 +62,7 @@ export default function Thread(props) {
         return (
         <div>
             {findParents(list).map(element => {
-                return <Comment darkMode={props.darkMode} key={element.id} text={element.user_id == null ? "Removed" : element.text} user_id={element.user_id} id={element.id} test={
+                return <Comment darkMode={props.darkMode} key={element.id} text={ element.text} user_id={element.user_id} id={element.id} test={
                     toTree(findChildren(list1)(element.id))(list1)
                 } />
             })}
@@ -77,9 +77,6 @@ export default function Thread(props) {
         }
         setIsReplying(a => !a);
     }
-
-    // console.log('hello')
-    // console.log(comments[5].user_id);
 
     let admin = false;
     let isOP = false;
@@ -156,8 +153,6 @@ export default function Thread(props) {
     }
 
     function lowerUpper(str) {
-        console.log('hej')
-        console.log(str);
         let newString = '';
         for (let i = 0; i < str.length; i++) {
           newString += str[i] === str[i].toUpperCase() ? str[i].toLowerCase() : str[i].toUpperCase()
