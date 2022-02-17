@@ -2451,7 +2451,7 @@ function Comment(props) {
               top: '2px'
             },
             children: commentUser[temp] != null && commentUser[temp].name
-          }), userId == null ? "Removed" : props.text, userId != null && (globalData.user != null && globalData.user.id == props.user_id || globalData.user.type == 'admin' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          }), userId == null ? "Removed" : props.text, userId != null && globalData.user != null && globalData.user.type == 'admin' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: deleteComment,
             style: {
               "float": 'right'
@@ -2461,7 +2461,17 @@ function Comment(props) {
               className: "fa-solid fa-xmark x-mark pl-3 pt-1",
               style: {}
             })
-          }))]
+          }) : userId != null && globalData.user != null && globalData.user.id == props.user_id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            onClick: deleteComment,
+            style: {
+              "float": 'right'
+            },
+            className: "bg--transparent c-red border-none",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+              className: "fa-solid fa-xmark x-mark pl-3 pt-1",
+              style: {}
+            })
+          })]
         }), userId != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_LikeCommentForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
           darkMode: props.darkMode,
           user_id: props.user_id,
