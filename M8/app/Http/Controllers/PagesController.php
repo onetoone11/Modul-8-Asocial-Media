@@ -59,8 +59,10 @@ class PagesController extends Controller
 
         $posts = DB::select(DB::raw("SELECT * FROM posts ORDER BY created_at"));
         $type = Auth::user()->type;
-
-        if($data->user_id != Auth::user()->id) {
+        if(Auth::user()->type == 'admin') {
+            return view('edit')->with('posts', $posts)->with('data', $data)->with(["globalData" => collect(['user' => Auth::user()])]);
+        }
+        else if($data->user_id != Auth::user()->id) {
             return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'You are not the author of this post.');
         }
 

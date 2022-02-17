@@ -120,7 +120,18 @@ class PostsController extends Controller
     {
         $data = Post::find($post_id);
         $type = Auth::user()->type;
-        if($data->user_id != Auth::user()->id) {
+        if(Auth::user()->type == 'admin') {
+            $comments = DB::select(DB::raw("SELECT * FROM comments WHERE post_id = $post_id"));
+
+        foreach($comments as $comment){
+            // $comment->id
+            Comment::find($comment->id)->delete();
+        }
+
+        Post::find($post_id)->delete();
+        return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Post Deleted!');
+        }
+        else if($data->user_id != Auth::user()->id) {
             return Redirect::to('/')->with(["globalData" => collect(['user' => Auth::user()])])->with('error_message', 'Post was not deleted. You are not the author of this post.');
         }
         if($type == 'inactive') {

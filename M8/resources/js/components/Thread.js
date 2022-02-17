@@ -356,7 +356,7 @@ const [zoomImage, setZoomImage] = React.useState(true);
                     {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className="btn--deletePost border-r c-red border-1_5">Delete</button>}
                 </form>}
                 {inactive ? '' :<form style={{display: 'contents'}} action={`/edit/${post.id}`}>
-                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) ) && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
+                    {((globalData.user !== null && globalData.user.id == `${post.user_id}`) || (admin == true)) && <button className={`btn--editPost ${props.darkMode ? 'border-w c-white' : 'border-b c-black'}  mr-3`}>Edit</button>}
                 </form>}
             </div>
             <div className={`${props.darkMode ? 'bg--dark' : 'bg--light'} comments-sm p-3 post--end`}>

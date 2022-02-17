@@ -4786,7 +4786,7 @@ function Thread(props) {
           display: 'contents'
         },
         action: "/edit/".concat(post.id),
-        children: globalData.user !== null && globalData.user.id == "".concat(post.user_id) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        children: (globalData.user !== null && globalData.user.id == "".concat(post.user_id) || admin == true) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           className: "btn--editPost ".concat(props.darkMode ? 'border-w c-white' : 'border-b c-black', "  mr-3"),
           children: "Edit"
         })
